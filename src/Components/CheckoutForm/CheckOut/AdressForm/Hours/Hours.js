@@ -106,7 +106,10 @@ const Hours = ({
           <button
             onClick={onDecrease}
             className={styles.hoursCounterMinus}
-            style={{ background: backAndNextButtonsColor }}
+            style={{
+              background: backAndNextButtonsColor,
+              border: `1px solid ${borderColorForInnerElements}`,
+            }}
             // style={{ marginRight: "5px" }}
           ></button>
         </div>
@@ -160,7 +163,10 @@ const Hours = ({
           <button
             className={styles.hoursCounterPlus}
             onClick={onIncrease}
-            style={{ background: backAndNextButtonsColor }}
+            style={{
+              background: backAndNextButtonsColor,
+              border: `1px solid ${borderColorForInnerElements}`,
+            }}
             // style={{ marginLeft: "4px" }}
           ></button>
           {/* </div> */}

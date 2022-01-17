@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core"
 // import Typography from "@material-ui/core/Typography"
 import React, { useContext } from "react"
 import { useFormContext } from "react-hook-form"
+import { LuggageIcon } from "../../../../../assets/icons"
 import ThemeContext from "../../../../../context"
 // import {
 //   HourlyIcon,
@@ -174,7 +175,8 @@ const Luggage = ({ luggage, setLuggage }) => {
         {/* <NumberOfluggagesIcon
           style={{ paddingLeft: "30px" }}
         ></NumberOfluggagesIcon> */}
-        <span className={styles.luggageQuantityIcon}></span>
+        {/* <span className={styles.luggageQuantityIcon}></span> */}
+        <LuggageIcon color={fontColor} />
         <span
           // style={{
           //   color: "white",
@@ -223,7 +225,10 @@ const Luggage = ({ luggage, setLuggage }) => {
             //     // marginRight: "5px",
             //   }
             // }
-            style={{ background: backAndNextButtonsColor }}
+            style={{
+              background: backAndNextButtonsColor,
+              border: `1px solid ${borderColorForInnerElements}`,
+            }}
             className={styles.luggageQuantityMinusSelf}
           ></button>
         </div>
@@ -276,7 +281,10 @@ const Luggage = ({ luggage, setLuggage }) => {
           <button
             onClick={onIncrease}
             // style={{ marginLeft: "4px" }}
-            style={{ background: backAndNextButtonsColor }}
+            style={{
+              background: backAndNextButtonsColor,
+              border: `1px solid ${borderColorForInnerElements}`,
+            }}
             className={styles.luggageQuantityPlusSelf}
           ></button>
         </div>

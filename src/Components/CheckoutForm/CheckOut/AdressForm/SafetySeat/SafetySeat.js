@@ -270,7 +270,10 @@ export default React.memo(function SafetySeat({
                 //   }
                 // }
                 className={styles.boosterSeatCounterMinusSelf}
-                style={{ background: backAndNextButtonsColor }}
+                style={{
+                  background: backAndNextButtonsColor,
+                  border: `1px solid ${borderColorForInnerElements}`,
+                }}
               ></button>
             </div>
             <div
@@ -323,7 +326,10 @@ export default React.memo(function SafetySeat({
                 onClick={onIncreaseBoosterSeat}
                 // style={{ marginLeft: "4px" }}
                 className={styles.boosterSeatCounterPlusSelf}
-                style={{ background: backAndNextButtonsColor }}
+                style={{
+                  background: backAndNextButtonsColor,
+                  border: `1px solid ${borderColorForInnerElements}`,
+                }}
               ></button>
             </div>
             {/* </div> */}
@@ -397,7 +403,10 @@ export default React.memo(function SafetySeat({
                 //   }
                 // }
                 className={styles.safetySeatCounterMinusSelf}
-                style={{ background: backAndNextButtonsColor }}
+                style={{
+                  background: backAndNextButtonsColor,
+                  border: `1px solid ${borderColorForInnerElements}`,
+                }}
               ></button>
             </div>
             <div
@@ -450,7 +459,10 @@ export default React.memo(function SafetySeat({
                 onClick={onIncreaseChildSafetySeat}
                 // style={{ marginLeft: "4px" }}
                 className={styles.safetySeatCounterPlusSelf}
-                style={{ background: backAndNextButtonsColor }}
+                style={{
+                  background: backAndNextButtonsColor,
+                  border: `1px solid ${borderColorForInnerElements}`,
+                }}
               ></button>
             </div>
             {/* </div> */}

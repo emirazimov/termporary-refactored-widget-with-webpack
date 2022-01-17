@@ -29,6 +29,7 @@ export default React.memo(function PassengerQuantity({
   passengers,
   passengersQuantityForBackStep,
   setPassengersQuantityForBackStep,
+  redBorderOnSubmitForPassengers,
 }) {
   const classes = useStyles()
   const { register } = useFormContext()
@@ -108,6 +109,12 @@ export default React.memo(function PassengerQuantity({
       <div
         // item
         className={styles.passengerQuantityCounterContainer}
+        style={{
+          borderRadius: `${borderRadiusesForInnerElements}`,
+          border: redBorderOnSubmitForPassengers
+            ? "1px solid red"
+            : "1px solid transparent",
+        }}
       >
         {/* <div
           container

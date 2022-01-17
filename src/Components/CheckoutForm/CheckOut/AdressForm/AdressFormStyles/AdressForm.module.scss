@@ -41,6 +41,7 @@ $background-position-x-for-date-time-picker: 3%;
   // z-index: 18;
   @include main-inputs-size-and-background-styles-etc;
   @include addressform-inputs-with-icons;
+  padding-right: 8px;
   // text-indent: 38px;
   // padding: 0;
 }
@@ -251,6 +252,7 @@ $background-position-x-for-date-time-picker: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   background: $cars-type-color;
   border: $inputs-border;
   border-radius: $inner-elements-border-radius;
@@ -278,7 +280,7 @@ $background-position-x-for-date-time-picker: 3%;
   }
 }
 .carItemTitleContainer {
-  height: 30%;
+  height: 35%;
   display: flex;
   align-items: center;
 }
@@ -288,7 +290,11 @@ $background-position-x-for-date-time-picker: 3%;
 }
 
 .carImageContainer {
-  height: 70%;
+  height: 65%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
 }
 .carImageStylesForBiggerTypeOfImage {
   // width: 80%;
@@ -297,8 +303,8 @@ $background-position-x-for-date-time-picker: 3%;
   user-select: none;
 }
 .carImage {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 75%;
   pointer-events: none;
   user-select: none;
 }

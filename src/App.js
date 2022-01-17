@@ -112,8 +112,8 @@ const App = (props) => {
       if (xOrdinate < -20) {
         position.current.x = 0
       }
-      if (yOrdinate - heightOfCard < -userScreenHeight) {
-        position.current.y = -userScreenHeight + heightOfCard
+      if (yOrdinate - (heightOfCard + 75) < -userScreenHeight) {
+        position.current.y = -userScreenHeight + (heightOfCard + 75)
       }
       if (yOrdinate > 0) {
         position.current.y = 0
@@ -653,7 +653,7 @@ const App = (props) => {
                       </div>
 
                       <div
-                        ref={refOfCard}
+                        // ref={refOfCard}
                         // style={{ borderRadius: "10px" }}
                         className={styles.contentContainer}
                         style={{ background: ThemeProviderAppBackgroundColor }}

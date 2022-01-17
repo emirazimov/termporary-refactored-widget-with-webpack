@@ -38,7 +38,7 @@ import PassengerQuantity from "./PassengerQuantity/PassengerQuantity"
 
 import Carousel, { consts } from "react-elastic-carousel"
 
-import "../index.css"
+// import "../index.css"
 // import { setHourlyRedux } from "../../../../Redux/hourly-reducer"
 // import { setGateMeetingRedux } from "../../../../Redux/gate-meeting-reducer"
 // import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
@@ -591,7 +591,9 @@ const AdressFormwithoutReactMemo = ({
                       }
                       style={{
                         color: inputsFontColor,
-                        border: `1px solid ${borderColorForInnerElements}`,
+                        border: !redBorderOnSubmitForDate
+                          ? `1px solid ${borderColorForInnerElements}`
+                          : `1px solid red`,
                         background: backAndNextButtonsColor,
                       }}
                     >
@@ -617,7 +619,7 @@ const AdressFormwithoutReactMemo = ({
                                 : null
                             }
                             render={() => ( */}
-                          <ClockIcon color={fontColor} />
+                          {/* <ClockIcon color={fontColor} /> */}
                           <CalendarPicker
                             date={date}
                             onChange={(newDate) => {
@@ -669,6 +671,7 @@ const AdressFormwithoutReactMemo = ({
                       {(inputProps) => {
                         return (
                           <div className={styles.timePickerContainer}>
+                            <ClockIcon color={fontColor} />
                             <input
                               {...inputProps}
                               // variant="outlined"
@@ -774,7 +777,15 @@ const AdressFormwithoutReactMemo = ({
                               // }}
                               style={{
                                 color: inputsFontColor,
-                                border: `1px solid ${borderColorForInnerElements}`,
+                                border:
+                                  redBorderOnSubmitForTime ||
+                                  redBorderOnSubmitForTime2 ||
+                                  redBorderOnSubmitForTime3 ||
+                                  redBorderOnSubmitForTime4 ||
+                                  redBorderOnSubmitForTime5 ||
+                                  redBorderOnSubmitForTime6
+                                    ? `1px solid red`
+                                    : `1px solid ${borderColorForInnerElements}`,
                                 background: backAndNextButtonsColor,
                               }}
                             />
@@ -873,6 +884,9 @@ const AdressFormwithoutReactMemo = ({
                     }
                     passengersQuantityForBackStep={
                       formData.passengersQuantityForBackStep
+                    }
+                    redBorderOnSubmitForPassengers={
+                      redBorderOnSubmitForPassengers
                     }
                   />
                 </div>
@@ -1081,6 +1095,12 @@ const AdressFormwithoutReactMemo = ({
                 <div
                   // item
                   className={styles.preferencesCarsContainer}
+                  style={{
+                    borderRadius: `${borderRadiusesForInnerElements}`,
+                    border: redBorderOnSubmitForCarType
+                      ? "1px solid red"
+                      : "1px solid transprent",
+                  }}
                 >
                   <Carousel
                     renderArrow={myArrow}
@@ -1206,7 +1226,7 @@ export default AdressFormUIComponent
 
 const CarItemContainer = styled.div`
   width: 60px;
-  height: 98%;
+ height: 66px;
   display: flex;
   flex-direction: column;
   align-items: center;

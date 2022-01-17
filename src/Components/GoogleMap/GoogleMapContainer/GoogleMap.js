@@ -227,6 +227,11 @@ const GoogleMap = React.memo(
                 //     : classes.destinationContainer
                 // }
                 className={styles.mapInputsContainer}
+                style={{
+                  border: flagForGotAddressError
+                    ? "1px solid red"
+                    : "1px solid transparent",
+                }}
               >
                 <TransitionGroup>
                   {destinations.map((destination, id) => {
@@ -296,6 +301,7 @@ const GoogleMap = React.memo(
                                       className={
                                         styles.numberOfDestinationPoint
                                       }
+                                      style={{ color: inputsFontColor }}
                                     >
                                       {id}
                                     </span>
@@ -310,6 +316,13 @@ const GoogleMap = React.memo(
                                     //   boxShadow: "4px 5px 30px rgba(0, 0, 0, 0.1)",
                                     // }}
                                     // variant="standard"
+                                    value={
+                                      formData.orderAddressDetails[id]
+                                        ?.rideCheckPoint && !resetInputs
+                                        ? formData.orderAddressDetails[id]
+                                            ?.rideCheckPoint
+                                        : nothing
+                                    }
                                     name="rideCheckPoint"
                                     defaultValue={
                                       destinations[id]?.rideCheckPoint
@@ -391,8 +404,12 @@ const GoogleMap = React.memo(
                                     // },
                                     // }}
                                     style={{
+                                      height: "33px",
                                       color: inputsFontColor,
-                                      border: `1px solid ${borderColorForInnerElements}`,
+                                      border:
+                                        redBorderOnSubmit || redBorderOnSubmit2
+                                          ? `1px solid red`
+                                          : `1px solid ${borderColorForInnerElements}`,
                                       background: backAndNextButtonsColor,
                                     }}
                                     placeholder={id === 0 ? "From" : "To"}
@@ -407,7 +424,7 @@ const GoogleMap = React.memo(
                                       onClick={addEndPoint}
                                       className={styles.addLocationIcon}
                                     >
-                                      <AddLocIcon />
+                                      <AddLocIcon color={fontColor} />
                                     </span>
                                   )}
                                   {id > 0 && id < destinations.length - 1 && (
@@ -415,7 +432,7 @@ const GoogleMap = React.memo(
                                       onClick={() => removeEndPoint(id)}
                                       className={styles.deleteLocationIcon}
                                     >
-                                      <DeleteLocIcon />
+                                      <DeleteLocIcon color={fontColor} />
                                     </span>
                                   )}
                                   {/* </div> */}
