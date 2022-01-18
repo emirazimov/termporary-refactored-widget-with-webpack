@@ -1,21 +1,21 @@
 // import { CircularProgress } from "@material-ui/core"
 import React from "react"
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
+// import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import { ErrorIcon } from "../../../assets/icons"
-import { Grid, Typography } from "@material-ui/core"
-import Button from "@material-ui/core/Button"
+// import { Grid, Typography } from "@material-ui/core"
+// import Button from "@material-ui/core/Button"
 import { connect } from "react-redux"
 import { setError } from "../../../Redux/car-reducer"
 import { setGotAddressError } from "../../../Redux/company-profile-reducer"
 import styles from "./IncorrectAddressError.module.scss"
 
-const theme = createMuiTheme({
-  palette: {
-    secondary: {
-      main: "#4F4F4F",
-    },
-  },
-})
+// const theme = createMuiTheme({
+//   palette: {
+//     secondary: {
+//       main: "#4F4F4F",
+//     },
+//   },
+// })
 const IncorrectAddressError = ({
   error,
   setActiveStep,

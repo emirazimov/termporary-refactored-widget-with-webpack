@@ -9,7 +9,7 @@ import { useMediaQuery } from "@material-ui/core"
 // import Typography from "@material-ui/core/Typography"
 import React, { useContext } from "react"
 import { AspectRatio } from "react-aspect-ratio"
-import Carousel from "react-material-ui-carousel"
+import Carousel, { consts } from "react-material-ui-carousel"
 // import { connect } from "react-redux"
 import { BackArrowIcon, ForwardArrowIcon } from "../../../../assets/icons"
 // import { toggleIsFetching } from "../../../../Redux/car-reducer"
@@ -68,6 +68,10 @@ const PreviewUIComponent = ({
     backAndNextButtonsColor,
     innerTextOnHover,
     inputsFontColor,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
   } = useContext(ThemeContext)
 
   return (
@@ -130,6 +134,10 @@ const PreviewUIComponent = ({
           //   marginBottom: "5px",
           // }}
           className={styles.carContainer}
+          style={{
+            background: `${backAndNextButtonsColor}`,
+            border: `1px solid ${borderColorForInnerElements}`,
+          }}
         >
           {/* <div
             // container

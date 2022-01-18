@@ -39,6 +39,7 @@ var inputsFontColor = window.inputsFontColor
 
 var backAndNextButtonsColor = window.backAndNextButtonsColor
 var innerTextOnHover = window.innerTextOnHover
+var inputsBackground = window.inputsBackground
 // font-color-for-customize
 
 function Main() {
@@ -58,6 +59,7 @@ function Main() {
           backAndNextButtonsColor,
           innerTextOnHover,
           inputsFontColor,
+          inputsBackground,
         }}
       >
         <App />

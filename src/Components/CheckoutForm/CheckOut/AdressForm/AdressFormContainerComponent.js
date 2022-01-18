@@ -85,6 +85,7 @@ const AdressFormContainerComponent = ({
   const [isAirline, setIsAirline] = useState(false)
   const [airlineId, setAirlineId] = useState(0)
   const [airlines, setAirlines] = useState([])
+  const [airlineName, setAirlineNAme] = useState([])
   const [timePickerOpened, setTimePickerOpened] = useState(false)
 
   const [selectedDate, handleDateChange] = useState(null)
@@ -129,6 +130,16 @@ const AdressFormContainerComponent = ({
   //   // mode: "onBlur",
   //   // resolver: yupResolver(schema),
   // })
+
+  const extractAirlineId = (name) => {
+    const res = airlines.find((element, index, array) => {
+      return element.name == name
+    })
+    res ? setAirlineId(res.id) : setAirlineId(null)
+    setAirlineNAme(name)
+    console.log(res)
+  }
+
   const {
     register,
     handleSubmit,
@@ -519,7 +530,7 @@ const AdressFormContainerComponent = ({
     if (firstAirline) {
       setIsAirline(true)
       setBookingType(3)
-      fetchAirlines()
+      // fetchAirlines()
       // setDisableHourly(true)
     } else {
       setIsAirline(false)
@@ -613,6 +624,9 @@ const AdressFormContainerComponent = ({
       AMPM={AMPM}
       setDateForDefaultValue={setDateForDefaultValue}
       control={control}
+      fetchAirlines={fetchAirlines}
+      extractAirlineId={extractAirlineId}
+      airlineName={airlineName}
     />
   )
 }

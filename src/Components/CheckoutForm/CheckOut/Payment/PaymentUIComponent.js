@@ -127,6 +127,11 @@ const PaymentUIComponent = ({
     backAndNextButtonsColor,
     innerTextOnHover,
     inputsFontColor,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
+    inputsBackground,
   } = useContext(ThemeContext)
 
   return (
@@ -287,7 +292,11 @@ const PaymentUIComponent = ({
                       //   background: "transparent",
                       // }}
                       className={styles.cardholderInformationInputSelfFirstName}
-                      style={{ color: inputsFontColor }}
+                      style={{
+                        color: inputsFontColor,
+                        border: `1px solid ${borderColorForInnerElements}`,
+                        background: inputsBackground,
+                      }}
                       ref={register}
                     />
                   </div>
@@ -305,7 +314,11 @@ const PaymentUIComponent = ({
                       placeholder="Last Name"
                       // style={{ width: "100%", background: "transparent" }}
                       className={styles.cardholderInformationInputSelfLastName}
-                      style={{ color: inputsFontColor }}
+                      style={{
+                        color: inputsFontColor,
+                        border: `1px solid ${borderColorForInnerElements}`,
+                        background: inputsBackground,
+                      }}
                       ref={register}
                     />
                   </div>
@@ -335,7 +348,11 @@ const PaymentUIComponent = ({
                       defaultValue={formSummary.greetClientInfo.email}
                       // style={{ width: "100%", background: "transparent" }}
                       className={styles.cardholderInformationInputSelf}
-                      style={{ color: inputsFontColor }}
+                      style={{
+                        color: inputsFontColor,
+                        border: `1px solid ${borderColorForInnerElements}`,
+                        background: inputsBackground,
+                      }}
                       ref={register}
                     />
                   </div>
@@ -353,7 +370,11 @@ const PaymentUIComponent = ({
                       // className={classes.inputPlaceholderFontSize}
                       // style={{ width: "100%", background: "transparent" }}
                       className={styles.cardholderInformationInputSelf}
-                      style={{ color: inputsFontColor }}
+                      style={{
+                        color: inputsFontColor,
+                        border: `1px solid ${borderColorForInnerElements}`,
+                        background: inputsBackground,
+                      }}
                       ref={register}
                     />
                   </div>
@@ -414,7 +435,12 @@ const PaymentUIComponent = ({
                       error={errors.client?.firstName ? true : false}
                       className={styles.cardholderInformationInputSelfFirstName}
                       ref={register}
-                      style={{ width: "100%", color: inputsFontColor }}
+                      style={{
+                        width: "100%",
+                        color: inputsFontColor,
+                        border: `1px solid ${borderColorForInnerElements}`,
+                        background: inputsBackground,
+                      }}
                     />
                   </div>
                   {errors.client?.firstName && (
@@ -440,7 +466,12 @@ const PaymentUIComponent = ({
                     error={errors.client?.lastName ? true : false}
                     className={styles.cardholderInformationInputSelfLastName}
                     ref={register}
-                    style={{ width: "100%", color: inputsFontColor }}
+                    style={{
+                      width: "100%",
+                      color: inputsFontColor,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
+                    }}
                   />
                   {errors.client?.lastName && (
                     <p className={styles.errorInputs}>
@@ -475,7 +506,11 @@ const PaymentUIComponent = ({
                     defaultValue={formSummary.client.email}
                     error={errors.client?.email ? true : false}
                     className={styles.cardholderInformationInputSelf}
-                    style={{ color: inputsFontColor }}
+                    style={{
+                      color: inputsFontColor,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
+                    }}
                     ref={register}
                   />
                   {errors.client?.email && (
@@ -499,7 +534,11 @@ const PaymentUIComponent = ({
                     // style={{ width: "100%", background: "transparent" }}
                     error={errors.client?.phoneNumber ? true : false}
                     className={styles.cardholderInformationInputSelf}
-                    style={{ color: inputsFontColor }}
+                    style={{
+                      color: inputsFontColor,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
+                    }}
                     ref={register}
                   />
                   {errors.client?.phoneNumber && (
@@ -534,7 +573,11 @@ const PaymentUIComponent = ({
                     className={
                       styles.cardholderInformationInputWithFullWidthSelf
                     }
-                    style={{ color: inputsFontColor }}
+                    style={{
+                      color: inputsFontColor,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
+                    }}
                   />
                   {errors.client?.address && (
                     <p className={styles.errorInputs}>
@@ -584,7 +627,11 @@ const PaymentUIComponent = ({
                     className={
                       styles.cardholderInformationInputWithFullWidthSelf
                     }
-                    style={{ color: inputsFontColor }}
+                    style={{
+                      color: inputsFontColor,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
+                    }}
                   />
 
                   <datalist id="states-list">
@@ -728,6 +775,9 @@ const PaymentUIComponent = ({
                       paddingRight: "25px",
                       boxSizing: "border-box",
                       color: inputsFontColor,
+
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
                     }}
                   />
 
@@ -794,7 +844,11 @@ const PaymentUIComponent = ({
                     defaultValue={formSummary.client.zip}
                     error={errors.client?.address ? true : false}
                     className={styles.cardholderInformationInputSelf}
-                    style={{ color: inputsFontColor }}
+                    style={{
+                      color: inputsFontColor,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
+                    }}
                   />
                   {errors.client?.zip && (
                     <p className={styles.errorInputs}>
@@ -869,7 +923,11 @@ const PaymentUIComponent = ({
                     className={
                       styles.cardholderInformationInputWithFullWidthSelf
                     }
-                    style={{ color: inputsFontColor }}
+                    style={{
+                      color: inputsFontColor,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                      background: inputsBackground,
+                    }}
                   />
 
                   {cardForPaymentSubmitError && (
@@ -920,7 +978,11 @@ const PaymentUIComponent = ({
                         //   // disableUnderline: true,
                         // }}
                         className={styles.cardholderInformationInputSelf}
-                        style={{ color: inputsFontColor }}
+                        style={{
+                          color: inputsFontColor,
+                          border: `1px solid ${borderColorForInnerElements}`,
+                          background: inputsBackground,
+                        }}
                       />
                     )}
                   </CustomMaskInput>
@@ -964,7 +1026,11 @@ const PaymentUIComponent = ({
                         //   // disableUnderline: true,
                         // }}
                         className={styles.cardholderInformationInputSelf}
-                        style={{ color: inputsFontColor }}
+                        style={{
+                          color: inputsFontColor,
+                          border: `1px solid ${borderColorForInnerElements}`,
+                          background: inputsBackground,
+                        }}
                       />
                     )}
                   </CustomMaskInput>
@@ -1041,6 +1107,7 @@ const PaymentUIComponent = ({
                   disabled={!checked}
                   className={styles.buttonNextSelf}
                   style={{
+                    opacity: !checked ? "0.5" : "1",
                     background: backAndNextButtonsColor,
                     color: fontColor,
                   }}

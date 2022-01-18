@@ -51,22 +51,22 @@
   height: 23px;
   position: relative;
   transition: 0.1s;
-  border-radius: $inner-elements-border-radius;
+  // border-radius: $inner-elements-border-radius;
 
-  &:hover {
-    background: $hover-color;
-    transition: 0.1s;
-    // .companyProfileCloseIconSelfCustomCreation {
-    //   &::before {
-    //     background: $inner-text-on-hover;
-    //     transition: 0.1s;
-    //   }
-    //   &::after {
-    //     background: $inner-text-on-hover;
-    //     transition: 0.1s;
-    //   }
-    // }
-  }
+  // &:hover {
+  //   background: $hover-color;
+  //   transition: 0.1s;
+  //   // .companyProfileCloseIconSelfCustomCreation {
+  //   //   &::before {
+  //   //     background: $inner-text-on-hover;
+  //   //     transition: 0.1s;
+  //   //   }
+  //   //   &::after {
+  //   //     background: $inner-text-on-hover;
+  //   //     transition: 0.1s;
+  //   //   }
+  //   // }
+  // }
 }
 // .companyProfileCloseIconSelfCustomCreation {
 //   &::before {

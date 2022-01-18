@@ -1,31 +1,31 @@
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
-import ListItem from '@material-ui/core/ListItem'
-import Paper from '@material-ui/core/Paper'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import React, { useContext } from 'react'
-import Carousel from 'react-material-ui-carousel'
-import { connect } from 'react-redux'
-import { BackArrowIcon, ForwardArrowIcon } from '../../../../assets/icons'
-import { Preloader } from '../../../Helpers/Preloader/Preloader'
-import {
-  setCarId,
-  setIsAirportPickupIncluded,
-} from '../../../../Redux/form-reducer'
-import { AppBar, useMediaQuery } from '@material-ui/core'
-import Box from '@material-ui/core/Box'
-import { AspectRatio } from 'react-aspect-ratio'
-import './FleetForm.css'
-import { setGateMeetingRedux } from '../../../../Redux/gate-meeting-reducer'
-import IncorrectAddressError from '../../IncorrectAdressError/IncorrectAddressError'
-import { setResetWidgetInputs } from '../../../../Redux/reset-widget-inputs-reducer'
-import { useStyles } from './FleetFormStyles'
-import styles from './FleetForm.module.scss'
-import { Modal } from '../../../Helpers/Modal/Modal'
-import ThemeContext from '../../../../context'
+// import Button from '@material-ui/core/Button'
+// import Grid from '@material-ui/core/Grid'
+// import ListItem from '@material-ui/core/ListItem'
+// import Paper from '@material-ui/core/Paper'
+// import { makeStyles } from '@material-ui/core/styles'
+// import Typography from '@material-ui/core/Typography'
+// import Dialog from '@material-ui/core/Dialog'
+// import DialogActions from '@material-ui/core/DialogActions'
+import React, { useContext } from "react"
+import Carousel from "react-material-ui-carousel"
+// import { connect } from 'react-redux'
+// import { BackArrowIcon, ForwardArrowIcon } from '../../../../assets/icons'
+import { Preloader } from "../../../Helpers/Preloader/Preloader"
+// import {
+//   setCarId,
+//   setIsAirportPickupIncluded,
+// } from '../../../../Redux/form-reducer'
+import { AppBar, useMediaQuery } from "@material-ui/core"
+// import Box from '@material-ui/core/Box'
+import { AspectRatio } from "react-aspect-ratio"
+import "./FleetForm.css"
+// import { setGateMeetingRedux } from '../../../../Redux/gate-meeting-reducer'
+import IncorrectAddressError from "../../IncorrectAdressError/IncorrectAddressError"
+// import { setResetWidgetInputs } from '../../../../Redux/reset-widget-inputs-reducer'
+// import { useStyles } from './FleetFormStyles'
+import styles from "./FleetForm.module.scss"
+import { Modal } from "../../../Helpers/Modal/Modal"
+import ThemeContext from "../../../../context"
 
 const FleetForm = ({
   cars,
@@ -57,10 +57,10 @@ const FleetForm = ({
 }) => {
   // const classes = useStyles()
 
-  const isMobile = useMediaQuery('(max-width:500px)')
-  const isiPad = useMediaQuery('(max-width:1024px)')
+  const isMobile = useMediaQuery("(max-width:500px)")
+  const isiPad = useMediaQuery("(max-width:1024px)")
 
-  const carTextColor = 'white'
+  const carTextColor = "white"
   const car = [cars[0], cars[1]]
 
   const {
@@ -73,6 +73,10 @@ const FleetForm = ({
     backAndNextButtonsColor,
     innerTextOnHover,
     inputsFontColor,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
   } = useContext(ThemeContext)
 
   const ifThereisError = () => {
@@ -159,7 +163,10 @@ const FleetForm = ({
                         : styles.carContainer
                     }
                     key={`${car?.id}${car?.name}`}
-                    style={{ border: `1px solid ${fontColor}` }}
+                    style={{
+                      background: `${backAndNextButtonsColor}`,
+                      border: `1px solid ${borderColorForInnerElements}`,
+                    }}
                     // style={{
                     //   opacity: "0.5",
                     //   "&:hover": { opacity: "1" },
@@ -183,40 +190,40 @@ const FleetForm = ({
                     >
                       <Carousel
                         autoPlay={false}
-                        animation='slide'
+                        animation="slide"
                         navButtonsProps={{
                           style: {
-                            width: '10px',
-                            height: '10px',
-                            marginTop: '8px',
+                            width: "10px",
+                            height: "10px",
+                            marginTop: "8px",
                           },
                         }}
                         indicatorIconButtonProps={{
                           style: {
-                            '&:hover': {
-                              '&$button': {
-                                backgroundColor: '#10B7EC',
-                                filter: 'brightness(120%)',
-                                opacity: '0.4',
+                            "&:hover": {
+                              "&$button": {
+                                backgroundColor: "#10B7EC",
+                                filter: "brightness(120%)",
+                                opacity: "0.4",
                               },
                             },
                             //
-                            width: '5px',
-                            height: '5px',
+                            width: "5px",
+                            height: "5px",
                             // height: "0px",
                             // marginBottom: "-30px",
-                            color: 'grey',
+                            color: "grey",
                           },
                         }}
                         activeIndicatorIconButtonProps={{
                           style: {
-                            color: 'white',
-                            width: '5px',
-                            height: '5px',
+                            color: "white",
+                            width: "5px",
+                            height: "5px",
                           },
                         }}
                         indicatorContainerProps={{
-                          style: { bottom: '10px', position: 'absolute' },
+                          style: { bottom: "10px", position: "absolute" },
                         }}
                       >
                         {car?.imageUrls?.length !== 0 ? (
@@ -249,11 +256,11 @@ const FleetForm = ({
                               <AspectRatio
                                 // ratio="560/315"
                                 style={{
-                                  display: 'block',
-                                  width: !isMobile ? '100%' : '100%',
-                                  height: !isMobile ? '112px' : '116px',
+                                  display: "block",
+                                  width: !isMobile ? "100%" : "100%",
+                                  height: !isMobile ? "112px" : "116px",
 
-                                  cursor: 'zoom-in',
+                                  cursor: "zoom-in",
                                 }}
                               >
                                 <img
@@ -267,7 +274,7 @@ const FleetForm = ({
                                   //   borderRadius: "9px",
                                   //   // cursor: "zoom-in",
                                   // }}
-                                  alt='car'
+                                  alt="car"
                                   className={styles.carImageSelf}
                                   onClick={(event) => {
                                     // event.stopPropagation()
@@ -302,16 +309,16 @@ const FleetForm = ({
                             <AspectRatio
                               // ratio="560/315"
                               style={{
-                                display: 'block',
-                                width: !isMobile ? '100%' : '100%',
-                                height: !isMobile ? '112px' : '116px',
+                                display: "block",
+                                width: !isMobile ? "100%" : "100%",
+                                height: !isMobile ? "112px" : "116px",
 
-                                cursor: 'zoom-in',
+                                cursor: "zoom-in",
                               }}
                             >
                               <img
                                 src={
-                                  'https://fl-1.cdn.flockler.com/embed/not-found.png'
+                                  "https://fl-1.cdn.flockler.com/embed/not-found.png"
                                 }
                                 // style={{
                                 //   width: "100%",
@@ -323,7 +330,7 @@ const FleetForm = ({
                                 //   // cursor: "zoom-in",
                                 // }}
                                 className={styles.carImageSelf}
-                                alt='car'
+                                alt="car"
                               />
                             </AspectRatio>
                           </>
@@ -776,31 +783,31 @@ const FleetForm = ({
                 <Modal onClose={() => handleClickClose()} show={show}>
                   <Carousel
                     autoPlay={false}
-                    animation='slide'
+                    animation="slide"
                     swipe={true}
                     navButtonsAlwaysVisible={true}
                     navButtonsProps={{
                       style: {
-                        width: '1em',
-                        height: '1em',
+                        width: "1em",
+                        height: "1em",
                       },
                     }}
                     indicatorIconButtonProps={{
                       style: {
-                        '&:hover': {
-                          '& $button': {
-                            backgroundColor: '#10B7EC',
-                            filter: 'brightness(120%)',
-                            opacity: '0.4',
+                        "&:hover": {
+                          "& $button": {
+                            backgroundColor: "#10B7EC",
+                            filter: "brightness(120%)",
+                            opacity: "0.4",
                           },
                         },
                       },
                     }}
                     activeIndicatorIconButtonProps={{
                       style: {
-                        color: 'grey',
-                        width: '5px',
-                        height: '5px',
+                        color: "grey",
+                        width: "5px",
+                        height: "5px",
                       },
                     }}
                     // inactiveIndicatorIconButtonProps={{
@@ -811,19 +818,19 @@ const FleetForm = ({
                     //   },
                     // }}
                     indicatorContainerProps={{
-                      style: { bottom: '10px', position: 'absolute' },
+                      style: { bottom: "10px", position: "absolute" },
                     }}
                   >
                     {result?.imageUrls?.map((url) => (
                       <AspectRatio
-                        ratio='4/3'
+                        ratio="4/3"
                         style={{
-                          width: !isMobile ? '550px' : '239px',
-                          height: !isMobile ? '400px' : '170px',
-                          display: 'flex',
-                          flexDirection: 'row',
-                          justifyContent: 'center',
-                          alignItems: 'center',
+                          width: !isMobile ? "550px" : "239px",
+                          height: !isMobile ? "400px" : "170px",
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "center",
+                          alignItems: "center",
                           // display: "block",
                           // width: !isMobile ? "170px" : "100%",
                           // height: !isMobile ? "107px" : "116px",
@@ -843,11 +850,11 @@ const FleetForm = ({
                         <img
                           src={url?.path}
                           style={{
-                            borderRadius: '8px',
-                            maxWidth: '100%',
-                            maxHeight: '100%',
+                            borderRadius: "8px",
+                            maxWidth: "100%",
+                            maxHeight: "100%",
                           }}
-                          alt='car'
+                          alt="car"
                           key={`${url?.id}${url?.path}`}
                         />
                       </AspectRatio>
@@ -945,6 +952,7 @@ const FleetForm = ({
                   // }}
                   className={styles.buttonNextSelf}
                   style={{
+                    opacity: carCard ? "1" : "0.5",
                     background: backAndNextButtonsColor,
                     color: fontColor,
                   }}

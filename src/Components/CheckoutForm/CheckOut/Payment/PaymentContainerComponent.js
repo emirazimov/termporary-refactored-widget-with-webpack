@@ -24,8 +24,8 @@ import {
   setPaymentForm,
 } from "../../../../Redux/form-reducer"
 // import PrivacyPolicy from "../../../TermsOfUse/PrivacyPolicy/PrivacyPolicy"
-// import TermsOfUse from "../../../TermsOfUse/TermOfUse/TermOfUse"
-import { withStyles } from "@material-ui/styles"
+// // import TermsOfUse from "../../../TermsOfUse/TermOfUse/TermOfUse"
+// import { withStyles } from "@material-ui/styles"
 // import { Number, Cvc, Expiration } from "react-credit-card-primitives"
 
 // import Cleave from "cleave.js/react"

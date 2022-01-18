@@ -1,16 +1,16 @@
-import { CircularProgress } from "@material-ui/core"
+// import { CircularProgress } from "@material-ui/core"
 import React, { useContext } from "react"
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
+// import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import styles from "./Preloader.module.scss"
 import ThemeContext from "../../../context"
 
-const theme = createMuiTheme({
-  palette: {
-    secondary: {
-      main: "#4F4F4F",
-    },
-  },
-})
+// const theme = createMuiTheme({
+//   palette: {
+//     secondary: {
+//       main: "#4F4F4F",
+//     },
+//   },
+// })
 
 export const Preloader = () => {
   const {

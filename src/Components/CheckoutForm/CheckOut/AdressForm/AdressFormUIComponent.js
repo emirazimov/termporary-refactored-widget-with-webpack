@@ -150,6 +150,9 @@ const AdressFormwithoutReactMemo = ({
   AMPM,
   register,
   control,
+  fetchAirlines,
+  extractAirlineId,
+  airlineName,
 }) => {
   // const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:530px)")
@@ -164,6 +167,7 @@ const AdressFormwithoutReactMemo = ({
     backAndNextButtonsColor,
     innerTextOnHover,
     inputsFontColor,
+    inputsBackground,
     borderRadiusesForInnerElements,
     borderRadiusesForWholeApp,
     borderColorForInnerElements,
@@ -264,6 +268,9 @@ const AdressFormwithoutReactMemo = ({
     </>
   )
 
+  React.useEffect(() => {
+    fetchAirlines()
+  }, [])
   // console.log(backgroundColor)
 
   return (
@@ -360,6 +367,7 @@ const AdressFormwithoutReactMemo = ({
                         name="airlines"
                       /> */}
                       <PlaneIcon color={fontColor} />
+
                       <input
                         // {...params}
                         // fullWidth
@@ -389,15 +397,16 @@ const AdressFormwithoutReactMemo = ({
                         //     : setCitiesId(null)
                         // }}
                         onChange={(event, newValue) => {
-                          newValue
-                            ? setAirlineId(newValue.id)
+                          event.target.value
+                            ? extractAirlineId(event.target.value)
                             : setAirlineId(null)
                         }}
+                        value={airlineName}
                         className={styles.airLinesInput}
                         style={{
                           color: inputsFontColor,
                           border: `1px solid ${borderColorForInnerElements}`,
-                          background: backAndNextButtonsColor,
+                          background: inputsBackground,
                         }}
                       />
 
@@ -469,7 +478,7 @@ const AdressFormwithoutReactMemo = ({
                           style={{
                             color: inputsFontColor,
                             border: `1px solid ${borderColorForInnerElements}`,
-                            background: backAndNextButtonsColor,
+                            background: inputsBackground,
                           }}
                           defaultValue={null}
                           value={flightNumber}
@@ -594,7 +603,7 @@ const AdressFormwithoutReactMemo = ({
                         border: !redBorderOnSubmitForDate
                           ? `1px solid ${borderColorForInnerElements}`
                           : `1px solid red`,
-                        background: backAndNextButtonsColor,
+                        background: inputsBackground,
                       }}
                     >
                       {/* <div className={styles.datePickerOpenButtonIcon}></div>
@@ -627,9 +636,9 @@ const AdressFormwithoutReactMemo = ({
                               if (newDate instanceof Date) {
                                 setShow(false)
                               }
-                              // setDateForDefaultValue(
-                              //   newDate.toLocaleDateString("en-US")
-                              // )
+                              setDateForDefaultValue(
+                                newDate.toLocaleDateString("en-US")
+                              )
                               setDate(newDate)
                             }}
 
@@ -678,14 +687,15 @@ const AdressFormwithoutReactMemo = ({
                               placeholder="hh:mm"
                               autoComplete="off"
                               className={
-                                redBorderOnSubmitForTime ||
-                                redBorderOnSubmitForTime2 ||
-                                redBorderOnSubmitForTime3 ||
-                                redBorderOnSubmitForTime4 ||
-                                redBorderOnSubmitForTime5 ||
-                                redBorderOnSubmitForTime6
-                                  ? styles.timePickerInputWithRedBorder
-                                  : styles.timePickerInput
+                                // redBorderOnSubmitForTime ||
+                                // redBorderOnSubmitForTime2 ||
+                                // redBorderOnSubmitForTime3 ||
+                                // redBorderOnSubmitForTime4 ||
+                                // redBorderOnSubmitForTime5 ||
+                                // redBorderOnSubmitForTime6
+                                //   ? styles.timePickerInputWithRedBorder
+                                // :
+                                styles.timePickerInput
                               }
                               // fullWidth
                               // style={{
@@ -786,8 +796,9 @@ const AdressFormwithoutReactMemo = ({
                                   redBorderOnSubmitForTime6
                                     ? `1px solid red`
                                     : `1px solid ${borderColorForInnerElements}`,
-                                background: backAndNextButtonsColor,
+                                background: inputsBackground,
                               }}
+                              // value={}
                             />
                             <div
                               // color="primary"
@@ -826,7 +837,11 @@ const AdressFormwithoutReactMemo = ({
                                 onClick={handleChangeAMPM}
                                 style={{
                                   color: fontColor,
-                                  background: "transparent",
+                                  background:
+                                    AMPM == "AM"
+                                      ? `${hoverColor}`
+                                      : "transparent",
+                                  opacity: AMPM == "AM" ? "1" : "0.5",
                                 }}
                               >
                                 AM
@@ -850,6 +865,11 @@ const AdressFormwithoutReactMemo = ({
                                 style={{
                                   color: fontColor,
                                   background: "transparent",
+                                  background:
+                                    AMPM == "PM"
+                                      ? `${hoverColor}`
+                                      : "transparent",
+                                  opacity: AMPM == "PM" ? "1" : "0.5",
                                 }}
                               >
                                 PM

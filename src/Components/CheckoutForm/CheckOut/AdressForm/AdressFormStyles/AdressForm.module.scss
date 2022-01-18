@@ -105,7 +105,7 @@ $background-position-x-for-date-time-picker: 3%;
 }
 .timePickerInput,
 .timePickerInputWithRedBorder {
-  @include clock_icon;
+  // @include clock_icon;
   @include main-inputs-size-and-background-styles-etc;
   @include addressform-inputs-with-icons;
   background-position-x: $background-position-x-for-date-time-picker;

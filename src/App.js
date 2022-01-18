@@ -4,7 +4,7 @@
 // import Card from "@material-ui/core/Card"
 // import CssBaseline from "@material-ui/core/CssBaseline"
 import Slide from "@material-ui/core/Slide"
-import { ThemeProvider } from "@material-ui/styles"
+// import { ThemeProvider } from "@material-ui/styles"
 // import { isMobile } from 'react-device-detect';
 import React, { useContext, useEffect, useState } from "react"
 import Draggable from "react-draggable"
@@ -37,7 +37,7 @@ let yOrdinate = 0
 // const cardHeight = document.getElementById("mainContent").clientHeight
 
 const App = (props) => {
-  const classes = useStyles(props)
+  // const classes = useStyles(props)
   // const [positionsX, setPositionsX] = useState(null)
   // const [positionsY, setPositionsY] = useState(null)
   // useEffect(() => {

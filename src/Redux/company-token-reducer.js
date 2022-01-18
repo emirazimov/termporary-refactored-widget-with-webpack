@@ -36,7 +36,7 @@ export const setLoading = (flag) => ({ type: SET_LOADING, payload: flag })
 export const getCompanyToken = () => {
   return async (dispatch) => {
     let response = await authApi.getToken()
-    dispatch(setLoading(false))
+    dispatch(response.status === 200 && setLoading(false))
     if (response.status === 200) {
       dispatch(setToken(response.data))
       console.log(response.data)

@@ -158,6 +158,7 @@ const GoogleMap = React.memo(
         borderRadiusesForWholeApp,
         borderColorForInnerElements,
         borderColorForOuterApp,
+        inputsBackground,
       } = useContext(ThemeContext)
 
       const setDestinationsIcons = (id, destinations) => {
@@ -410,7 +411,7 @@ const GoogleMap = React.memo(
                                         redBorderOnSubmit || redBorderOnSubmit2
                                           ? `1px solid red`
                                           : `1px solid ${borderColorForInnerElements}`,
-                                      background: backAndNextButtonsColor,
+                                      background: inputsBackground,
                                     }}
                                     placeholder={id === 0 ? "From" : "To"}
                                     className={setDestinationsIcons(

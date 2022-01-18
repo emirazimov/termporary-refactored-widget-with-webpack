@@ -1,27 +1,27 @@
-import React, { useContext, useEffect } from 'react'
-import { connect } from 'react-redux'
+import React, { useContext, useEffect } from "react"
+import { connect } from "react-redux"
 import {
   getCompanyProfile,
   setGotAddressError,
-} from '../../Redux/company-profile-reducer'
+} from "../../Redux/company-profile-reducer"
 // import Grid from "@material-ui/core/Grid"
 // import Typography from "@material-ui/core/Typography"
-import { makeStyles } from '@material-ui/core/styles'
+// import { makeStyles } from '@material-ui/core/styles'
 // import { CloseWidgetIcon } from "../../assets/icons"
 // import Divider from "@material-ui/core/Divider"
 // import { isMobile } from "react-device-detect"
 // import { Preloader } from "../Helpers/Preloader/Preloader"
 // import AppBar from "@material-ui/core/AppBar"
-import { useMediaQuery } from '@material-ui/core'
+import { useMediaQuery } from "@material-ui/core"
 import {
   setResetWidgetInputs,
   setResetWidgetInputsActionCreator,
-} from '../../Redux/reset-widget-inputs-reducer'
-import { setIsAirportPickupIncluded } from '../../Redux/form-reducer'
-import { setGateMeetingRedux } from '../../Redux/gate-meeting-reducer'
-import styles from './CompanyProfile.module.scss'
-import ThemeContext from '../../context'
-import { CloseWidgetIcon } from '../../assets/icons'
+} from "../../Redux/reset-widget-inputs-reducer"
+import { setIsAirportPickupIncluded } from "../../Redux/form-reducer"
+import { setGateMeetingRedux } from "../../Redux/gate-meeting-reducer"
+import styles from "./CompanyProfile.module.scss"
+import ThemeContext from "../../context"
+import { CloseWidgetIcon } from "../../assets/icons"
 
 // const useStyles = makeStyles((theme) => ({
 //   companyContainer: {
@@ -90,8 +90,8 @@ const CompanyProfile = ({
 }) => {
   // const classes = useStyles()
 
-  const jwtToken = localStorage.getItem('Authorization')
-  const smallDevices = useMediaQuery('(max-width:768px)')
+  const jwtToken = localStorage.getItem("Authorization")
+  const smallDevices = useMediaQuery("(max-width:768px)")
 
   const resetWidgetInputs = (dispatch) => {
     dispatch(setResetWidgetInputsActionCreator(true))
@@ -152,7 +152,7 @@ const CompanyProfile = ({
               <img
                 src={profile.companyLogoPath}
                 // className={classes.companyLogo}
-                alt='companyLogo'
+                alt="companyLogo"
                 className={styles.companyProfileImageSelf}
               />
             </div>
