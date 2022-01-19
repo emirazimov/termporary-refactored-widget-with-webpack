@@ -10,7 +10,7 @@ import { ListItem, TextField, useMediaQuery } from "@material-ui/core"
 // import * as yup from "yup"
 // import Autocomplete from "@material-ui/lab/Autocomplete"
 // import { MuiPickersUtilsProvider } from "@material-ui/pickers"
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { Controller, FormProvider, useForm } from "react-hook-form"
 // import { connect } from "react-redux"
 // import { placesApi } from "../../../../api/api"
@@ -107,7 +107,7 @@ const AdressFormwithoutReactMemo = ({
   formatChars,
   handleChangeAMPM,
   handleClick,
-  handleInput,
+  // handleInput,
   handleSubmit,
   hourly,
   hoursAddressForm,
@@ -153,6 +153,8 @@ const AdressFormwithoutReactMemo = ({
   fetchAirlines,
   extractAirlineId,
   airlineName,
+  time,
+  setTime,
 }) => {
   // const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:530px)")
@@ -174,6 +176,64 @@ const AdressFormwithoutReactMemo = ({
     borderColorForOuterApp,
   } = useContext(ThemeContext)
 
+  const [card, setCard] = useState()
+  const inputCard = useRef()
+  const startsWithTwo = time[0] === "2"
+
+  const handleChange = () => {
+    const comma = ":"
+
+    const setZeroOrNot = (timeValue1) => {
+      if (timeValue1 > 1) {
+        return 0
+      }
+      return timeValue1
+    }
+    const timeValue = inputCard.current.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,1})(\d{0,1})(\d{0,1})(\d{0,1})/)
+    inputCard.current.value = timeValue[4]
+      ? `${setZeroOrNot(timeValue[1])}${timeValue[2]}${
+          (timeValue[3] || timeValue[2]) && comma
+        }${timeValue[3]}${timeValue[4]}`
+      : `${timeValue[1]}${(timeValue[3] || timeValue[2]) && comma}${
+          timeValue[2]
+        }${timeValue[3]}`
+    // const numbers = inputCard.current.value.replace(/(\D)/g, "")
+    // setCard(numbers)
+
+    // if (inputCard.current.value == "0_:__") {
+    //   setTimeMask(true)
+    // }
+    // if (inputCard.current.value == "1_:__") {
+    //   setTimeMask(false)
+    // }
+    setTime(inputCard.current.value)
+    setTimeForDefaultValue(inputCard.current.value)
+    console.log(timeValue)
+  }
+
+  // const [time, setTime] = useState("")
+
+  // const [timeMask, setTimeMask] = useState(false)
+
+  // const handleInput = (event) => {
+  //   if (event.target.value == "0_:__") {
+  //     setTimeMask(true)
+  //   }
+  //   if (event.target.value == "1_:__") {
+  //     setTimeMask(false)
+  //   }
+  //   setTime(event.target.value)
+  //   // const emir = "00:10"
+  //   // console.log(event.target.value)
+  //   // console.log(time)
+  //   // console.log(regexp.test(emir))
+  //   console.log(
+  //     event.target.value.match(/\d+/),
+  //     event.target.value.substr(event.target.value.indexOf(":")).match(/\d+/)
+  //   )
+  // }
   const MeetAndGreetSwitchBlock = (
     <>
       <div className={styles.meetAndGreetWrapper}>
@@ -368,11 +428,11 @@ const AdressFormwithoutReactMemo = ({
                       /> */}
                       <PlaneIcon color={fontColor} />
 
-                      <input
+                      <select
                         // {...params}
                         // fullWidth
                         // className={classes.inputPlaceholderFontSize}
-                        placeholder="Airlines"
+                        // placeholder="Airlines"
                         // variant="standard"
                         // style={{ background: "transparent" }}
                         autoComplete="off"
@@ -386,7 +446,7 @@ const AdressFormwithoutReactMemo = ({
                         //   },
                         //   // disableUnderline: true,
                         // }}
-                        list="airlines-list"
+                        // list="airlines-list"
                         // className={
                         //   styles.cardholderInformationInputWithFullWidthSelf
                         // }
@@ -408,38 +468,20 @@ const AdressFormwithoutReactMemo = ({
                           border: `1px solid ${borderColorForInnerElements}`,
                           background: inputsBackground,
                         }}
-                      />
-
-                      <datalist id="airlines-list">
-                        {/* id="combo-box-demo"
-                  options={states}
-                  defaultValue={null}
-                  autoComplete="off"
-                  autoHighlight
-                  disablePortal
-                  className={classes.mainAutocompleteClass}
-                  InputProps={{
-                    classes: {
-                      root: classes.inputRootAutocomplete2,
-                    },
-                  }}
-                  classes={{
-                    popupIndicator: classes.popupIndicator,
-                    option: classes.option,
-                    paper: classes.selectedOption,
-                  }}
-                  getOptionLabel={(option) => option.name}
-                  renderOption={(option) => (
-                    <div style={{ fontSize: "14px" }}>
-                      <span style={{ fontSize: "14px" }}>{option.code}</span>
-                      {option.name} ({option.code})
-                    </div>
-                  )}
-                  renderInput={(params) => (
-                    
-                  )}
-                  
-                  name="stateId" */}
+                      >
+                        <option
+                          // onChange={(event, newValue) => {
+                          //   newValue
+                          //     ? setCitiesId(newValue.id)
+                          //     : setCitiesId(null)
+                          // }}
+                          value=""
+                          disabled
+                          selected
+                          hidden
+                        >
+                          Airlines
+                        </option>
                         {airlines.map((airline) => (
                           <option
                             // onChange={(event, newValue) => {
@@ -448,9 +490,11 @@ const AdressFormwithoutReactMemo = ({
                             //     : setCitiesId(null)
                             // }}
                             value={airline.name}
-                          />
+                          >
+                            {airline.name}
+                          </option>
                         ))}
-                      </datalist>
+                      </select>
                     </div>
                     <div className={styles.flightNumberContainer}>
                       <div className={styles.flightNumberItem}>
@@ -662,7 +706,7 @@ const AdressFormwithoutReactMemo = ({
                     // }}
                     className={styles.timePicker}
                   >
-                    <ReactInputMask
+                    {/* <ReactInputMask
                       name="orderStartTime"
                       mask="71:98"
                       autoComplete="off"
@@ -675,210 +719,141 @@ const AdressFormwithoutReactMemo = ({
                       // value={time}
 
                       // className={styles.timePickerMask}
-                      value={!resetInputs ? formData.timeForDefaultValue : null}
+                      
                     >
                       {(inputProps) => {
-                        return (
-                          <div className={styles.timePickerContainer}>
-                            <ClockIcon color={fontColor} />
-                            <input
-                              {...inputProps}
-                              // variant="outlined"
-                              placeholder="hh:mm"
-                              autoComplete="off"
-                              className={
-                                // redBorderOnSubmitForTime ||
-                                // redBorderOnSubmitForTime2 ||
-                                // redBorderOnSubmitForTime3 ||
-                                // redBorderOnSubmitForTime4 ||
-                                // redBorderOnSubmitForTime5 ||
-                                // redBorderOnSubmitForTime6
-                                //   ? styles.timePickerInputWithRedBorder
-                                // :
-                                styles.timePickerInput
-                              }
-                              // fullWidth
-                              // style={{
-                              //   // borderRadius: "5px",
-                              //   // "& .MuiTextField-root": {
-                              //   //   backgroundColor: "red",
-                              //   // },
-                              //   // borderRaius: "8px",
-
-                              //   backgroundColor: "none",
-                              // }}
-                              // InputProps={{
-                              //   // classes: {
-                              //   //   root: classes.inputDateTime,
-                              //   //   input: classes.input, // class name, e.g. `classes-nesting-root-x`
-                              //   //   notchedOutline:
-                              //   //     redBorderOnSubmitForTime ||
-                              //   //     redBorderOnSubmitForTime2 ||
-                              //   //     redBorderOnSubmitForTime3 ||
-                              //   //     redBorderOnSubmitForTime4 ||
-                              //   //     redBorderOnSubmitForTime5 ||
-                              //   //     redBorderOnSubmitForTime6
-                              //   //       ? classes.noBorderRed
-                              //   //       : classes.noBorderDefault,
-                              //   // },
-                              //   startAdornment: (
-                              //     <InputAdornment
-                              //       position="start"
-                              //       style={{
-                              //         marginRight: "8px",
-                              //         marginLeft: "-3px",
-                              //       }}
-                              //     >
-                              //       <ClockIcon />
-                              //     </InputAdornment>
-                              //   ),
-                              //   endAdornment: (
-                              //     <>
-                              //       <ToggleButtonGroup
-                              //         color="primary"
-                              //         value={
-                              //           formData.timeForDefaultValueAMPM
-                              //             ?.alignment ||
-                              //           formData.timeForDefaultValueAMPM?.ampm
-                              //             ? formData.timeForDefaultValueAMPM
-                              //                 ?.ampm
-                              //             : alignment
-                              //         }
-                              //         exclusive
-                              //         onChange={handleChangeAMPM}
-                              //         style={{
-                              //           display: "flex",
-                              //           flexDirection: "row",
-                              //           alignItems: "center",
-                              //           marginRight: "-8px",
-                              //         }}
-                              //       >
-                              //         <ToggleButton
-                              //           value="AM"
-                              //           className={classes.rootToggleButton}
-                              //           style={{
-                              //             width: "26px",
-                              //             height: "20px",
-                              //             fontSize: "13px",
-                              //             paddingTop: "0px",
-                              //             paddingBottom: "0px",
-                              //           }}
-                              //           onClick={(e) => {}}
-                              //         >
-                              //           AM
-                              //         </ToggleButton>
-                              //         <ToggleButton
-                              //           value="PM"
-                              //           className={classes.rootToggleButton}
-                              //           style={{
-                              //             width: "26px",
-                              //             height: "20px",
-                              //             marginLeft: "0px",
-                              //             fontSize: "13px",
-                              //             paddingTop: "0px",
-                              //             paddingBottom: "0px",
-                              //           }}
-                              //         >
-                              //           PM
-                              //         </ToggleButton>
-                              //       </ToggleButtonGroup>
-                              //     </>
-                              //   ),
-                              // }}
-                              style={{
-                                color: inputsFontColor,
-                                border:
-                                  redBorderOnSubmitForTime ||
-                                  redBorderOnSubmitForTime2 ||
-                                  redBorderOnSubmitForTime3 ||
-                                  redBorderOnSubmitForTime4 ||
-                                  redBorderOnSubmitForTime5 ||
-                                  redBorderOnSubmitForTime6
-                                    ? `1px solid red`
-                                    : `1px solid ${borderColorForInnerElements}`,
-                                background: inputsBackground,
-                              }}
-                              // value={}
-                            />
-                            <div
-                              // color="primary"
-                              // value={
-                              //   formData.timeForDefaultValueAMPM?.alignment ||
-                              //   formData.timeForDefaultValueAMPM?.ampm
-                              //     ? formData.timeForDefaultValueAMPM?.ampm
-                              //     : alignment
-                              // }
-                              // exclusive
-                              // onChange={handleChangeAMPM}
-                              // style={{
-                              //   display: "flex",
-                              //   flexDirection: "row",
-                              //   alignItems: "center",
-                              //   marginRight: "-8px",
-                              // }}
-                              className={styles.toggleButtonsContainer}
-                              // style={{ background: "transparent" }}
-                            >
-                              <div
-                                // value="AM"
-                                className={
-                                  AMPM == "AM"
-                                    ? styles.toggleButtonAMSelected
-                                    : styles.toggleButtonAMNotSelected
-                                }
-                                // style={{
-                                //   width: "26px",
-                                //   height: "20px",
-                                //   fontSize: "13px",
-                                //   paddingTop: "0px",
-                                //   paddingBottom: "0px",
-                                // }}
-                                // onClick={(e) => {}}
-                                onClick={handleChangeAMPM}
-                                style={{
-                                  color: fontColor,
-                                  background:
-                                    AMPM == "AM"
-                                      ? `${hoverColor}`
-                                      : "transparent",
-                                  opacity: AMPM == "AM" ? "1" : "0.5",
-                                }}
-                              >
-                                AM
-                              </div>
-                              <div
-                                // value="PM"
-                                className={
-                                  AMPM == "PM"
-                                    ? styles.toggleButtonPMSelected
-                                    : styles.toggleButtonPMNotSelected
-                                }
-                                // style={{
-                                //   width: "26px",
-                                //   height: "20px",
-                                //   marginLeft: "0px",
-                                //   fontSize: "13px",
-                                //   paddingTop: "0px",
-                                //   paddingBottom: "0px",
-                                // }}
-                                onClick={handleChangeAMPM}
-                                style={{
-                                  color: fontColor,
-                                  background: "transparent",
-                                  background:
-                                    AMPM == "PM"
-                                      ? `${hoverColor}`
-                                      : "transparent",
-                                  opacity: AMPM == "PM" ? "1" : "0.5",
-                                }}
-                              >
-                                PM
-                              </div>
-                            </div>
-                          </div>
-                        )
+                        return ( */}
+                    <div className={styles.timePickerContainer}>
+                      <ClockIcon color={fontColor} />
+                      <input
+                        // {...inputProps}
+                        // variant="outlined"
+                        name="orderStartTime"
+                        placeholder="hh:mm"
+                        autoComplete="off"
+                        className={
+                          // redBorderOnSubmitForTime ||
+                          // redBorderOnSubmitForTime2 ||
+                          // redBorderOnSubmitForTime3 ||
+                          // redBorderOnSubmitForTime4 ||
+                          // redBorderOnSubmitForTime5 ||
+                          // redBorderOnSubmitForTime6
+                          //   ? styles.timePickerInputWithRedBorder
+                          // :
+                          styles.timePickerInput
+                        }
+                        // setTimeMask={setTimeMask}
+                        setTime={setTime}
+                        ref={inputCard}
+                        onClick={(event) => {
+                          const { value } = event.target
+                          const position = value.length
+                          event.target.setSelectionRange(position, position)
+                        }}
+                        onChange={handleChange}
+                        // value={
+                        //   !resetInputs ? formData.timeForDefaultValue : null
+                        // }
+                        style={{
+                          color: inputsFontColor,
+                          border:
+                            redBorderOnSubmitForTime ||
+                            redBorderOnSubmitForTime2 ||
+                            redBorderOnSubmitForTime3 ||
+                            redBorderOnSubmitForTime4 ||
+                            redBorderOnSubmitForTime5 ||
+                            redBorderOnSubmitForTime6
+                              ? `1px solid red`
+                              : `1px solid ${borderColorForInnerElements}`,
+                          background: inputsBackground,
+                          textAlign: "right",
+                          paddingRight: "78px",
+                        }}
+                        value={
+                          !resetInputs ? formData.timeForDefaultValue : null
+                        }
+                      />
+                      <div
+                        // color="primary"
+                        // value={
+                        //   formData.timeForDefaultValueAMPM?.alignment ||
+                        //   formData.timeForDefaultValueAMPM?.ampm
+                        //     ? formData.timeForDefaultValueAMPM?.ampm
+                        //     : alignment
+                        // }
+                        // exclusive
+                        // onChange={handleChangeAMPM}
+                        // style={{
+                        //   display: "flex",
+                        //   flexDirection: "row",
+                        //   alignItems: "center",
+                        //   marginRight: "-8px",
+                        // }}
+                        className={styles.toggleButtonsContainer}
+                        // style={{ background: "transparent" }}
+                      >
+                        <div
+                          // value="AM"
+                          className={
+                            AMPM == "AM"
+                              ? styles.toggleButtonAMSelected
+                              : styles.toggleButtonAMNotSelected
+                          }
+                          // style={{
+                          //   width: "26px",
+                          //   height: "20px",
+                          //   fontSize: "13px",
+                          //   paddingTop: "0px",
+                          //   paddingBottom: "0px",
+                          // }}
+                          // onClick={(e) => {}}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleChangeAMPM(e)
+                          }}
+                          style={{
+                            color: fontColor,
+                            background:
+                              AMPM == "AM" ? `${hoverColor}` : "transparent",
+                            opacity: AMPM == "AM" ? "1" : "0.5",
+                          }}
+                        >
+                          AM
+                        </div>
+                        <div
+                          // value="PM"
+                          className={
+                            AMPM == "PM"
+                              ? styles.toggleButtonPMSelected
+                              : styles.toggleButtonPMNotSelected
+                          }
+                          // style={{
+                          //   width: "26px",
+                          //   height: "20px",
+                          //   marginLeft: "0px",
+                          //   fontSize: "13px",
+                          //   paddingTop: "0px",
+                          //   paddingBottom: "0px",
+                          // }}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleChangeAMPM(e)
+                          }}
+                          style={{
+                            color: fontColor,
+                            background: "transparent",
+                            background:
+                              AMPM == "PM" ? `${hoverColor}` : "transparent",
+                            opacity: AMPM == "PM" ? "1" : "0.5",
+                          }}
+                        >
+                          PM
+                        </div>
+                      </div>
+                    </div>
+                    {/* )
                       }}
-                    </ReactInputMask>
+                    </ReactInputMask> */}
                   </div>
                 </div>
                 {/* </MuiPickersUtilsProvider> */}

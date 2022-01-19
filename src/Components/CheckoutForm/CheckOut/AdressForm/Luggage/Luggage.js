@@ -1,26 +1,26 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core"
 // import Grid from "@material-ui/core/Grid"
 // import Typography from "@material-ui/core/Typography"
-import React, { useContext } from 'react'
-import { useFormContext } from 'react-hook-form'
-import { LuggageIcon } from '../../../../../assets/icons'
-import ThemeContext from '../../../../../context'
-// import {
-//   HourlyIcon,
-//   LuggageIcon,
-//   MinusIcon,
-//   PlusIcon,
-// } from "../../../../../assets/icons"
-import '../../index.css'
-import styles from './Luggage.module.scss'
+import React, { useContext } from "react"
+import { useFormContext } from "react-hook-form"
+import { LuggageIcon } from "../../../../../assets/icons"
+import ThemeContext from "../../../../../context"
+import {
+  // HourlyIcon,
+  // LuggageIcon,
+  MinusIcon,
+  PlusIcon,
+} from "../../../../../assets/icons"
+import "../../index.css"
+import styles from "./Luggage.module.scss"
 
 const useStyles = makeStyles((theme) => ({
   mainPlusMinusContainer: {
-    height: '34px',
+    height: "34px",
 
-    borderBottom: '2px solid #AC8159',
-    transition: '200ms',
-    '&:hover': { borderBottom: '2px solid white', transition: '200ms' },
+    borderBottom: "2px solid #AC8159",
+    transition: "200ms",
+    "&:hover": { borderBottom: "2px solid white", transition: "200ms" },
   },
 }))
 
@@ -230,8 +230,10 @@ const Luggage = ({ luggage, setLuggage }) => {
               border: `1px solid ${borderColorForInnerElements}`,
             }}
             className={styles.luggageQuantityMinusSelf}
-            type='button'
-          ></button>
+            type="button"
+          >
+            <MinusIcon color={fontColor} />
+          </button>
         </div>
         <div
           // style={{
@@ -243,13 +245,13 @@ const Luggage = ({ luggage, setLuggage }) => {
         >
           <input
             ref={register}
-            name='hours'
+            name="hours"
             // className="luggage"
             onChange={(e) => {
               setLuggage(e.target.value)
             }}
             value={luggage}
-            size='1'
+            size="1"
             // style={{
             //   // pointerEvents: "none",
             //   minWidth: "34px",
@@ -271,7 +273,7 @@ const Luggage = ({ luggage, setLuggage }) => {
               background: backAndNextButtonsColor,
               border: `1px solid ${borderColorForInnerElements}`,
             }}
-            type='number'
+            type="number"
             className={styles.luggageQuantityInputSelf}
           />
         </div>
@@ -287,8 +289,10 @@ const Luggage = ({ luggage, setLuggage }) => {
               border: `1px solid ${borderColorForInnerElements}`,
             }}
             className={styles.luggageQuantityPlusSelf}
-            type='button'
-          ></button>
+            type="button"
+          >
+            <PlusIcon color={fontColor} />
+          </button>
         </div>
         {/* </div> */}
       </div>

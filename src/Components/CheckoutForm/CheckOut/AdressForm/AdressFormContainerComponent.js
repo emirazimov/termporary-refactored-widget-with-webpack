@@ -240,16 +240,16 @@ const AdressFormContainerComponent = ({
       // } else {
       //   setRedBorderOnSubmitForTime(false)
       // }
-      if (
-        (firstTimeHalf?.[0] <= "0" && firstTimeHalfRedux?.[0] <= "0") ||
-        (firstTimeHalf?.[0] <= "" && firstTimeHalfRedux?.[0] <= "0") ||
-        (firstTimeHalf?.[0] == undefined &&
-          firstTimeHalfRedux?.[0] <= undefined)
-      ) {
-        setRedBorderOnSubmitForTime2(true)
-      } else {
-        setRedBorderOnSubmitForTime2(false)
-      }
+      // if (
+      //   (firstTimeHalf?.[0] <= "0" && firstTimeHalfRedux?.[0] <= "0") ||
+      //   (firstTimeHalf?.[0] <= "" && firstTimeHalfRedux?.[0] <= "0") ||
+      //   (firstTimeHalf?.[0] == undefined &&
+      //     firstTimeHalfRedux?.[0] <= undefined)
+      // ) {
+      //   setRedBorderOnSubmitForTime2(true)
+      // } else {
+      //   setRedBorderOnSubmitForTime2(false)
+      // }
       if (
         (firstTimeHalf?.[1] <= "0" && firstTimeHalfRedux?.[1] <= "0") ||
         (firstTimeHalf?.[1] <= "" && firstTimeHalfRedux?.[1] <= "") ||
@@ -392,6 +392,7 @@ const AdressFormContainerComponent = ({
       setTimeForDefaultValueAMPM(event.target.textContent)
     }
     setAMPM(event.target.textContent)
+
     setTimeForDefaultValueAMPM(event.target.textContent)
     console.log(event.target.textContent)
   }
@@ -627,6 +628,9 @@ const AdressFormContainerComponent = ({
       fetchAirlines={fetchAirlines}
       extractAirlineId={extractAirlineId}
       airlineName={airlineName}
+      time={time}
+      setTime={setTime}
+      setTimeForDefaultValue={setTimeForDefaultValue}
     />
   )
 }

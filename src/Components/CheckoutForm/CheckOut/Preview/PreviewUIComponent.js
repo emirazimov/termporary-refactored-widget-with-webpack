@@ -215,7 +215,7 @@ const PreviewUIComponent = ({
                     >
                       or similar
                     </div>
-                    <AspectRatio
+                    {/* <AspectRatio
                       // ratio="560/315"
                       style={{
                         display: "block",
@@ -237,7 +237,26 @@ const PreviewUIComponent = ({
                         onClick={() => handleClickOpen()}
                         className={styles.carImageSelf}
                       />
-                    </AspectRatio>
+                    </AspectRatio> */}
+                    <img
+                      src={url.path}
+                      // style={{
+                      //   width: !isMobile ? "100%" : "100%",
+                      //   height: !isMobile ? "118px" : "116px",
+                      //   borderRadius: "9px",
+                      //   cursor: "zoom-in",
+                      // }}
+                      alt="car"
+                      onClick={() => handleClickOpen()}
+                      className={styles.carImageSelf}
+                      style={{
+                        // display: "block",
+                        width: !isMobile ? "100%" : "100%",
+                        height: !isMobile ? "112px" : "116px",
+
+                        cursor: "zoom-in",
+                      }}
+                    />
                   </span>
                 ))
               ) : (

@@ -203,9 +203,15 @@ html {
     background: #bfaf82;
   }
 }
+$heightForMobile: 100%;
 .contentContainerMobile {
   width: 100%;
-  height: calc(100vh - 75px);
+  // height: -webkit-calc(#{$heightForMobile} - 75px);
+  // height: -moz-calc(#{$heightForMobile} - 75px);
+  // height: -o-calc(#{$heightForMobile} - 75px);
+  height: calc(100vh - 145px);
+  // height: calc(100vh - 75px - calc(100vh - 100%));
+
   // padding-top: 75px;
   // padding-top: 175px;
 }

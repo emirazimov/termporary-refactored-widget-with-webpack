@@ -170,7 +170,11 @@ const PaymentContainerComponent = ({
     console.log(type)
   }
 
+  const [stateName, setStateName] = useState("")
+  const [cityName, setCityName] = useState("")
+
   const extractStateId = (name) => {
+    setStateName(name)
     const res = states.find((element, index, array) => {
       return element.name == name
     })
@@ -178,6 +182,7 @@ const PaymentContainerComponent = ({
     console.log(res)
   }
   const extractCityId = (name) => {
+    setCityName(name)
     const res = cities.find((element, index, array) => {
       return element.name == name
     })
@@ -228,6 +233,8 @@ const PaymentContainerComponent = ({
       handleType={handleType}
       extractStateId={extractStateId}
       extractCityId={extractCityId}
+      stateName={stateName}
+      cityName={cityName}
     />
   )
 }

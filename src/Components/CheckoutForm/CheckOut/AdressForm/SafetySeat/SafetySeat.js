@@ -1,24 +1,24 @@
-import { makeStyles, useMediaQuery } from '@material-ui/core'
-import Grid from '@material-ui/core/Grid'
+import { makeStyles, useMediaQuery } from "@material-ui/core"
+import Grid from "@material-ui/core/Grid"
 // import Typography from "@material-ui/core/Typography"
-import React, { useContext } from 'react'
-import { useFormContext } from 'react-hook-form'
-import ThemeContext from '../../../../../context'
-// import {
-//   MinusIcon,
-//   // NumberOfPassengers,
-//   // NumberOfPassengersIcon,
-//   PlusIcon,
-// } from "../../../../../assets/icons"
-import '../../index.css'
-import styles from './SafetySeat.module.scss'
+import React, { useContext } from "react"
+import { useFormContext } from "react-hook-form"
+import ThemeContext from "../../../../../context"
+import {
+  MinusIcon,
+  // NumberOfPassengers,
+  // NumberOfPassengersIcon,
+  PlusIcon,
+} from "../../../../../assets/icons"
+import "../../index.css"
+import styles from "./SafetySeat.module.scss"
 
 const useStyles = makeStyles((theme) => ({
   mainPlusMinusContainer: {
-    height: '34px',
-    borderBottom: '2px solid #AC8159',
-    transition: '200ms',
-    '&:hover': { borderBottom: '2px solid white', transition: '200ms' },
+    height: "34px",
+    borderBottom: "2px solid #AC8159",
+    transition: "200ms",
+    "&:hover": { borderBottom: "2px solid white", transition: "200ms" },
   },
 }))
 
@@ -62,8 +62,8 @@ export default React.memo(function SafetySeat({
   //   React.useEffect(() => {
   //     setPassengers(parseInt(passengersqState))
   //   }, [passengersqState])
-  const isMobile = useMediaQuery('(max-width:340px)')
-  const shouldSafetySeatBeColumnDirection = useMediaQuery('(max-width:420px)')
+  const isMobile = useMediaQuery("(max-width:340px)")
+  const shouldSafetySeatBeColumnDirection = useMediaQuery("(max-width:420px)")
 
   const {
     ThemeProviderAppBackgroundColor,
@@ -83,10 +83,10 @@ export default React.memo(function SafetySeat({
   return (
     <Grid
       container
-      direction={shouldSafetySeatBeColumnDirection ? 'column' : 'row'}
-      justify='space-between'
-      alignItems={shouldSafetySeatBeColumnDirection ? 'flex-start' : 'center'}
-      style={{ paddingLeft: '9px' }}
+      direction={shouldSafetySeatBeColumnDirection ? "column" : "row"}
+      justify="space-between"
+      alignItems={shouldSafetySeatBeColumnDirection ? "flex-start" : "center"}
+      style={{ paddingLeft: "9px" }}
     >
       {isBoosterSeatExistOnBackend && (
         // <Grid
@@ -274,8 +274,10 @@ export default React.memo(function SafetySeat({
                   background: backAndNextButtonsColor,
                   border: `1px solid ${borderColorForInnerElements}`,
                 }}
-                type='button'
-              ></button>
+                type="button"
+              >
+                <MinusIcon color={fontColor} />
+              </button>
             </div>
             <div
               // style={{
@@ -287,13 +289,13 @@ export default React.memo(function SafetySeat({
             >
               <input
                 ref={register}
-                name='Youth Booster Seat'
+                name="Youth Booster Seat"
                 onChange={(e) => {
                   setBoosterSeat(e.target.value)
                 }}
                 // className="boosterSeat"
                 value={boosterSeat}
-                size='1'
+                size="1"
                 // style={{
                 //   // pointerEvents: "none",
                 //   minWidth: "34px",
@@ -311,7 +313,7 @@ export default React.memo(function SafetySeat({
                 //   fontSize: "14px",
                 //   height: "100%",
                 // }}
-                type='number'
+                type="number"
                 className={styles.boosterSeatCounterInputSelf}
                 style={{
                   background: backAndNextButtonsColor,
@@ -331,8 +333,10 @@ export default React.memo(function SafetySeat({
                   background: backAndNextButtonsColor,
                   border: `1px solid ${borderColorForInnerElements}`,
                 }}
-                type='button'
-              ></button>
+                type="button"
+              >
+                <PlusIcon color={fontColor} />
+              </button>
             </div>
             {/* </div> */}
           </div>
@@ -367,7 +371,7 @@ export default React.memo(function SafetySeat({
               className={styles.safetySeatCounterTitle}
               style={{ color: fontColor }}
             >
-              {'Infant & Child Safety Seat'}
+              {"Infant & Child Safety Seat"}
             </span>
             {/* </div> */}
           </div>
@@ -409,8 +413,10 @@ export default React.memo(function SafetySeat({
                   background: backAndNextButtonsColor,
                   border: `1px solid ${borderColorForInnerElements}`,
                 }}
-                type='button'
-              ></button>
+                type="button"
+              >
+                <MinusIcon color={fontColor} />
+              </button>
             </div>
             <div
               // style={{
@@ -428,7 +434,7 @@ export default React.memo(function SafetySeat({
                 }}
                 // className="passenger"
                 value={childSafetySeat}
-                size='1'
+                size="1"
                 // style={{
                 //   // pointerEvents: "none",
                 //   minWidth: "34px",
@@ -446,7 +452,7 @@ export default React.memo(function SafetySeat({
                 //   fontSize: "14px",
                 //   height: "100%",
                 // }}
-                type='number'
+                type="number"
                 className={styles.safetySeatCounterInputSelf}
                 style={{
                   background: backAndNextButtonsColor,
@@ -466,8 +472,10 @@ export default React.memo(function SafetySeat({
                   background: backAndNextButtonsColor,
                   border: `1px solid ${borderColorForInnerElements}`,
                 }}
-                type='button'
-              ></button>
+                type="button"
+              >
+                <PlusIcon color={fontColor} />
+              </button>
             </div>
             {/* </div> */}
           </div>

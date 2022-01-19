@@ -253,7 +253,7 @@ const FleetForm = ({
                               >
                                 or similar
                               </div>
-                              <AspectRatio
+                              {/* <AspectRatio
                                 // ratio="560/315"
                                 style={{
                                   display: "block",
@@ -281,7 +281,31 @@ const FleetForm = ({
                                     handleClickOpen(car?.id)
                                   }}
                                 />
-                              </AspectRatio>
+                              </AspectRatio> */}
+                              <img
+                                src={url?.path}
+                                // style={{
+                                //   width: "100%",
+                                //   height: "100%",
+                                //   // display: "block",
+                                //   // width: !isMobile ? "170px" : "100%",
+                                //   // height: !isMobile ? "127px" : "116px",
+                                //   borderRadius: "9px",
+                                //   // cursor: "zoom-in",
+                                // }}
+                                alt="car"
+                                className={styles.carImageSelf}
+                                style={{
+                                  width: !isMobile ? "100%" : "100%",
+                                  height: !isMobile ? "112px" : "116px",
+
+                                  cursor: "zoom-in",
+                                }}
+                                onClick={(event) => {
+                                  // event.stopPropagation()
+                                  handleClickOpen(car?.id)
+                                }}
+                              />
                             </span>
                           ))
                         ) : (

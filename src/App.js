@@ -276,7 +276,9 @@ const App = (props) => {
                 id="booknowIcon"
                 style={{
                   left: `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 30px)`,
+                  // right: "0",
                   bottom: `calc(${positioningForWithoutDraggableAppXAndY.current.y}px - 30px)`,
+                  display: expanded ? "none" : "block",
                 }}
               >
                 <div className={styles.letterBMobile}></div>
@@ -364,8 +366,12 @@ const App = (props) => {
                   ref={refOfBookNow}
                   id="booknowIcon"
                   style={{
-                    left: `${positioningForWithoutDraggableAppXAndY.current.x}px`,
+                    marginLeft:
+                      leftOrRight == "left"
+                        ? `${positioningForWithoutDraggableAppXAndY.current.x}px`
+                        : `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 180px)`,
                     bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
+                    display: expanded ? "none" : "block",
                   }}
                 >
                   <div className={styles.letterB}></div>
@@ -513,7 +519,10 @@ const App = (props) => {
                 ref={containerRef}
                 className={styles.mainBookNowWrapper}
                 style={{
-                  left: `${positioningForWithoutDraggableAppXAndY.current.x}px`,
+                  marginLeft:
+                    leftOrRight == "left"
+                      ? `${positioningForWithoutDraggableAppXAndY.current.x}px`
+                      : `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 180px)`,
                   bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
                 }}
               >
@@ -535,6 +544,7 @@ const App = (props) => {
                   style={{
                     left: `${positioningForWithoutDraggableAppXAndY.current.x}px`,
                     bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
+                    display: expanded ? "none" : "block",
                   }}
                 >
                   <div className={styles.letterB}></div>

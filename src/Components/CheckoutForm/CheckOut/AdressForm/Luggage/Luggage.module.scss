@@ -37,16 +37,17 @@
 .luggageQuantityMinusSelf,
 .luggageQuantityPlusSelf {
   @include counters-button-styles;
+  padding: 0;
 }
 
 .luggageQuantityMinusSelf {
-  @include counters-buttons-minus-icon;
+  // @include counters-buttons-minus-icon;
   border: $inputs-border;
   border-top-left-radius: $inputs-border-radius;
   border-bottom-left-radius: $inputs-border-radius;
 }
 .luggageQuantityPlusSelf {
-  @include counters-buttons-plus-icon;
+  // @include counters-buttons-plus-icon;
   border: $inputs-border;
   border-top-right-radius: $inputs-border-radius;
   border-bottom-right-radius: $inputs-border-radius;

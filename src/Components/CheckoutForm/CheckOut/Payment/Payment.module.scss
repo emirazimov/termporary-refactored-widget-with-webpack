@@ -26,6 +26,11 @@ $background: grey;
   transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
 }
 
+select,
+option {
+  -webkit-appearance: none;
+}
+
 .switchContainer {
   // margin: auto;
   // padding: 20px;
@@ -205,6 +210,9 @@ $background: grey;
   width: 100%;
   @include whole-app-background;
   height: 100%;
+  // @media (max-width: 500px) {
+  //   padding-top: 75px;
+  // }
 }
 .paymentWrapper {
   width: auto;
@@ -271,12 +279,29 @@ $background: grey;
   justify-content: center;
   margin-bottom: 16px;
 }
-.cardholderInformationInputsContainerForPositionErrorMessage {
+.cardholderInformationInputsContainerForPositionErrorMessage,
+.cardholderInformationInputsContainerForPositionErrorMessageState {
   width: 100%;
   display: flex;
   flex-direction: column;
   // justify-content: center;
   // align-items: flex-start;
+}
+
+.cardholderInformationInputsContainerForPositionErrorMessageState {
+  position: relative;
+
+  &.cardholderInformationInputsContainerForPositionErrorMessageState:after {
+    content: "\0025BC";
+    font: normal normal normal 12px/1 FontAwesome;
+    color: white;
+    right: 14px;
+    top: -4px;
+    height: 26px;
+    padding: 15px 0px 0px 8px;
+    position: absolute;
+    pointer-events: none;
+  }
 }
 // .cardholderInformationInputsWrapperJustForFirstAndLastName {
 //   width: 100%;
@@ -339,7 +364,8 @@ $background: grey;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.cardholderInformationInputWithFullWidthSelf {
+.cardholderInformationInputWithFullWidthSelf,
+.cardholderInformationInputWithFullWidthSelfState {
   @include main-inputs-size-and-background-styles-etc;
   // &::placeholder {
   //   @include payment-inputs-with-left-padding;
@@ -348,11 +374,14 @@ $background: grey;
   padding: 0;
   padding-right: 25px;
   text-indent: 20px;
-  &::-webkit-calendar-picker-indicator {
-    opacity: 1;
-    color: $inputs-color;
-  }
+  // &::-webkit-calendar-picker-indicator {
+  //   opacity: 1;
+  //   color: $inputs-color;
+  // }
 }
+
+// .cardholderInformationInputWithFullWidthSelfState {
+// }
 
 .checkboxWrapper {
   // margin-bottom: 16px;
@@ -375,4 +404,10 @@ $background: grey;
 
 .buttonNextSelf {
   @include buttonNextSelf;
+}
+.placeholderForPicker {
+  color: "grey";
+}
+.optionsSelf {
+  margin: 10px auto;
 }

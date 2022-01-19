@@ -1,21 +1,21 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core"
 // import Grid from "@material-ui/core/Grid"
 // import Typography from "@material-ui/core/Typography"
-import React, { useContext } from 'react'
-import { useFormContext } from 'react-hook-form'
-// import { HourlyIcon, MinusIcon, PlusIcon } from "../../../../../assets/icons"
-import styles from './Hours.module.scss'
-import '../../index.css'
-import ThemeContext from '../../../../../context'
-import { HourlyIcon } from '../../../../../assets/icons'
+import React, { useContext } from "react"
+import { useFormContext } from "react-hook-form"
+import { MinusIcon, PlusIcon } from "../../../../../assets/icons"
+import styles from "./Hours.module.scss"
+import "../../index.css"
+import ThemeContext from "../../../../../context"
+import { HourlyIcon } from "../../../../../assets/icons"
 
 const useStyles = makeStyles((theme) => ({
   mainPlusMinusContainer: {
-    height: '34px',
+    height: "34px",
 
-    borderBottom: '2px solid #AC8159',
-    transition: '200ms',
-    '&:hover': { borderBottom: '2px solid white', transition: '200ms' },
+    borderBottom: "2px solid #AC8159",
+    transition: "200ms",
+    "&:hover": { borderBottom: "2px solid white", transition: "200ms" },
   },
 }))
 
@@ -110,9 +110,11 @@ const Hours = ({
               background: backAndNextButtonsColor,
               border: `1px solid ${borderColorForInnerElements}`,
             }}
-            type='button'
+            type="button"
             // style={{ marginRight: "5px" }}
-          ></button>
+          >
+            <MinusIcon color={fontColor} />
+          </button>
         </div>
         <div
           // item
@@ -128,13 +130,13 @@ const Hours = ({
         >
           <input
             ref={register}
-            name='hours'
+            name="hours"
             // className="passenger"
             onChange={(e) => {
               setHoursAddressForm(e.target.value)
             }}
             value={hoursAddressForm}
-            size='1'
+            size="1"
             // style={{
             //   // pointerEvents: "none",
             //   minWidth: "34px",
@@ -156,7 +158,7 @@ const Hours = ({
               background: backAndNextButtonsColor,
               border: `1px solid ${borderColorForInnerElements}`,
             }}
-            type='number'
+            type="number"
             className={styles.hoursCounterInput}
           />
         </div>
@@ -168,9 +170,11 @@ const Hours = ({
               background: backAndNextButtonsColor,
               border: `1px solid ${borderColorForInnerElements}`,
             }}
-            type='button'
+            type="button"
             // style={{ marginLeft: "4px" }}
-          ></button>
+          >
+            <PlusIcon color={fontColor} />
+          </button>
           {/* </div> */}
         </div>
       </div>

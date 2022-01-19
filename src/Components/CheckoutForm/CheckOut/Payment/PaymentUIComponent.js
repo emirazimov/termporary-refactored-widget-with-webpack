@@ -104,6 +104,8 @@ const PaymentUIComponent = ({
   handleType,
   extractStateId,
   extractCityId,
+  stateName,
+  cityName,
 }) => {
   // const classes = useStyles()
 
@@ -594,14 +596,14 @@ const PaymentUIComponent = ({
                 <div
                   // item
                   className={
-                    styles.cardholderInformationInputsContainerForPositionErrorMessage
+                    styles.cardholderInformationInputsContainerForPositionErrorMessageState
                   }
                 >
-                  <input
+                  <select
                     // {...params}
                     // fullWidth
                     // className={classes.inputPlaceholderFontSize}
-                    placeholder="State"
+                    // placeholder="State"
                     // variant="standard"
                     // style={{ background: "transparent" }}
                     autoComplete="off"
@@ -623,51 +625,47 @@ const PaymentUIComponent = ({
                         : setStatesId(null)
                       // newValue ? setStatesId(newValue.id) : setStatesId(null)
                     }}
-                    list="states-list"
+                    // list="states-list"
                     className={
-                      styles.cardholderInformationInputWithFullWidthSelf
+                      styles.cardholderInformationInputWithFullWidthSelfState
                     }
                     style={{
                       color: inputsFontColor,
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      // textIndent: "17px",
+                      // color: "grey",
+                      // "& option": {
+                      //   color: "red",
+                      // },
+                      // "&::-webkit-calendar-picker-indicator": {
+                      //   opacity: 1,
+                      //   color: "blue",
+                      // },
                     }}
-                  />
-
-                  <datalist id="states-list">
-                    {/* id="combo-box-demo"
-                  options={states}
-                  defaultValue={null}
-                  autoComplete="off"
-                  autoHighlight
-                  disablePortal
-                  className={classes.mainAutocompleteClass}
-                  InputProps={{
-                    classes: {
-                      root: classes.inputRootAutocomplete2,
-                    },
-                  }}
-                  classes={{
-                    popupIndicator: classes.popupIndicator,
-                    option: classes.option,
-                    paper: classes.selectedOption,
-                  }}
-                  getOptionLabel={(option) => option.name}
-                  renderOption={(option) => (
-                    <div style={{ fontSize: "14px" }}>
-                      <span style={{ fontSize: "14px" }}>{option.code}</span>
-                      {option.name} ({option.code})
-                    </div>
-                  )}
-                  renderInput={(params) => (
-                    
-                  )}
-                  
-                  name="stateId" */}
+                    value={stateName}
+                  >
+                    <option
+                      value=""
+                      disabled
+                      selected
+                      hidden
+                      style={{ color: "grey" }}
+                      className={styles.placeholderForPicker}
+                    >
+                      State
+                    </option>
                     {states.map((state) => (
-                      <option value={state.name} id={state.id} />
+                      <option
+                        value={state.name}
+                        id={state.id}
+                        className={styles.optionsSelf}
+                        // style={{ color: fontColor, margin: " auto 10px" }}
+                      >
+                        {state.name}
+                      </option>
                     ))}
-                  </datalist>
+                  </select>
 
                   {statesIdError && (
                     <p className={styles.errorInputs}>Required</p>
@@ -740,11 +738,11 @@ const PaymentUIComponent = ({
                     name="cityId"
                   /> */}
 
-                  <input
+                  <select
                     // {...params}
                     // fullWidth
                     // className={classes.inputPlaceholderFontSize}
-                    placeholder="Cities"
+                    // placeholder="Cities"
                     // variant="standard"
                     // style={{ background: "transparent" }}
                     autoComplete="off"
@@ -758,7 +756,7 @@ const PaymentUIComponent = ({
                     //   },
                     //   // disableUnderline: true,
                     // }}
-                    list="cities-list"
+                    // list="cities-list"
                     // className={
                     //   styles.cardholderInformationInputWithFullWidthSelf
                     // }
@@ -778,8 +776,33 @@ const PaymentUIComponent = ({
 
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      // textIndent: "17px",
                     }}
-                  />
+                    value={cityName}
+                  >
+                    <option
+                      value=""
+                      disabled
+                      selected
+                      hidden
+                      // style={{ color: "grey" }}
+                      // className={styles.placeholderForPicker}
+                    >
+                      Cities
+                    </option>
+                    {cities.map((city) => (
+                      <option
+                        // onChange={(event, newValue) => {
+                        //   newValue
+                        //     ? setCitiesId(newValue.id)
+                        //     : setCitiesId(null)
+                        // }}
+                        value={city.name}
+                      >
+                        {city.name}
+                      </option>
+                    ))}
+                  </select>
 
                   <datalist id="cities-list">
                     {/* id="combo-box-demo"

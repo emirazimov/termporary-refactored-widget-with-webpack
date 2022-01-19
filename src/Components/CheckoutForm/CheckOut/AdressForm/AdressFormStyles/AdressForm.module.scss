@@ -18,6 +18,9 @@ $background-position-x-for-date-time-picker: 3%;
   @include whole-app-background;
   @include side-paddings-for-whole-widget-page;
   width: auto;
+  // @media (max-width: 500px) {
+  //   padding-top: 75px;
+  // }
 }
 .underMapOptionsContainerForAirlines {
   width: 100%;
@@ -118,7 +121,7 @@ $background-position-x-for-date-time-picker: 3%;
   flex-direction: row;
 
   position: absolute;
-  top: 23%;
+  top: 21%;
   right: 7px;
 
   border-radius: 3px;

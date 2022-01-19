@@ -39,18 +39,19 @@
 .passengerQuantityMinusSelf,
 .passengerQuantityPlusSelf {
   @include counters-button-styles;
+  padding: 0;
   &:hover {
     filter: brightness(125%);
   }
 }
 .passengerQuantityMinusSelf {
-  @include counters-buttons-minus-icon;
+  // @include counters-buttons-minus-icon;
   border: $inputs-border;
   border-top-left-radius: $inputs-border-radius;
   border-bottom-left-radius: $inputs-border-radius;
 }
 .passengerQuantityPlusSelf {
-  @include counters-buttons-plus-icon;
+  // @include counters-buttons-plus-icon;
   border: $inputs-border;
   border-top-right-radius: $inputs-border-radius;
   border-bottom-right-radius: $inputs-border-radius;

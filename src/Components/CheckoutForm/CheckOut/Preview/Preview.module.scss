@@ -7,16 +7,20 @@
 @use "../../../MAINCSSFORWHOLECOMPONENTS/_MainInputsStyles.module.scss" as *;
 
 @include car-descriptions;
-.carContainer {
-  @include margin-top-bottom-for-adressfrom-inputs;
-  opacity: 1;
-}
 .previewWrapper {
   @include whole-app-background;
   @include side-paddings-for-whole-widget-page;
 
   width: auto;
+  // @media (max-width: 500px) {
+  //   padding-top: 75px;
+  // }
 }
+.carContainer {
+  @include margin-top-bottom-for-adressfrom-inputs;
+  opacity: 1;
+}
+
 .previewTitleContainer {
   margin-top: 15px;
   margin-bottom: 15px;

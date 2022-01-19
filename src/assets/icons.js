@@ -9,7 +9,7 @@ const iconsForInputs = {
   position: "absolute",
   zIndex: "2",
   left: "8px",
-  top: "7px",
+  top: "6px",
 }
 
 const iconsForCounters = { marginLeft: "7px", marginRight: "8px" }
@@ -290,7 +290,7 @@ export const DestinationIcon = () => (
   </svg>
 )
 
-export const MinusIcon = () => (
+export const MinusIcon = (color) => (
   <svg
     width="35"
     height="35"
@@ -311,12 +311,12 @@ export const MinusIcon = () => (
     <rect width="45" height="45" fill="transparent" />
     <path
       d="M31 23H17C16.4477 23 16 23.4477 16 24C16 24.5523 16.4477 25 17 25H31C31.5523 25 32 24.5523 32 24C32 23.4477 31.5523 23 31 23Z"
-      fill="white"
+      fill={color.color}
     />
   </svg>
 )
 
-export const PlusIcon = () => (
+export const PlusIcon = (color) => (
   //const [plusIcon, plusIconset] = useState('#3F3D4A');
 
   <svg
@@ -336,7 +336,7 @@ export const PlusIcon = () => (
     <rect width="45" height="45" fill="transparent" />
     <path
       d="M24 16C23.4477 16 23 16.4477 23 17V23H17C16.4477 23 16 23.4477 16 24C16 24.5523 16.4477 25 17 25H23V31C23 31.5523 23.4477 32 24 32C24.5523 32 25 31.5523 25 31V25H31C31.5523 25 32 24.5523 32 24C32 23.4477 31.5523 23 31 23H25V17C25 16.4477 24.5523 16 24 16Z"
-      fill="white"
+      fill={color.color}
     />
   </svg>
 )
