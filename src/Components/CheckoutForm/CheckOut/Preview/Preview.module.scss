@@ -12,12 +12,15 @@
   @include side-paddings-for-whole-widget-page;
 
   width: auto;
+  display: flex;
+  flex-direction: column;
   // @media (max-width: 500px) {
   //   padding-top: 75px;
   // }
 }
 .carContainer {
   @include margin-top-bottom-for-adressfrom-inputs;
+  // margin: 0 auto;
   opacity: 1;
 }
 
@@ -28,6 +31,21 @@
 .previewTitleSelf {
   @include global-title-styles;
 }
+.directionsContainer {
+  // padding-bottom: -100px;
+  // height: 200px;
+  // position: relative;
+  // width: 100%;
+  // height: 200px;
+  z-index: 10;
+  // padding-bottom: -40px;
+}
+// .directionsContainerForPositioning {
+//   position: absolute;
+//   width: 100%;
+//   height: 200px;
+//   bottom: -20px;
+// }
 .reservationDetailsItem {
   margin-bottom: 16px;
 }

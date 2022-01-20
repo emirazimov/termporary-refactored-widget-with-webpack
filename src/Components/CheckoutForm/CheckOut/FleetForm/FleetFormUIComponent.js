@@ -54,6 +54,8 @@ const FleetForm = ({
   round,
   show,
   setShow,
+  showSafetySeatIsNotAvailable,
+  setShowSafetySeatIsNotAvailable,
 }) => {
   // const classes = useStyles()
 
@@ -109,6 +111,42 @@ const FleetForm = ({
               // className={classes.contentContainer}
               className={styles.contentContainer}
             >
+              {showSafetySeatIsNotAvailable && (
+                <div
+                  className={styles.showSafetySeatIsNotAvailable}
+                  style={{ background: ThemeProviderAppBackgroundColor }}
+                >
+                  <span
+                    style={{
+                      width: "100%",
+                      color: fontColor,
+                      textAlign: "center",
+                      marginTop: "30px",
+                      marginBottom: " 45px",
+                    }}
+                  >
+                    Safety Seat is Not Available{" "}
+                  </span>
+                  <button
+                    type="button"
+                    style={{
+                      width: "100%",
+                      color: fontColor,
+                      background: ThemeProviderAppBackgroundColor,
+                      border: "none",
+                      borderTop: `1px solid ${fontColor}`,
+                      cursor: "pointer",
+                      paddingTop: "18px",
+                      paddingBottom: "18px",
+                    }}
+                    onClick={() => {
+                      setShowSafetySeatIsNotAvailable(false)
+                    }}
+                  >
+                    OK
+                  </button>
+                </div>
+              )}
               <div
                 // item
                 className={styles.pageTitleContainer}
@@ -145,12 +183,20 @@ const FleetForm = ({
                   // flexGrow={1}
                   className={styles.carContainer}
                 > */}
+
                 {console.log(typeof cars)}
                 {cars.map((car, index) => (
                   <div
                     // className={classes.root}
                     onClick={(event) => {
-                      handleClick(car?.id)
+                      if (
+                        car.isBoosterSeatsExist == true &&
+                        car.isBoosterSeatsExist == true
+                      ) {
+                        handleClick(car?.id)
+                      } else {
+                        setShowSafetySeatIsNotAvailable(true)
+                      }
                     }}
                     // selected={car?.id === carCard}
                     // classes={{
@@ -166,6 +212,11 @@ const FleetForm = ({
                     style={{
                       background: `${backAndNextButtonsColor}`,
                       border: `1px solid ${borderColorForInnerElements}`,
+                      // pointerEvents:
+                      //   car.isBoosterSeatsExist == false &&
+                      //   car.isBoosterSeatsExist == false
+                      //     ? "none"
+                      //     : "",
                     }}
                     // style={{
                     //   opacity: "0.5",
@@ -188,6 +239,12 @@ const FleetForm = ({
                       // }}
                       className={styles.carImageBlock}
                     >
+                      {car.isBoosterSeatsExist == false &&
+                        car.isBoosterSeatsExist == false && (
+                          <span className={styles.safetySeatNotAvailable}>
+                            Safety Seat N/A
+                          </span>
+                        )}
                       <Carousel
                         autoPlay={false}
                         animation="slide"

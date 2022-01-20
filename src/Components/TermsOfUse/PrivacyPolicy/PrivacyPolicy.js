@@ -48,17 +48,6 @@ export default function PrivacyPolicy() {
   //     }
   //   }
   // }, [open])
-  const {
-    ThemeProviderAppBackgroundColor,
-    fontColor,
-    borderRadiuses,
-    carsTypeColor,
-    hoverColor,
-    iconsColor,
-    backAndNextButtonsColor,
-    innerTextOnHover,
-    inputsFontColor,
-  } = useContext(ThemeContext)
 
   return (
     <>
@@ -73,7 +62,6 @@ export default function PrivacyPolicy() {
         //   color: 'white',
         // }}
         className={styles.privacyPolicyOpenButton}
-        style={{ color: fontColor }}
       >
         / Privacy Policy
       </span>

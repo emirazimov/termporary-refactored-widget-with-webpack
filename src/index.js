@@ -40,6 +40,11 @@ var inputsFontColor = window.inputsFontColor
 var backAndNextButtonsColor = window.backAndNextButtonsColor
 var innerTextOnHover = window.innerTextOnHover
 var inputsBackground = window.inputsBackground
+
+var bookNowIconFontAndCircleBorderColor =
+  window.bookNowIconFontAndCircleBorderColor
+
+var bookNowIconBackgroundColor = window.bookNowIconBackgroundColor
 // font-color-for-customize
 
 function Main() {
@@ -60,6 +65,8 @@ function Main() {
           innerTextOnHover,
           inputsFontColor,
           inputsBackground,
+          bookNowIconFontAndCircleBorderColor,
+          bookNowIconBackgroundColor,
         }}
       >
         <App />

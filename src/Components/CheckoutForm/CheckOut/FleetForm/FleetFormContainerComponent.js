@@ -54,6 +54,13 @@ const FleetFormContainerComponent = ({
     return Math.round(n * h) / h
   }
 
+  const [showSafetySeatIsNotAvailable, setShowSafetySeatIsNotAvailable] =
+    React.useState(false)
+
+  // const handleShowSafetySeatIsNotAvailable= () => {
+
+  // }
+
   return (
     <FleetFormUIComponent
       cars={cars}
@@ -81,6 +88,8 @@ const FleetFormContainerComponent = ({
       round={round}
       show={show}
       setShow={setShow}
+      showSafetySeatIsNotAvailable={showSafetySeatIsNotAvailable}
+      setShowSafetySeatIsNotAvailable={setShowSafetySeatIsNotAvailable}
     />
   )
 }

@@ -9,11 +9,11 @@ import Slide from "@material-ui/core/Slide"
 import React, { useContext, useEffect, useState } from "react"
 import Draggable from "react-draggable"
 import { connect } from "react-redux"
-// import {
-//   BookinglaneIcon,
-//   BookinglaneIconForMobile,
-//   CloseWidgetIcon,
-// } from "./assets/icons"
+import {
+  BookNowIcon,
+  BookNowIconForMobile,
+  // CloseWidgetIcon,
+} from "./assets/icons"
 import CheckOut from "./Components/CheckoutForm/CheckOut/CheckOut"
 import CompanyProfile from "./Components/CompanyProfile/CompanyProfile"
 import {
@@ -30,6 +30,7 @@ import { useRef } from "react"
 import { Preloader } from "./Components/Helpers/Preloader/Preloader"
 import styles from "./AppStyles.module.scss"
 import ThemeContext from "./context"
+import styled from "styled-components"
 // import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 let xOrdinate = 0
@@ -236,13 +237,19 @@ const App = (props) => {
   const {
     ThemeProviderAppBackgroundColor,
     fontColor,
-    borderRadiuses,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
     carsTypeColor,
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
     innerTextOnHover,
     inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
   } = useContext(ThemeContext)
 
   return (
@@ -259,7 +266,7 @@ const App = (props) => {
                 bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
               }}
             >
-              <div
+              <BookNowIconBlock
                 // elevation={0}
                 // disabled={disabled}
                 onClick={() => {
@@ -267,23 +274,28 @@ const App = (props) => {
                   setBackgroundScrollStop(true)
                   setExpanded(true)
                 }}
-                className={
-                  disabled
-                    ? styles.mainBookNowIconDisabledWhileDraggingMobile
-                    : styles.mainBookNowIconEnabledWhileDraggingMobile
+                bookNowIconFontAndCircleBorderColor={
+                  bookNowIconFontAndCircleBorderColor
                 }
+                bookNowIconBackgroundColor={bookNowIconBackgroundColor}
+                disabled={disabled}
                 ref={refOfBookNow}
                 id="booknowIcon"
                 style={{
-                  left: `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 30px)`,
+                  left:
+                    leftOrRight == "left"
+                      ? `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 30px)`
+                      : `calc(${positioningForWithoutDraggableAppXAndY.current.x}px + 30px)`,
                   // right: "0",
                   bottom: `calc(${positioningForWithoutDraggableAppXAndY.current.y}px - 30px)`,
                   display: expanded ? "none" : "block",
                 }}
               >
-                <div className={styles.letterBMobile}></div>
+                <BookNowIconForMobile
+                  color={bookNowIconFontAndCircleBorderColor}
+                />
                 <span className={styles.bookNowMobile}>BOOK NOW!</span>
-              </div>
+              </BookNowIconBlock>
               {jwtToken && (
                 <div
                   className={
@@ -350,7 +362,7 @@ const App = (props) => {
                   bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
                 }}
               >
-                <div
+                <BookNowIconBlock
                   // elevation={0}
                   // disabled={disabled}
                   onClick={() => {
@@ -358,11 +370,11 @@ const App = (props) => {
                     setBackgroundScrollStop(true)
                     setExpanded(true)
                   }}
-                  className={
-                    disabled
-                      ? styles.mainBookNowIconDisabledWhileDragging
-                      : styles.mainBookNowIconEnabledWhileDragging
+                  bookNowIconFontAndCircleBorderColor={
+                    bookNowIconFontAndCircleBorderColor
                   }
+                  bookNowIconBackgroundColor={bookNowIconBackgroundColor}
+                  disabled={disabled}
                   ref={refOfBookNow}
                   id="booknowIcon"
                   style={{
@@ -374,9 +386,9 @@ const App = (props) => {
                     display: expanded ? "none" : "block",
                   }}
                 >
-                  <div className={styles.letterB}></div>
+                  <BookNowIcon color={bookNowIconFontAndCircleBorderColor} />
                   <span className={styles.bookNow}>BOOK NOW!</span>
-                </div>
+                </BookNowIconBlock>
                 {jwtToken && (
                   <div
                     className={
@@ -526,7 +538,7 @@ const App = (props) => {
                   bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
                 }}
               >
-                <div
+                <BookNowIconBlock
                   // elevation={0}
                   // disabled={disabled}
                   onClick={() => {
@@ -534,11 +546,11 @@ const App = (props) => {
                     setBackgroundScrollStop(true)
                     setExpanded(true)
                   }}
-                  className={
-                    disabled
-                      ? styles.mainBookNowIconDisabledWhileDragging
-                      : styles.mainBookNowIconEnabledWhileDragging
+                  bookNowIconFontAndCircleBorderColor={
+                    bookNowIconFontAndCircleBorderColor
                   }
+                  bookNowIconBackgroundColor={bookNowIconBackgroundColor}
+                  disabled={disabled}
                   ref={refOfBookNow}
                   id="booknowIcon"
                   style={{
@@ -547,9 +559,9 @@ const App = (props) => {
                     display: expanded ? "none" : "block",
                   }}
                 >
-                  <div className={styles.letterB}></div>
+                  <BookNowIcon color={bookNowIconFontAndCircleBorderColor} />
                   <span className={styles.bookNow}>BOOK NOW!</span>
-                </div>
+                </BookNowIconBlock>
                 {jwtToken && (
                   <div
                     className={
@@ -614,7 +626,7 @@ const App = (props) => {
                 handle=".companyProfileClassForDrag, #booknowIcon"
               >
                 <div ref={containerRef} className={styles.mainBookNowWrapper}>
-                  <div
+                  <BookNowIconBlock
                     // elevation={0}
                     // disabled={disabled}
                     onClick={() => {
@@ -622,18 +634,24 @@ const App = (props) => {
                       setBackgroundScrollStop(true)
                       setExpanded(true)
                     }}
-                    className={
-                      disabled
-                        ? styles.mainBookNowIconDisabledWhileDragging
-                        : styles.mainBookNowIconEnabledWhileDragging
-                    }
+                    // className={
+                    //   disabled
+                    //     ? styles.mainBookNowIconDisabledWhileDragging
+                    //     : styles.mainBookNowIconEnabledWhileDragging
+                    // }
                     style={{ display: expanded ? "none" : "block" }}
+                    bookNowIconFontAndCircleBorderColor={
+                      bookNowIconFontAndCircleBorderColor
+                    }
+                    bookNowIconBackgroundColor={bookNowIconBackgroundColor}
+                    disabled={disabled}
                     ref={refOfBookNow}
                     id="booknowIcon"
                   >
-                    <div className={styles.letterB}></div>
+                    {/* <div className={styles.letterB}></div> */}
+                    <BookNowIcon color={bookNowIconFontAndCircleBorderColor} />
                     <span className={styles.bookNow}>BOOK NOW!</span>
-                  </div>
+                  </BookNowIconBlock>
                   {jwtToken && (
                     <div
                       className={
@@ -708,3 +726,61 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, { getCompanyProfile, getCompanyToken })(
   App
 )
+
+const BookNowIconBlock = styled.div`
+  pointer-events: ${(props) => {
+    if (props.disabled) {
+      return "none"
+    }
+  }};
+  opacity: ${(props) => {
+    if (props.disabled) {
+      return " 0.5"
+    }
+  }};
+  @keyframes pulse {
+    10% {
+      -moz-box-shadow: 0 0 0 0
+        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+      box-shadow: 0 0 0 0
+        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+    }
+    38% {
+      -moz-box-shadow: 0 0 0 0
+        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+      box-shadow: 0 0 3px 4.5px
+        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0
+        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+      box-shadow: 0 0 0 0 tranparent;
+    }
+  }
+
+  // padding-left: 0px;
+  // &:before {
+  //   background-color: white;
+  // }
+
+  // padding: 0px;
+  width: 104px;
+  height: 104px;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  cursor: pointer;
+  transition: 0ms;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  background-color: ${(props) => props.bookNowIconBackgroundColor};
+  filter: opacity(1);
+  -webkit-filter: opacity(1);
+  border-radius: 50%;
+
+  @media (max-width: 500px) {
+    width: 87px;
+    height: 87px;
+  }
+`

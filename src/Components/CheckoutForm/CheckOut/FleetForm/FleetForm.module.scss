@@ -38,7 +38,20 @@
   .carImageBlock {
     width: 50%;
     margin-right: 10px;
+    position: relative;
+    z-index: 2;
   }
+  .safetySeatNotAvailable {
+    font-size: 16px;
+    color: orange;
+    border: 1px solid orange;
+    background: grey;
+    position: absolute;
+    top: 36%;
+    left: 12%;
+    z-index: 3;
+  }
+
   .orSimiliar {
     position: absolute;
     width: 75px;
@@ -51,9 +64,11 @@
     padding-top: 2px;
   }
   .carImageSelf {
+    position: relative;
     width: 100%;
     height: 100%;
     border-radius: 9px;
+    z-index: 1;
   }
   .carDescriptionTextBlock {
     width: 50%;
@@ -101,6 +116,16 @@
   }
 }
 
+.showSafetySeatIsNotAvailable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  top: 40%;
+}
+
 .mainWrapperFleet {
   @include whole-app-background;
   @include side-paddings-for-whole-widget-page;
@@ -118,7 +143,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-
+  position: relative;
   // padding-bottom: 70px;
 }
 .pageTitleContainer {

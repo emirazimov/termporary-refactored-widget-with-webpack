@@ -107,16 +107,25 @@ const PreviewUIComponent = ({
         // className={classes.directionsContainer}
         className={styles.directionsContainer}
       >
+        {/* <div className={styles.directionsContainerForPositioning}> */}
         <Directions
           destinations={formData.orderAddressDetails}
           setDistance={setDistance}
           // style={{ height: "250px" }}
         />
+        {/* </div> */}
       </div>
       <div
         // container
         // justify="center"
         className={styles.reservationDetailsContainer}
+        style={{
+          zIndex: "15",
+          // marginTop: "-40px",
+          // paddingTop: "40px",
+          // height: "100%",
+          backgroundColor: ThemeProviderAppBackgroundColor,
+        }}
       >
         {/* <div
             container
