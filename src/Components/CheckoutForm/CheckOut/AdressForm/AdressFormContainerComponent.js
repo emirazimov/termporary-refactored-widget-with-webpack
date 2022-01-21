@@ -17,6 +17,7 @@ import {
   setFormData,
   setPassengersQuantityForBackStep,
   setSafetySeatCount,
+  setShowCarsWithSafetySeat,
   setTimeForDefaultValue,
   setTimeForDefaultValueAlignment,
   setTimeForDefaultValueAMPM,
@@ -54,6 +55,7 @@ const AdressFormContainerComponent = ({
   setPassengersQuantityForBackStep,
   isBoosterSeatExistOnBackend,
   isSafetySeatExistOnBackend,
+  setShowCarsWithSafetySeat,
 }) => {
   // const classes = useStyles()
 
@@ -631,6 +633,7 @@ const AdressFormContainerComponent = ({
       time={time}
       setTime={setTime}
       setTimeForDefaultValue={setTimeForDefaultValue}
+      setShowCarsWithSafetySeat={setShowCarsWithSafetySeat}
     />
   )
 }
@@ -662,6 +665,7 @@ export default connect(mapStateToProps, {
   setTimeForDefaultValueAMPM,
   setTimeForDefaultValueAlignment,
   setPassengersQuantityForBackStep,
+  setShowCarsWithSafetySeat,
 })(AdressFormContainerComponent)
 
 const Button = styled.button`

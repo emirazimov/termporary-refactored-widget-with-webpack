@@ -155,6 +155,7 @@ const AdressFormwithoutReactMemo = ({
   airlineName,
   time,
   setTime,
+  setShowCarsWithSafetySeat,
 }) => {
   // const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:530px)")
@@ -930,9 +931,10 @@ const AdressFormwithoutReactMemo = ({
                       }}
                     /> */}
                     <Switch
-                      checked={safetySeat}
+                      checked={formData.showCarsWithSafetySeat}
                       onClick={() => {
                         setSafetySeat(!safetySeat)
+                        setShowCarsWithSafetySeat(!safetySeat)
                       }}
                       numberToIdentify={2}
                     />
@@ -945,7 +947,7 @@ const AdressFormwithoutReactMemo = ({
 
                 className={styles.SafetySeatCounterWrapper}
               >
-                {safetySeat === true && (
+                {formData.showCarsWithSafetySeat === true && (
                   <div className={styles.SafetySeatCounterContainer}>
                     <SafetySeat
                       setBoosterSeat={setBoosterSeat}
@@ -1028,7 +1030,7 @@ const AdressFormwithoutReactMemo = ({
                     }}
                   /> */}
                   <Switch
-                    checked={hourly}
+                    checked={hourlyAndSeatsRedux}
                     onClick={() => {
                       // if (hourly == false) {
                       //   // // setIsGateMeeting(true)
@@ -1068,7 +1070,7 @@ const AdressFormwithoutReactMemo = ({
                 // style={{ width: "100%" }}
                 className={styles.hourlyCounter}
               >
-                {hourly === true && (
+                {hourlyAndSeatsRedux === true && (
                   <Hours
                     hoursState={formData.hours}
                     hourly={hourly}

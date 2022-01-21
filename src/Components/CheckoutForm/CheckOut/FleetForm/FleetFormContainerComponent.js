@@ -21,6 +21,7 @@ const FleetFormContainerComponent = ({
   setActiveStep,
   setResetWidgetInputs,
   setIsAirportPickupIncluded,
+  formData,
 }) => {
   const [carCard, setCarCard] = React.useState(0)
   const [carModal, setCarModal] = React.useState(null)
@@ -90,6 +91,7 @@ const FleetFormContainerComponent = ({
       setShow={setShow}
       showSafetySeatIsNotAvailable={showSafetySeatIsNotAvailable}
       setShowSafetySeatIsNotAvailable={setShowSafetySeatIsNotAvailable}
+      formData={formData}
     />
   )
 }
@@ -101,6 +103,7 @@ const mapStateToProps = (state) => {
     error: state.cars.error,
     gateMeeting: state.gateMeeting.isGateMeeting,
     hourlyAndSeatsRedux: state.hourlyAndSeatsRedux.hourlyRedux,
+    formData: state.formData,
   }
 }
 

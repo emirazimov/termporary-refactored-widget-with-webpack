@@ -35,27 +35,24 @@ const FleetForm = ({
   setCarId,
   gateMeeting,
   setGateMeetingRedux,
-  hourlyAndSeatsRedux,
+
   error,
   setActiveStep,
   setResetWidgetInputs,
   setIsAirportPickupIncluded,
   carCard,
-  setCarCard,
-  carModal,
-  setCarModal,
-  open,
-  setOpen,
+
   handleClickOpen,
   handleClickClose,
   handleClick,
   result,
-  cars2,
+
   round,
   show,
-  setShow,
+
   showSafetySeatIsNotAvailable,
   setShowSafetySeatIsNotAvailable,
+  formData,
 }) => {
   // const classes = useStyles()
 
@@ -125,7 +122,7 @@ const FleetForm = ({
                       marginBottom: " 45px",
                     }}
                   >
-                    Safety Seat is Not Available{" "}
+                    Safety Seat is Not Available
                   </span>
                   <button
                     type="button"
@@ -190,12 +187,13 @@ const FleetForm = ({
                     // className={classes.root}
                     onClick={(event) => {
                       if (
-                        car.isBoosterSeatsExist == true &&
-                        car.isBoosterSeatsExist == true
+                        car.isBoosterSeatsExist == false &&
+                        car.isBoosterSeatsExist == false &&
+                        formData.showCarsWithSafetySeat == true
                       ) {
-                        handleClick(car?.id)
-                      } else {
                         setShowSafetySeatIsNotAvailable(true)
+                      } else {
+                        handleClick(car?.id)
                       }
                     }}
                     // selected={car?.id === carCard}
@@ -240,7 +238,8 @@ const FleetForm = ({
                       className={styles.carImageBlock}
                     >
                       {car.isBoosterSeatsExist == false &&
-                        car.isBoosterSeatsExist == false && (
+                        car.isBoosterSeatsExist == false &&
+                        formData.showCarsWithSafetySeat == true && (
                           <span className={styles.safetySeatNotAvailable}>
                             Safety Seat N/A
                           </span>

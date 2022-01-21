@@ -21,6 +21,9 @@ const SET_PASSENGERS_QUANTITY_FOR_BACKSTEP =
 const SET_IS_AIRPORT_PICKUP_INCLUDED =
   "./form-reducer/SET_IS_AIRPORT_PICKUP_INCLUDED"
 
+const SET_SHOW_CARS_WITH_SAFETY_SEAT =
+  "./form-reducer/SET_SHOW_CARS_WITH_SAFETY_SEAT"
+
 let initialState = {
   orderType: 3,
   bookingType: 0,
@@ -84,6 +87,7 @@ let initialState = {
   airlines: {
     id: 0,
   },
+  showCarsWithSafetySeat: false,
   safetySeatCount: 0,
   boosterSeatCount: 0,
 }
@@ -226,6 +230,11 @@ const formReducer = (state = initialState, action) => {
         ...state,
         isAirportPickupIncluded: action.payload,
       }
+    case SET_SHOW_CARS_WITH_SAFETY_SEAT:
+      return {
+        ...state,
+        showCarsWithSafetySeat: action.payload,
+      }
 
     default:
       return state
@@ -278,6 +287,11 @@ export const setPaymentForm = (form, cityId, stateId, date, cardNumber) => ({
   cityId,
   stateId,
   date,
+})
+
+export const setShowCarsWithSafetySeat = (flag) => ({
+  type: SET_SHOW_CARS_WITH_SAFETY_SEAT,
+  payload: flag,
 })
 
 export const setSafetySeatCount = (count) => ({

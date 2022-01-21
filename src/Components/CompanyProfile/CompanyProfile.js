@@ -17,11 +17,15 @@ import {
   setResetWidgetInputs,
   setResetWidgetInputsActionCreator,
 } from "../../Redux/reset-widget-inputs-reducer"
-import { setIsAirportPickupIncluded } from "../../Redux/form-reducer"
+import {
+  setIsAirportPickupIncluded,
+  setShowCarsWithSafetySeat,
+} from "../../Redux/form-reducer"
 import { setGateMeetingRedux } from "../../Redux/gate-meeting-reducer"
 import styles from "./CompanyProfile.module.scss"
 import ThemeContext from "../../context"
 import { CloseWidgetIcon } from "../../assets/icons"
+import { setHourlyRedux } from "../../Redux/hourly-reducer"
 
 // const useStyles = makeStyles((theme) => ({
 //   companyContainer: {
@@ -73,7 +77,6 @@ import { CloseWidgetIcon } from "../../assets/icons"
 //     },
 //   },
 // }))
-
 const CompanyProfile = ({
   initializing,
   profile,
@@ -87,6 +90,8 @@ const CompanyProfile = ({
   setGotAddressError,
   setIsAirportPickupIncluded,
   setGateMeetingRedux,
+  setShowCarsWithSafetySeat,
+  setHourlyRedux,
 }) => {
   // const classes = useStyles()
 
@@ -184,6 +189,9 @@ const CompanyProfile = ({
                   setGotAddressError(false)
                   setIsAirportPickupIncluded(false)
                   setGateMeetingRedux(false)
+
+                  setShowCarsWithSafetySeat(false)
+                  setHourlyRedux(false)
                 }}
               >
                 {/* <span
@@ -216,4 +224,6 @@ export default connect(mapStateToProps, {
   setGotAddressError,
   setIsAirportPickupIncluded,
   setGateMeetingRedux,
+  setShowCarsWithSafetySeat,
+  setHourlyRedux,
 })(CompanyProfile)

@@ -1768,194 +1768,202 @@ const PreviewUIComponent = ({
             </div>
           ) : ( */}
         <>
-          {selectedCar.boosterSeatPrice == undefined ? null : (
-            <div
-              // item
-              className={styles.reservationDetailsItem}
-            >
-              <div
-                // container
-                // direction="row"
-                // justify="space-between"
-                // alignItems="center"
-                className={styles.reservationDetailsItemContainer}
-              >
+          {selectedCar.boosterSeatPrice == undefined
+            ? null
+            : formData.showCarsWithSafetySeat == true && (
                 <div
                   // item
-                  className={styles.reservationDetailsItemTitleContainer}
-                >
-                  <span
-                    // className={classes.textColor}
-                    // style={{ fontSize: "16px" }}
-                    className={styles.reservationDetailsItemTitleSelf}
-                    style={{
-                      color: fontColor,
-                    }}
-                  >
-                    Youth Booster Seat
-                  </span>
-                </div>
-                <div
-                  // item
-                  // style={{ flexGrow: 1 }}
-
-                  className={styles.reservationDetailsItemPointedLineContainer}
+                  className={styles.reservationDetailsItem}
                 >
                   <div
-                    // className={classes.boxBorder}
-                    // style={{
-                    //   marginTop: "8px",
-                    //   backgroundColor: "transparent",
-                    //   marginLeft: "3px",
-                    //   marginRight: "3px",
-                    // }}
-                    className={styles.reservationDetailsItemPointedLineSelf}
-                    style={{
-                      borderBottom: `2px dotted ${fontColor}`,
-                    }}
-                  />
-                </div>
-                <div
-                  // item
-                  className={styles.reservationDetailsItemValueContainer}
-                >
-                  <span
-                    // className={classes.textColor}
-                    // style={{
-                    //   fontSize: "16px",
-                    //   marginRight: "-3px",
-                    // }}
-                    className={styles.reservationDetailsItemValueSelf}
-                    style={{
-                      color: fontColor,
-                    }}
+                    // container
+                    // direction="row"
+                    // justify="space-between"
+                    // alignItems="center"
+                    className={styles.reservationDetailsItemContainer}
                   >
-                    {selectedCar.boosterSeatPrice !== 0 &&
-                    selectedCar.boosterSeatPrice !== undefined
-                      ? `$${selectedCar.boosterSeatPrice}`
-                      : `$${0}`}
-                  </span>
+                    <div
+                      // item
+                      className={styles.reservationDetailsItemTitleContainer}
+                    >
+                      <span
+                        // className={classes.textColor}
+                        // style={{ fontSize: "16px" }}
+                        className={styles.reservationDetailsItemTitleSelf}
+                        style={{
+                          color: fontColor,
+                        }}
+                      >
+                        Youth Booster Seat
+                      </span>
+                    </div>
+                    <div
+                      // item
+                      // style={{ flexGrow: 1 }}
+
+                      className={
+                        styles.reservationDetailsItemPointedLineContainer
+                      }
+                    >
+                      <div
+                        // className={classes.boxBorder}
+                        // style={{
+                        //   marginTop: "8px",
+                        //   backgroundColor: "transparent",
+                        //   marginLeft: "3px",
+                        //   marginRight: "3px",
+                        // }}
+                        className={styles.reservationDetailsItemPointedLineSelf}
+                        style={{
+                          borderBottom: `2px dotted ${fontColor}`,
+                        }}
+                      />
+                    </div>
+                    <div
+                      // item
+                      className={styles.reservationDetailsItemValueContainer}
+                    >
+                      <span
+                        // className={classes.textColor}
+                        // style={{
+                        //   fontSize: "16px",
+                        //   marginRight: "-3px",
+                        // }}
+                        className={styles.reservationDetailsItemValueSelf}
+                        style={{
+                          color: fontColor,
+                        }}
+                      >
+                        {selectedCar.boosterSeatPrice !== 0 &&
+                        selectedCar.boosterSeatPrice !== undefined
+                          ? `$${selectedCar.boosterSeatPrice}`
+                          : `$${0}`}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )}
+              )}
         </>
         {/* )} */}
 
         <>
-          {selectedCar.safetySeatPrice == undefined ? null : (
-            // <Grid item>
-            //   <Grid
-            //     container
-            //     direction="row"
-            //     justify="space-between"
-            //     alignItems="center"
-            //   >
-            //     <Grid item>
-            //       <Typography
-            //         className={classes.textColor}
-            //         style={{ fontSize: "16px" }}
-            //       >
-            //         {"Infant & Child Safety Seat"}
-            //       </Typography>
-            //     </Grid>
-            //     <Grid item style={{ flexGrow: 1 }}>
-            //       <Box
-            //         className={classes.boxBorder}
-            //         style={{
-            //           marginTop: "8px",
-            //           backgroundColor: "transparent",
-            //           marginLeft: "3px",
-            //           marginRight: "3px",
-            //         }}
-            //       />
-            //     </Grid>
-            //     <Grid item>
-            //       <Typography
-            //         className={classes.textColor}
-            //         style={{ fontSize: "16px" }}
-            //       >
-            //         {/* {`$${0}`} */}
-            //         {selectedCar.safetySeatPrice !== 0 &&
-            //         selectedCar.safetySeatPrice !== undefined
-            //           ? `$${selectedCar.safetySeatPrice}`
-            //           : `$${0}`}
-            //       </Typography>
-            //     </Grid>
-            //   </Grid>
-            // </Grid>
+          {selectedCar.safetySeatPrice == undefined
+            ? null
+            : // <Grid item>
+              //   <Grid
+              //     container
+              //     direction="row"
+              //     justify="space-between"
+              //     alignItems="center"
+              //   >
+              //     <Grid item>
+              //       <Typography
+              //         className={classes.textColor}
+              //         style={{ fontSize: "16px" }}
+              //       >
+              //         {"Infant & Child Safety Seat"}
+              //       </Typography>
+              //     </Grid>
+              //     <Grid item style={{ flexGrow: 1 }}>
+              //       <Box
+              //         className={classes.boxBorder}
+              //         style={{
+              //           marginTop: "8px",
+              //           backgroundColor: "transparent",
+              //           marginLeft: "3px",
+              //           marginRight: "3px",
+              //         }}
+              //       />
+              //     </Grid>
+              //     <Grid item>
+              //       <Typography
+              //         className={classes.textColor}
+              //         style={{ fontSize: "16px" }}
+              //       >
+              //         {/* {`$${0}`} */}
+              //         {selectedCar.safetySeatPrice !== 0 &&
+              //         selectedCar.safetySeatPrice !== undefined
+              //           ? `$${selectedCar.safetySeatPrice}`
+              //           : `$${0}`}
+              //       </Typography>
+              //     </Grid>
+              //   </Grid>
+              // </Grid>
 
-            <div
-              // item
-              className={styles.reservationDetailsItem}
-            >
-              <div
-                // container
-                // direction="row"
-                // justify="space-between"
-                // alignItems="center"
-                className={styles.reservationDetailsItemContainer}
-              >
+              formData.showCarsWithSafetySeat == true && (
                 <div
                   // item
-                  className={styles.reservationDetailsItemTitleContainer}
-                >
-                  <span
-                    // className={classes.textColor}
-                    // style={{ fontSize: "16px" }}
-                    className={styles.reservationDetailsItemTitleSelf}
-                    style={{
-                      color: fontColor,
-                    }}
-                  >
-                    {"Infant & Child Safety Seat"}
-                  </span>
-                </div>
-                <div
-                  // item
-                  // style={{ flexGrow: 1 }}
-
-                  className={styles.reservationDetailsItemPointedLineContainer}
+                  className={styles.reservationDetailsItem}
                 >
                   <div
-                    // className={classes.boxBorder}
-                    // style={{
-                    //   marginTop: "8px",
-                    //   backgroundColor: "transparent",
-                    //   marginLeft: "3px",
-                    //   marginRight: "3px",
-                    // }}
-                    className={styles.reservationDetailsItemPointedLineSelf}
-                    style={{
-                      borderBottom: `2px dotted ${fontColor}`,
-                    }}
-                  />
-                </div>
-                <div
-                  // item
-                  className={styles.reservationDetailsItemValueContainer}
-                >
-                  <span
-                    // className={classes.textColor}
-                    // style={{
-                    //   fontSize: "16px",
-                    //   marginRight: "-3px",
-                    // }}
-                    className={styles.reservationDetailsItemValueSelf}
-                    style={{
-                      color: fontColor,
-                    }}
+                    // container
+                    // direction="row"
+                    // justify="space-between"
+                    // alignItems="center"
+                    className={styles.reservationDetailsItemContainer}
                   >
-                    {/* {`$${0}`} */}
-                    {selectedCar.safetySeatPrice !== 0 &&
-                    selectedCar.safetySeatPrice !== undefined
-                      ? `$${selectedCar.safetySeatPrice}`
-                      : `$${0}`}
-                  </span>
+                    <div
+                      // item
+                      className={styles.reservationDetailsItemTitleContainer}
+                    >
+                      <span
+                        // className={classes.textColor}
+                        // style={{ fontSize: "16px" }}
+                        className={styles.reservationDetailsItemTitleSelf}
+                        style={{
+                          color: fontColor,
+                        }}
+                      >
+                        {"Infant & Child Safety Seat"}
+                      </span>
+                    </div>
+                    <div
+                      // item
+                      // style={{ flexGrow: 1 }}
+
+                      className={
+                        styles.reservationDetailsItemPointedLineContainer
+                      }
+                    >
+                      <div
+                        // className={classes.boxBorder}
+                        // style={{
+                        //   marginTop: "8px",
+                        //   backgroundColor: "transparent",
+                        //   marginLeft: "3px",
+                        //   marginRight: "3px",
+                        // }}
+                        className={styles.reservationDetailsItemPointedLineSelf}
+                        style={{
+                          borderBottom: `2px dotted ${fontColor}`,
+                        }}
+                      />
+                    </div>
+                    <div
+                      // item
+                      className={styles.reservationDetailsItemValueContainer}
+                    >
+                      <span
+                        // className={classes.textColor}
+                        // style={{
+                        //   fontSize: "16px",
+                        //   marginRight: "-3px",
+                        // }}
+                        className={styles.reservationDetailsItemValueSelf}
+                        style={{
+                          color: fontColor,
+                        }}
+                      >
+                        {/* {`$${0}`} */}
+                        {selectedCar.safetySeatPrice !== 0 &&
+                        selectedCar.safetySeatPrice !== undefined
+                          ? `$${selectedCar.safetySeatPrice}`
+                          : `$${0}`}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )}
+              )}
         </>
 
         {gateMeeting && (

@@ -9,8 +9,9 @@ export const Switch = (props) => {
         name={`switch${props.numberToIdentify}`}
         className={styles.switchSelf}
         id={`switch${props.numberToIdentify}`}
-        // checked={props.checked}
+        defaultChecked={props.checked}
         // onClick={props.onClick}
+
         {...props}
       />
       <label for={`switch${props.numberToIdentify}`}></label>
