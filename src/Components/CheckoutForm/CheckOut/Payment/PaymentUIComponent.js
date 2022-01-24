@@ -37,6 +37,7 @@ import "./PaymentStyles.css"
 import styles from "./Payment.module.scss"
 import { Switch } from "../../../Helpers/Switch/Switch"
 import ThemeContext from "../../../../context"
+import Autocomplete from "@mui/material/Autocomplete"
 // import ReactInputMask from "react-input-mask"
 
 // const SignupSchema = yup.object().shape({
@@ -576,6 +577,8 @@ const PaymentUIComponent = ({
                       styles.cardholderInformationInputWithFullWidthSelf
                     }
                     style={{
+                      width: "100%",
+                      paddingRight: "0",
                       color: inputsFontColor,
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
@@ -598,8 +601,9 @@ const PaymentUIComponent = ({
                   className={
                     styles.cardholderInformationInputsContainerForPositionErrorMessageState
                   }
+                  style={{ color: inputsFontColor }}
                 >
-                  <select
+                  {/* <select
                     // {...params}
                     // fullWidth
                     // className={classes.inputPlaceholderFontSize}
@@ -665,7 +669,61 @@ const PaymentUIComponent = ({
                         {state.name}
                       </option>
                     ))}
-                  </select>
+                  </select> */}
+
+                  <Autocomplete
+                    // sx={{
+                    //   display: "inline-block",
+                    //   "& input": {
+                    //     width: 200,
+                    //     bgcolor: "background.paper",
+                    //     color: (theme) =>
+                    //       theme.palette.getContrastText(
+                    //         theme.palette.background.paper
+                    //       ),
+                    //   },
+                    // }}
+                    // id="custom-input-demo"
+                    // MenuProps={{
+                    //   style: { zIndex: 1999999999999999999999999 },
+                    // }}
+                    disablePortal
+                    onChange={(event, newValue) => {
+                      console.log(newValue)
+                      newValue ? extractStateId(newValue) : setStatesId(null)
+                      // newValue ? setStatesId(newValue.id) : setStatesId(null)
+                    }}
+                    options={states.map((state) => state.name)}
+                    renderInput={(params) => (
+                      <div ref={params.InputProps.ref}>
+                        <input
+                          type="text"
+                          {...params.inputProps}
+                          placeholder="State"
+                          className={
+                            styles.cardholderInformationInputWithFullWidthSelfState
+                          }
+                          style={{
+                            width: "100%",
+                            paddingRight: "0",
+                            color: inputsFontColor,
+                            border: `1px solid ${borderColorForInnerElements}`,
+                            background: inputsBackground,
+                            // textIndent: "17px",
+                            // color: "grey",
+                            // "& option": {
+                            //   color: "red",
+                            // },
+                            // "&::-webkit-calendar-picker-indicator": {
+                            //   opacity: 1,
+                            //   color: "blue",
+                            // },
+                          }}
+                          // ref={register}
+                        />
+                      </div>
+                    )}
+                  />
 
                   {statesIdError && (
                     <p className={styles.errorInputs}>Required</p>
@@ -686,8 +744,10 @@ const PaymentUIComponent = ({
                 <div
                   // item
                   // xs={6}
-                  className={styles.cardholderInformationInputSelfContainer1}
-                  // style={{ width: '50%' }}
+                  className={
+                    styles.cardholderInformationInputSelfContainer1City
+                  }
+                  style={{ color: inputsFontColor }}
                 >
                   {/* <div style={{ width: '100%' }}> */}
                   {/* <Autocomplete
@@ -737,7 +797,7 @@ const PaymentUIComponent = ({
                     }}
                     name="cityId"
                   /> */}
-
+                  {/* 
                   <select
                     // {...params}
                     // fullWidth
@@ -802,49 +862,52 @@ const PaymentUIComponent = ({
                         {city.name}
                       </option>
                     ))}
-                  </select>
+                  </select> */}
 
-                  <datalist id="cities-list">
-                    {/* id="combo-box-demo"
-                  options={states}
-                  defaultValue={null}
-                  autoComplete="off"
-                  autoHighlight
-                  disablePortal
-                  className={classes.mainAutocompleteClass}
-                  InputProps={{
-                    classes: {
-                      root: classes.inputRootAutocomplete2,
-                    },
-                  }}
-                  classes={{
-                    popupIndicator: classes.popupIndicator,
-                    option: classes.option,
-                    paper: classes.selectedOption,
-                  }}
-                  getOptionLabel={(option) => option.name}
-                  renderOption={(option) => (
-                    <div style={{ fontSize: "14px" }}>
-                      <span style={{ fontSize: "14px" }}>{option.code}</span>
-                      {option.name} ({option.code})
-                    </div>
-                  )}
-                  renderInput={(params) => (
-                    
-                  )}
-                  
-                  name="stateId" */}
-                    {cities.map((city) => (
-                      <option
-                        // onChange={(event, newValue) => {
-                        //   newValue
-                        //     ? setCitiesId(newValue.id)
-                        //     : setCitiesId(null)
-                        // }}
-                        value={city.name}
-                      />
-                    ))}
-                  </datalist>
+                  <Autocomplete
+                    // sx={{
+                    //   display: "inline-block",
+                    //   "& input": {
+                    //     width: 200,
+                    //     bgcolor: "background.paper",
+                    //     color: (theme) =>
+                    //       theme.palette.getContrastText(
+                    //         theme.palette.background.paper
+                    //       ),
+                    //   },
+                    // }}
+                    // id="custom-input-demo"
+                    // MenuProps={{
+                    //   style: { zIndex: 1999999999999999999999999 },
+                    // }}
+                    disablePortal
+                    onChange={(event, newValue) => {
+                      console.log(cities)
+                      newValue ? extractCityId(newValue) : setCitiesId(null)
+                    }}
+                    options={cities.map((city) => city.name)}
+                    renderInput={(params) => (
+                      <div ref={params.InputProps.ref}>
+                        <input
+                          type="text"
+                          {...params.inputProps}
+                          className={styles.cardholderInformationInputSelf}
+                          placeholder="City"
+                          style={{
+                            width: "100%",
+                            paddingRight: "25px",
+                            boxSizing: "border-box",
+                            color: inputsFontColor,
+
+                            border: `1px solid ${borderColorForInnerElements}`,
+                            background: inputsBackground,
+                            // textIndent: "17px",
+                          }}
+                          // ref={register}
+                        />
+                      </div>
+                    )}
+                  />
 
                   {citiesIdError && (
                     <p className={styles.errorInputs}>Required</p>

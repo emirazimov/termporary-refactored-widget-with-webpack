@@ -172,7 +172,7 @@ const App = (props) => {
     if (!expanded)
       setTimeout(() => {
         setDisabled(true)
-      }, 60)
+      }, 150)
   }
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)

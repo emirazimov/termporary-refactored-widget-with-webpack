@@ -294,7 +294,7 @@ option {
   &.cardholderInformationInputsContainerForPositionErrorMessageState:after {
     content: "\0025BC";
     font: normal normal normal 12px/1 FontAwesome;
-    color: white;
+    // color: red;
     right: 14px;
     top: -4px;
     height: 26px;
@@ -312,9 +312,25 @@ option {
 
 .cardholderInformationInputSelfContainer {
 }
-.cardholderInformationInputSelfContainer1 {
+.cardholderInformationInputSelfContainer1,
+.cardholderInformationInputSelfContainer1City {
   width: 50%;
   margin-right: 7px;
+}
+.cardholderInformationInputSelfContainer1City {
+  position: relative;
+
+  &.cardholderInformationInputSelfContainer1City:after {
+    content: "\0025BC";
+    font: normal normal normal 12px/1 FontAwesome;
+    // color: red;
+    right: 14px;
+    top: -4px;
+    height: 26px;
+    padding: 15px 0px 0px 8px;
+    position: absolute;
+    pointer-events: none;
+  }
 }
 .cardholderInformationInputSelfContainer2 {
   // width: 100%;
@@ -370,9 +386,9 @@ option {
   // &::placeholder {
   //   @include payment-inputs-with-left-padding;
   // }
-  width: auto;
+  width: 100%;
   padding: 0;
-  padding-right: 25px;
+  // padding-right: 25px;
   text-indent: 20px;
   // &::-webkit-calendar-picker-indicator {
   //   opacity: 1;

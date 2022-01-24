@@ -192,17 +192,50 @@ const AdressFormContainerComponent = ({
     ?.match(/\d+/)
 
   const onSubmit2 = (data) => {
-    console.log(data)
+    const timeNumberAfterColon = time
+      .split("")
+      .splice(-2)
+      // .map((number) => {
+      //   return Number(`${number}`)
+      // })
+      .join("")
+    const timeNumberAfterColonRedux = formData.timeForDefaultValue
+      .split("")
+      .splice(-2)
+      // .map((number) => {
+      //   return Number(`${number}`)
+      // })
+      .join("")
+    const timeNumberLength = time.split("")
+    const timeNumberLengthredux = formData.timeForDefaultValue.split("")
+    var timeNumberIsFullZero = time.replace(/[:]/g, "")
+    var timeNumberIsFullZeroRedux = formData.timeForDefaultValue.replace(
+      /[:]/g,
+      ""
+    )
 
+    var timeNumberIsThreeNumberZero = time.replace(/[:]/g, "").split("")
+    var timeNumberIsThreeNumberZeroRedux = formData.timeForDefaultValue.replace(
+      /[:]/g,
+      ""
+    )
+
+    console.log(timeNumberIsFullZero)
     if (
       destinations[0].rideCheckPoint &&
       destinations[1].rideCheckPoint &&
       (date || formData.dateForDefaultValue) &&
       (time || formData.timeForDefaultValue) &&
-      (firstTimeHalf?.[0] >= "0" || formData.timeForDefaultValue) &&
-      (firstTimeHalf?.[1] >= "0" || formData.timeForDefaultValue) &&
-      (secondTimeHalf?.[0] >= "0" || formData.timeForDefaultValue) &&
-      (secondTimeHalf?.[1] >= "0" || formData.timeForDefaultValue) &&
+      Number(`${timeNumberAfterColon || timeNumberAfterColonRedux}`) < 60 &&
+      (timeNumberLength.length || timeNumberLengthredux.length > 3) &&
+      timeNumberIsFullZero !== "0000" &&
+      timeNumberIsFullZero !== "000" &&
+      timeNumberIsFullZeroRedux !== "0000" &&
+      timeNumberIsFullZeroRedux !== "000" &&
+      // (firstTimeHalf?.[0] >= "0" || formData.timeForDefaultValue) &&
+      // (firstTimeHalf?.[1] >= "0" || formData.timeForDefaultValue) &&
+      // (secondTimeHalf?.[0] >= "0" || formData.timeForDefaultValue) &&
+      // (secondTimeHalf?.[1] >= "0" || formData.timeForDefaultValue) &&
       // false &&
       carSelectionID &&
       (passengers || formData.passengersQuantityForBackStep) &&
@@ -237,58 +270,74 @@ const AdressFormContainerComponent = ({
       } else {
         setRedBorderOnSubmitForDate(false)
       }
-      // if (!time) {
-      //   setRedBorderOnSubmitForTime(true)
-      // } else {
-      //   setRedBorderOnSubmitForTime(false)
-      // }
-      // if (
-      //   (firstTimeHalf?.[0] <= "0" && firstTimeHalfRedux?.[0] <= "0") ||
-      //   (firstTimeHalf?.[0] <= "" && firstTimeHalfRedux?.[0] <= "0") ||
-      //   (firstTimeHalf?.[0] == undefined &&
-      //     firstTimeHalfRedux?.[0] <= undefined)
-      // ) {
-      //   setRedBorderOnSubmitForTime2(true)
-      // } else {
-      //   setRedBorderOnSubmitForTime2(false)
-      // }
-      if (
-        (firstTimeHalf?.[1] <= "0" && firstTimeHalfRedux?.[1] <= "0") ||
-        (firstTimeHalf?.[1] <= "" && firstTimeHalfRedux?.[1] <= "") ||
-        (firstTimeHalf?.[1] == undefined &&
-          firstTimeHalfRedux?.[1] <= undefined)
-      ) {
-        setRedBorderOnSubmitForTime6(true)
+      if (timeNumberLength.length <= 3) {
+        setRedBorderOnSubmitForTime2(true)
+        // console.log("WOOOOOOOOOOOW")
       } else {
-        setRedBorderOnSubmitForTime6(false)
+        setRedBorderOnSubmitForTime2(false)
       }
-      if (
-        (secondTimeHalf2 <= "0" && secondTimeHalfRedux2 <= "0") ||
-        (secondTimeHalf2 <= "" && secondTimeHalfRedux2 <= "")
-      ) {
+      if (Number(`${timeNumberAfterColon}`) > 60) {
         setRedBorderOnSubmitForTime3(true)
       } else {
         setRedBorderOnSubmitForTime3(false)
       }
 
       if (
-        (secondTimeHalf?.[0] <= "0" && secondTimeHalfRedux?.[0] <= "0") ||
-        (secondTimeHalf?.[0] <= "" && secondTimeHalfRedux?.[0] <= "")
+        timeNumberIsFullZero == "0000" ||
+        timeNumberIsFullZeroRedux == "0000" ||
+        timeNumberIsFullZero == "000" ||
+        timeNumberIsFullZeroRedux == "000"
       ) {
         setRedBorderOnSubmitForTime4(true)
       } else {
         setRedBorderOnSubmitForTime4(false)
       }
-      if (
-        (secondTimeHalf?.[1] <= "0" && secondTimeHalfRedux?.[1] <= "0") ||
-        (secondTimeHalf?.[1] <= "" && secondTimeHalfRedux?.[1] <= "") ||
-        (secondTimeHalf?.[1] == undefined &&
-          secondTimeHalfRedux?.[1] <= undefined)
-      ) {
-        setRedBorderOnSubmitForTime5(true)
-      } else {
-        setRedBorderOnSubmitForTime5(false)
-      }
+      // if (
+      //   timeNumberIsThreeNumberZero == "000" ||
+      //   timeNumberIsThreeNumberZeroRedux == "000"
+      // ) {
+      //   setRedBorderOnSubmitForTime5(true)
+      // } else {
+      //   setRedBorderOnSubmitForTime5(false)
+      // }
+
+      // if (
+      //   (firstTimeHalf?.[1] <= "0" && firstTimeHalfRedux?.[1] <= "0") ||
+      //   (firstTimeHalf?.[1] <= "" && firstTimeHalfRedux?.[1] <= "") ||
+      //   (firstTimeHalf?.[1] == undefined &&
+      //     firstTimeHalfRedux?.[1] <= undefined)
+      // ) {
+      //   setRedBorderOnSubmitForTime6(true)
+      // } else {
+      //   setRedBorderOnSubmitForTime6(false)
+      // }
+      // if (
+      //   (secondTimeHalf2 <= "0" && secondTimeHalfRedux2 <= "0") ||
+      //   (secondTimeHalf2 <= "" && secondTimeHalfRedux2 <= "")
+      // ) {
+      //   setRedBorderOnSubmitForTime3(true)
+      // } else {
+      //   setRedBorderOnSubmitForTime3(false)
+      // }
+
+      // if (
+      //   (secondTimeHalf?.[0] <= "0" && secondTimeHalfRedux?.[0] <= "0") ||
+      //   (secondTimeHalf?.[0] <= "" && secondTimeHalfRedux?.[0] <= "")
+      // ) {
+      //   setRedBorderOnSubmitForTime4(true)
+      // } else {
+      //   setRedBorderOnSubmitForTime4(false)
+      // }
+      // if (
+      //   (secondTimeHalf?.[1] <= "0" && secondTimeHalfRedux?.[1] <= "0") ||
+      //   (secondTimeHalf?.[1] <= "" && secondTimeHalfRedux?.[1] <= "") ||
+      //   (secondTimeHalf?.[1] == undefined &&
+      //     secondTimeHalfRedux?.[1] <= undefined)
+      // ) {
+      //   setRedBorderOnSubmitForTime5(true)
+      // } else {
+      //   setRedBorderOnSubmitForTime5(false)
+      // }
       if (!AMPM && !formData?.timeForDefaultValueAMPM?.ampm) {
         setRedBorderOnSubmitForTime(true)
       } else {
@@ -488,6 +537,10 @@ const AdressFormContainerComponent = ({
 
       const forRes = date?.toLocaleDateString("en-US")
       const forRes2 = time + ` ${AMPM}`
+      // console.log(
+      //   event.target.value.match(/\d+/),
+      //   event.target.value.substr(event.target.value.indexOf(":")).match(/\d+/)
+      // )
 
       // ._d.toLocaleTimeString("en-US", {
       //   hour: "numeric",
@@ -581,7 +634,7 @@ const AdressFormContainerComponent = ({
       formatChars={formatChars}
       handleChangeAMPM={handleChangeAMPM}
       handleClick={handleClick}
-      handleInput={handleInput}
+      // handleInput={handleInput}
       handleSubmit={handleSubmit}
       hourly={hourly}
       hoursAddressForm={hoursAddressForm}

@@ -182,7 +182,7 @@ const AdressFormwithoutReactMemo = ({
   const startsWithTwo = time[0] === "2"
 
   const handleChange = () => {
-    const comma = ":"
+    const timeNumberAfterColon = ":"
 
     const setZeroOrNot = (timeValue1) => {
       if (timeValue1 > 1) {
@@ -195,11 +195,11 @@ const AdressFormwithoutReactMemo = ({
       .match(/(\d{0,1})(\d{0,1})(\d{0,1})(\d{0,1})/)
     inputCard.current.value = timeValue[4]
       ? `${setZeroOrNot(timeValue[1])}${timeValue[2]}${
-          (timeValue[3] || timeValue[2]) && comma
+          (timeValue[3] || timeValue[2]) && timeNumberAfterColon
         }${timeValue[3]}${timeValue[4]}`
-      : `${timeValue[1]}${(timeValue[3] || timeValue[2]) && comma}${
-          timeValue[2]
-        }${timeValue[3]}`
+      : `${timeValue[1]}${
+          (timeValue[3] || timeValue[2]) && timeNumberAfterColon
+        }${timeValue[2]}${timeValue[3]}`
     // const numbers = inputCard.current.value.replace(/(\D)/g, "")
     // setCard(numbers)
 
@@ -758,7 +758,7 @@ const AdressFormwithoutReactMemo = ({
                         style={{
                           color: inputsFontColor,
                           border:
-                            redBorderOnSubmitForTime ||
+                            // redBorderOnSubmitForTime ||
                             redBorderOnSubmitForTime2 ||
                             redBorderOnSubmitForTime3 ||
                             redBorderOnSubmitForTime4 ||
