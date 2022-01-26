@@ -214,12 +214,6 @@ const AdressFormContainerComponent = ({
       ""
     )
 
-    var timeNumberIsThreeNumberZero = time.replace(/[:]/g, "").split("")
-    var timeNumberIsThreeNumberZeroRedux = formData.timeForDefaultValue.replace(
-      /[:]/g,
-      ""
-    )
-
     console.log(timeNumberIsFullZero)
     if (
       destinations[0].rideCheckPoint &&

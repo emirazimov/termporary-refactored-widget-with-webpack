@@ -51,16 +51,19 @@ const Hours = ({
   const {
     ThemeProviderAppBackgroundColor,
     fontColor,
-    borderRadiuses,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
     carsTypeColor,
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
     innerTextOnHover,
-    borderRadiusesForInnerElements,
-    borderRadiusesForWholeApp,
-    borderColorForInnerElements,
-    borderColorForOuterApp,
+    inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
   } = useContext(ThemeContext)
 
   return (
@@ -156,7 +159,9 @@ const Hours = ({
             // }}
             style={{
               background: backAndNextButtonsColor,
-              border: `1px solid ${borderColorForInnerElements}`,
+              borderTop: `1px solid ${borderColorForInnerElements}`,
+              borderBottom: `1px solid ${borderColorForInnerElements}`,
+              color: inputsFontColor,
             }}
             type="number"
             className={styles.hoursCounterInput}

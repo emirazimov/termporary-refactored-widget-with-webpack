@@ -60,16 +60,19 @@ export default React.memo(function PassengerQuantity({
   const {
     ThemeProviderAppBackgroundColor,
     fontColor,
-    borderRadiuses,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
     carsTypeColor,
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
     innerTextOnHover,
-    borderRadiusesForInnerElements,
-    borderRadiusesForWholeApp,
-    borderColorForInnerElements,
-    borderColorForOuterApp,
+    inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
   } = useContext(ThemeContext)
 
   return (
@@ -197,7 +200,9 @@ export default React.memo(function PassengerQuantity({
             className={styles.passengerQuantityInputSelf}
             style={{
               background: backAndNextButtonsColor,
-              border: `1px solid ${borderColorForInnerElements}`,
+              borderTop: `1px solid ${borderColorForInnerElements}`,
+              borderBottom: `1px solid ${borderColorForInnerElements}`,
+              color: inputsFontColor,
             }}
           />
         </div>

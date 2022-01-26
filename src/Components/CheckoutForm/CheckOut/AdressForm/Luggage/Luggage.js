@@ -44,16 +44,19 @@ const Luggage = ({ luggage, setLuggage }) => {
   const {
     ThemeProviderAppBackgroundColor,
     fontColor,
-    borderRadiuses,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
     carsTypeColor,
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
     innerTextOnHover,
-    borderRadiusesForInnerElements,
-    borderRadiusesForWholeApp,
-    borderColorForInnerElements,
-    borderColorForOuterApp,
+    inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
   } = useContext(ThemeContext)
 
   //   React.useEffect(() => {
@@ -271,7 +274,9 @@ const Luggage = ({ luggage, setLuggage }) => {
             // }}
             style={{
               background: backAndNextButtonsColor,
-              border: `1px solid ${borderColorForInnerElements}`,
+              borderTop: `1px solid ${borderColorForInnerElements}`,
+              borderBottom: `1px solid ${borderColorForInnerElements}`,
+              color: inputsFontColor,
             }}
             type="number"
             className={styles.luggageQuantityInputSelf}

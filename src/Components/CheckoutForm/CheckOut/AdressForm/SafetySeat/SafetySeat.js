@@ -68,16 +68,19 @@ export default React.memo(function SafetySeat({
   const {
     ThemeProviderAppBackgroundColor,
     fontColor,
-    borderRadiuses,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
     carsTypeColor,
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
     innerTextOnHover,
-    borderRadiusesForInnerElements,
-    borderRadiusesForWholeApp,
-    borderColorForInnerElements,
-    borderColorForOuterApp,
+    inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
   } = useContext(ThemeContext)
 
   return (
@@ -317,7 +320,9 @@ export default React.memo(function SafetySeat({
                 className={styles.boosterSeatCounterInputSelf}
                 style={{
                   background: backAndNextButtonsColor,
-                  border: `1px solid ${borderColorForInnerElements}`,
+                  borderTop: `1px solid ${borderColorForInnerElements}`,
+                  borderBottom: `1px solid ${borderColorForInnerElements}`,
+                  color: inputsFontColor,
                 }}
               />
             </div>
@@ -456,7 +461,9 @@ export default React.memo(function SafetySeat({
                 className={styles.safetySeatCounterInputSelf}
                 style={{
                   background: backAndNextButtonsColor,
-                  border: `1px solid ${borderColorForInnerElements}`,
+                  borderTop: `1px solid ${borderColorForInnerElements}`,
+                  borderBottom: `1px solid ${borderColorForInnerElements}`,
+                  color: inputsFontColor,
                 }}
               />
             </div>

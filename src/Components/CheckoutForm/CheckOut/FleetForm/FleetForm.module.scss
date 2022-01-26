@@ -54,9 +54,13 @@
   .carImageSelf {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 112px;
     border-radius: 9px;
     z-index: 2;
+    cursor: zoom-in;
+    @media (max-width: 500px) {
+      height: 116px;
+    }
   }
   .orSimiliar {
     position: absolute;
@@ -134,7 +138,7 @@
   // height: 100%;
 
   position: relative;
-  padding-bottom: 46px;
+  padding-bottom: 66px;
   // @media (max-width: 500px) {
   //   padding-top: 75px;
   // }
@@ -213,4 +217,8 @@
 
 .buttonNextSelf {
   @include buttonNextSelf;
+}
+
+.carouselModal {
+  width: "100%";
 }
