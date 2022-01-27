@@ -93,6 +93,7 @@ const App = (props) => {
     if (xOrdinate < -20) {
       position.current.x = 0
     }
+
     setExpanded(isExpanded ? panel : false)
   }
 
@@ -120,6 +121,9 @@ const App = (props) => {
         position.current.y = 0
       }
     }
+    if (yOrdinate - heightOfCard < -userScreenHeight) {
+      position.current.y = -userScreenHeight + (heightOfCard + 75)
+    }
     {
       /*Тот же обратчик только для иконки Book Now! с пульсацией до раскрытой иконке*/
     }
@@ -129,9 +133,9 @@ const App = (props) => {
       position.current.x = -60
     }
     if (xOrdinate + 300 > userScreenWidth) {
-      position.current.x = userScreenWidth - 400
+      position.current.x = userScreenWidth - 390
     }
-    if (yOrdinate - 215 < -userScreenHeight) {
+    if (yOrdinate - 105 < -userScreenHeight) {
       position.current.y = -userScreenHeight + 240
     }
 

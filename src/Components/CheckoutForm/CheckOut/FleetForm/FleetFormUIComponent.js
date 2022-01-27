@@ -8,6 +8,32 @@ import IncorrectAddressError from "../../IncorrectAdressError/IncorrectAddressEr
 import styles from "./FleetForm.module.scss"
 import { Modal } from "../../../Helpers/Modal/Modal"
 import ThemeContext from "../../../../context"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import "./FleetForm.css"
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", right: "0", zIndex: "30" }}
+      onClick={onClick}
+    />
+  )
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", left: "0", zIndex: "30" }}
+      onClick={onClick}
+    />
+  )
+}
 
 const FleetForm = ({
   cars,
@@ -37,6 +63,46 @@ const FleetForm = ({
 
   const carTextColor = "white"
   const car = [cars[0], cars[1]]
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    appendDots: (dots) => (
+      <div
+        style={{
+          position: "absolute",
+          height: "6px",
+          backgroundColor: "transparent",
+          // borderRadius: "10px",
+          padding: "0",
+          bottom: "10px",
+        }}
+      >
+        <ul style={{ margin: "0px", paddingLeft: "0px", textAlign: "center" }}>
+          {dots}
+        </ul>
+      </div>
+    ),
+    // customPaging: function (i) {
+    //   return (
+    //     <div
+    //     // style={{
+    //     //   width: "3px",
+    //     //   height: "3px",
+    //     //   background: "red",
+
+    //     //   // bottom: "6px",
+    //     // }}
+    //     ></div>
+    //   )
+    // },
+    dotsClass: "button__bar",
+  }
 
   const {
     ThemeProviderAppBackgroundColor,
@@ -143,50 +209,7 @@ const FleetForm = ({
                             Safety Seat N/A
                           </span>
                         )}
-                      <Carousel
-                        autoPlay={false}
-                        animation="slide"
-                        className={styles.carImageSelf}
-                        style={{ width: "100%" }}
-                        navButtonsProps={{
-                          style: {
-                            width: "13px",
-                            height: "13px",
-                            marginTop: "8px",
-                            zIndex: "20",
-                          },
-                        }}
-                        indicatorIconButtonProps={{
-                          style: {
-                            "&:hover": {
-                              "&$button": {
-                                backgroundColor: "#10B7EC",
-                                filter: "brightness(120%)",
-                                opacity: "0.4",
-                              },
-                            },
-                            width: "5px",
-                            height: "5px",
-                            color: "grey",
-                            margin: "auto 4px",
-                          },
-                        }}
-                        activeIndicatorIconButtonProps={{
-                          style: {
-                            color: "white",
-                          },
-                        }}
-                        indicatorContainerProps={{
-                          style: {
-                            height: "15px",
-                            bottom: "5px",
-                            position: "absolute",
-                            zIndex: "10",
-                            justifyContent: "center",
-                            paddingTop: "0",
-                          },
-                        }}
-                      >
+                      <Slider {...settings} className={styles.carImageSelf}>
                         {car?.imageUrls?.length !== 0 ? (
                           car?.imageUrls?.map((url) => (
                             <span
@@ -235,7 +258,7 @@ const FleetForm = ({
                             />
                           </>
                         )}
-                      </Carousel>
+                      </Slider>
                     </div>
                     <div className={styles.carDescriptionTextBlock}>
                       <div className={styles.carDescriptionTextContainer}>
@@ -419,47 +442,13 @@ const FleetForm = ({
                   </div>
                 ))}
                 <Modal onClose={() => handleClickClose()} show={show}>
-                  <Carousel
-                    autoPlay={false}
-                    animation="slide"
-                    swipe={true}
-                    className={styles.carouselModal}
-                    navButtonsAlwaysVisible={true}
-                    navButtonsProps={{
-                      style: {
-                        width: "1em",
-                        height: "1em",
-                      },
+                  <Slider
+                    {...settings}
+                    style={{
+                      width: !isMobile ? "550px" : "239px",
+                      height: !isMobile ? "400px" : "170px",
                     }}
-                    indicatorIconButtonProps={{
-                      style: {
-                        "&:hover": {
-                          "& $button": {
-                            backgroundColor: "#10B7EC",
-                            filter: "brightness(120%)",
-                            opacity: "0.4",
-                          },
-                        },
-                        width: "15px",
-                        height: "15px",
-                        margin: "auto 4px",
-                      },
-                    }}
-                    activeIndicatorIconButtonProps={{
-                      style: {
-                        color: "white",
-                        border: "1px solid grey",
-                        padding: "0",
-                      },
-                    }}
-                    indicatorContainerProps={{
-                      style: {
-                        bottom: "10px",
-                        position: "absolute",
-                        justifyContent: "center",
-                        paddingTop: "0",
-                      },
-                    }}
+                    // className={styles.modalSlider}
                   >
                     {result?.imageUrls?.map((url) => (
                       <AspectRatio
@@ -477,15 +466,15 @@ const FleetForm = ({
                           src={url?.path}
                           style={{
                             borderRadius: "8px",
-                            maxWidth: "100%",
-                            maxHeight: "100%",
+                            width: !isMobile ? "550px" : "239px",
+                            height: !isMobile ? "400px" : "170px",
                           }}
                           alt="car"
                           key={`${url?.id}${url?.path}`}
                         />
                       </AspectRatio>
                     ))}
-                  </Carousel>
+                  </Slider>
                 </Modal>
                 {Object.keys(cars).length === 0 && (
                   <div

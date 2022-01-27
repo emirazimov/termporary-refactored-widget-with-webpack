@@ -41,21 +41,30 @@ module.exports = {
       //     "sass-loader",
       //   ],
       // },
+
       {
         test: /\.(scss|css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 2,
-            },
-          },
-          "sass-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
+
+      {
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
+        use: {
+          loader: "url-loader",
+          // options: {
+          //   limit: 100000,
+          //   name: "[name].[ext]",
+          // },
+        },
+      },
+      // {
+      //   test: /\.(gif|svg)$/i,
+      //   loader: "file-loader",
+      //   options: {
+      //     name: "/public/icons/[name].[ext]",
+      //   },
+      // },
+
       // {
       //   test: /\.scss$/,
       //   exclude: /node_modules/,
@@ -101,10 +110,10 @@ module.exports = {
     filename: "widget.js",
     chunkFilename: "widget.chunk.js",
     // Output library name
-    library: "WidgetByBookinglane",
-    libraryTarget: "umd",
-    publicPath: publicPath,
-    libraryExport: "default",
+    // library: "WidgetByBookinglane",
+    // libraryTarget: "umd",
+    // publicPath: publicPath,
+    // libraryExport: "default",
   },
   // https://webpack.js.org/configuration/dev-server/
   devServer: {

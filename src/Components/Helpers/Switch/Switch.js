@@ -84,6 +84,7 @@ const SwitchWrapper = styled.div`
           top: 0;
           left: 0;
           border-radius: 30px;
+          background: grey;
         }
         &:after {
           content: "";
@@ -93,7 +94,7 @@ const SwitchWrapper = styled.div`
             0 4px 0px 0 hsla(0, 0%, 0%, 0.04), 0 4px 9px hsla(0, 0%, 0%, 0.13),
             0 3px 3px hsla(0, 0%, 0%, 0.05);
           transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
-          background: grey;
+          background: #cfcfcf;
           height: 13px;
           width: 13px;
           top: 3px;
