@@ -70,7 +70,7 @@
     color: $font-color;
     font-size: 13px;
     padding-left: 12px;
-    border-top-left-radius: 8px;
+    // border-top-left-radius: 8px;
     padding-top: 2px;
     z-index: 4;
   }
@@ -125,8 +125,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  width: 100%;
+  position: fixed;
+  width: 94%;
   z-index: 100;
   top: 40%;
 }

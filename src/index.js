@@ -6,16 +6,16 @@ import ThemeContext from "./context"
 import store from "./Redux/redux-store"
 import reportWebVitals from "./reportWebVitals"
 
-var divForReact = document.createElement("div")
+// var divForReact = document.createElement("div")
 
-divForReact.setAttribute("id", "widget-by-bookinglane")
-document.getElementsByTagName("body")[0].appendChild(divForReact)
-var head = document.getElementsByTagName("head")[0]
+// divForReact.setAttribute("id", "widget-by-bookinglane")
+// document.getElementsByTagName("body")[0].appendChild(divForReact)
+// var head = document.getElementsByTagName("head")[0]
 
-head.innerHTML += `<link
-      rel="stylesheet"
-      href="https://bookinglane-widgets.s3.us-east-2.amazonaws.com/Global-widget-files/widget.css"
-    />`
+// head.innerHTML += `<link
+//       rel="stylesheet"
+//       href="https://bookinglane-widgets.s3.us-east-2.amazonaws.com/Global-widget-files/widget.css"
+//     />`
 
 var ThemeProviderAppBackgroundColor = window.ThemeProviderAppBackgroundColor
 
@@ -38,6 +38,11 @@ var iconsColor = window.iconsColor
 var inputsFontColor = window.inputsFontColor
 
 var backAndNextButtonsColor = window.backAndNextButtonsColor
+var backAndNextButtonsFontColor = window.backAndNextButtonsFontColor
+var backAndNextButtonsBorderColor = window.backAndNextButtonsBorderColor
+
+var fleetCarsBackgroundColor = window.fleetCarsBackgroundColor
+
 var innerTextOnHover = window.innerTextOnHover
 var inputsBackground = window.inputsBackground
 
@@ -67,6 +72,9 @@ function Main() {
           inputsBackground,
           bookNowIconFontAndCircleBorderColor,
           bookNowIconBackgroundColor,
+          backAndNextButtonsFontColor,
+          backAndNextButtonsBorderColor,
+          fleetCarsBackgroundColor,
         }}
       >
         <App />

@@ -229,8 +229,11 @@ const Luggage = ({ luggage, setLuggage }) => {
             //   }
             // }
             style={{
-              background: backAndNextButtonsColor,
+              background: inputsBackground,
               border: `1px solid ${borderColorForInnerElements}`,
+
+              borderTopLeftRadius: borderRadiusesForInnerElements,
+              borderBottomLeftRadius: borderRadiusesForInnerElements,
             }}
             className={styles.luggageQuantityMinusSelf}
             type="button"
@@ -273,7 +276,7 @@ const Luggage = ({ luggage, setLuggage }) => {
             //   height: "100%",
             // }}
             style={{
-              background: backAndNextButtonsColor,
+              background: inputsBackground,
               borderTop: `1px solid ${borderColorForInnerElements}`,
               borderBottom: `1px solid ${borderColorForInnerElements}`,
               color: inputsFontColor,
@@ -290,8 +293,10 @@ const Luggage = ({ luggage, setLuggage }) => {
             onClick={onIncrease}
             // style={{ marginLeft: "4px" }}
             style={{
-              background: backAndNextButtonsColor,
+              background: inputsBackground,
               border: `1px solid ${borderColorForInnerElements}`,
+              borderTopRightRadius: borderRadiusesForInnerElements,
+              borderBottomRightRadius: borderRadiusesForInnerElements,
             }}
             className={styles.luggageQuantityPlusSelf}
             type="button"

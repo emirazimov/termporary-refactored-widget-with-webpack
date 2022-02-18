@@ -70,6 +70,8 @@ const PaymentUIComponent = ({
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
+    backAndNextButtonsFontColor,
+    backAndNextButtonsBorderColor,
     innerTextOnHover,
     inputsFontColor,
     borderRadiusesForInnerElements,
@@ -131,10 +133,11 @@ const PaymentUIComponent = ({
                   </span>
                 </div>
                 <div className={styles.cardholderInformationInputsWrapper}>
-                  <div
-                    className={
-                      styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
-                    }
+                  <CardholderInformationInputSelfContainerJustForFirstAndLastName
+                    // className={
+                    //   styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
+                    // }
+                    inputsFontColor={inputsFontColor}
                   >
                     <input
                       name="greetClientInfo.firstName"
@@ -144,12 +147,16 @@ const PaymentUIComponent = ({
                       className={styles.cardholderInformationInputSelfFirstName}
                       style={{
                         color: inputsFontColor,
-                        border: `1px solid ${borderColorForInnerElements}`,
+                        borderLeft: `1px solid ${borderColorForInnerElements}`,
+                        borderTop: `1px solid ${borderColorForInnerElements}`,
+                        borderBottom: `1px solid ${borderColorForInnerElements}`,
                         background: inputsBackground,
+                        borderTopLeftRadius: borderRadiusesForInnerElements,
+                        borderBottomLeftRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
                     />
-                  </div>
+                  </CardholderInformationInputSelfContainerJustForFirstAndLastName>
                   <div
                     className={styles.cardholderInformationInputSelfContainer2}
                   >
@@ -161,8 +168,12 @@ const PaymentUIComponent = ({
                       className={styles.cardholderInformationInputSelfLastName}
                       style={{
                         color: inputsFontColor,
-                        border: `1px solid ${borderColorForInnerElements}`,
+                        borderRight: `1px solid ${borderColorForInnerElements}`,
+                        borderTop: `1px solid ${borderColorForInnerElements}`,
+                        borderBottom: `1px solid ${borderColorForInnerElements}`,
                         background: inputsBackground,
+                        borderTopRightRadius: borderRadiusesForInnerElements,
+                        borderBottomRightRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
                     />
@@ -181,7 +192,9 @@ const PaymentUIComponent = ({
                       style={{
                         color: inputsFontColor,
                         border: `1px solid ${borderColorForInnerElements}`,
+
                         background: inputsBackground,
+                        borderRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
                     />
@@ -198,7 +211,9 @@ const PaymentUIComponent = ({
                       style={{
                         color: inputsFontColor,
                         border: `1px solid ${borderColorForInnerElements}`,
+
                         background: inputsBackground,
+                        borderRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
                     />
@@ -220,10 +235,11 @@ const PaymentUIComponent = ({
                   className={styles.cardholderInformationInputSelfContainer}
                   style={{ width: "50%" }}
                 >
-                  <div
-                    className={
-                      styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
-                    }
+                  <CardholderInformationInputSelfContainerJustForFirstAndLastName
+                    // className={
+                    //   styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
+                    // }
+                    inputsFontColor={inputsFontColor}
                     style={{ width: "100%" }}
                   >
                     <input
@@ -237,11 +253,15 @@ const PaymentUIComponent = ({
                       style={{
                         width: "100%",
                         color: inputsFontColor,
-                        border: `1px solid ${borderColorForInnerElements}`,
+                        borderLeft: `1px solid ${borderColorForInnerElements}`,
+                        borderTop: `1px solid ${borderColorForInnerElements}`,
+                        borderBottom: `1px solid ${borderColorForInnerElements}`,
                         background: inputsBackground,
+                        borderTopLeftRadius: borderRadiusesForInnerElements,
+                        borderBottomLeftRadius: borderRadiusesForInnerElements,
                       }}
                     />
-                  </div>
+                  </CardholderInformationInputSelfContainerJustForFirstAndLastName>
                   {errors.client?.firstName && (
                     <p className={styles.errorInputs}>
                       {errors.client?.firstName.message}
@@ -263,8 +283,12 @@ const PaymentUIComponent = ({
                     style={{
                       width: "100%",
                       color: inputsFontColor,
-                      border: `1px solid ${borderColorForInnerElements}`,
+                      borderRight: `1px solid ${borderColorForInnerElements}`,
+                      borderTop: `1px solid ${borderColorForInnerElements}`,
+                      borderBottom: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      borderTopRightRadius: borderRadiusesForInnerElements,
+                      borderBottomRightRadius: borderRadiusesForInnerElements,
                     }}
                   />
                   {errors.client?.lastName && (
@@ -290,6 +314,7 @@ const PaymentUIComponent = ({
                       color: inputsFontColor,
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      borderRadius: borderRadiusesForInnerElements,
                     }}
                     ref={register}
                   />
@@ -313,6 +338,7 @@ const PaymentUIComponent = ({
                       color: inputsFontColor,
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      borderRadius: borderRadiusesForInnerElements,
                     }}
                     ref={register}
                   />
@@ -345,6 +371,7 @@ const PaymentUIComponent = ({
                       color: inputsFontColor,
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      borderRadius: borderRadiusesForInnerElements,
                     }}
                   />
                   {errors.client?.address && (
@@ -384,6 +411,7 @@ const PaymentUIComponent = ({
                             color: inputsFontColor,
                             border: `1px solid ${borderColorForInnerElements}`,
                             background: inputsBackground,
+                            borderRadius: borderRadiusesForInnerElements,
                           }}
                         />
                       </div>
@@ -423,6 +451,7 @@ const PaymentUIComponent = ({
                             color: inputsFontColor,
                             border: `1px solid ${borderColorForInnerElements}`,
                             background: inputsBackground,
+                            borderRadius: borderRadiusesForInnerElements,
                           }}
                         />
                       </div>
@@ -448,6 +477,7 @@ const PaymentUIComponent = ({
                       color: inputsFontColor,
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      borderRadius: borderRadiusesForInnerElements,
                     }}
                   />
                   {errors.client?.zip && (
@@ -491,6 +521,7 @@ const PaymentUIComponent = ({
                       color: inputsFontColor,
                       border: `1px solid ${borderColorForInnerElements}`,
                       background: inputsBackground,
+                      borderRadius: borderRadiusesForInnerElements,
                     }}
                   />
 
@@ -520,6 +551,7 @@ const PaymentUIComponent = ({
                           color: inputsFontColor,
                           border: `1px solid ${borderColorForInnerElements}`,
                           background: inputsBackground,
+                          borderRadius: borderRadiusesForInnerElements,
                         }}
                       />
                     )}
@@ -550,6 +582,7 @@ const PaymentUIComponent = ({
                           color: inputsFontColor,
                           border: `1px solid ${borderColorForInnerElements}`,
                           background: inputsBackground,
+                          borderRadius: borderRadiusesForInnerElements,
                         }}
                       />
                     )}
@@ -583,7 +616,9 @@ const PaymentUIComponent = ({
                   className={styles.buttonBackSelf}
                   style={{
                     background: backAndNextButtonsColor,
-                    color: fontColor,
+                    color: backAndNextButtonsFontColor,
+                    border: `1px solid ${backAndNextButtonsBorderColor}`,
+                    borderRadius: borderRadiusesForInnerElements,
                   }}
                 >
                   Back
@@ -595,7 +630,9 @@ const PaymentUIComponent = ({
                   style={{
                     opacity: !checked ? "0.5" : "1",
                     background: backAndNextButtonsColor,
-                    color: fontColor,
+                    color: backAndNextButtonsFontColor,
+                    border: `1px solid ${backAndNextButtonsBorderColor}`,
+                    borderRadius: borderRadiusesForInnerElements,
                   }}
                 >
                   Pay ${total}
@@ -610,6 +647,26 @@ const PaymentUIComponent = ({
 }
 
 export default PaymentUIComponent
+
+const CardholderInformationInputSelfContainerJustForFirstAndLastName = styled.div`
+  /* width: 50%; */
+  position: relative;
+  &:after {
+    position: absolute;
+    content: "";
+    border-right: 1px solid ${(props) => props.inputsFontColor};
+    top: 28%;
+    right: 0;
+    width: 1px;
+    height: 44%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+`
 
 const CheckboxLabel = styled.label`
   position: relative;

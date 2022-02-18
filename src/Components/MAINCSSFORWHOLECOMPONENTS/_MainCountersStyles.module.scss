@@ -35,7 +35,7 @@ $height-for-counters: 35px;
   cursor: pointer;
   border: none;
   background: $whole-app-background;
-  filter: brightness(85%);
+  // filter: brightness(85%);
   // position: relative;
 }
 
@@ -81,13 +81,13 @@ $height-for-counters: 35px;
   // marginLeft: "2px",
   // marginRight: "2.5px",
   // marginBottom: "4px",
-  height: calc($height-for-counters - 2px);
+  height: $height-for-counters;
   border-top: $inputs-border;
   border-bottom: $inputs-border;
   border-right: none;
   border-left: none;
   background-color: $whole-app-background;
-
+  box-sizing: border-box;
   // border: none;
   color: $font-color;
   text-align: center;

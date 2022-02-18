@@ -112,13 +112,19 @@ const CompanyProfile = ({
   const {
     ThemeProviderAppBackgroundColor,
     fontColor,
-    borderRadiuses,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
     carsTypeColor,
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
     innerTextOnHover,
     inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
   } = useContext(ThemeContext)
 
   return (
@@ -151,7 +157,11 @@ const CompanyProfile = ({
             // wrap="nowrap"
             // className={classes.companyContainer}
             className={styles.companyProfileWrapper}
-            style={{ background: ThemeProviderAppBackgroundColor }}
+            style={{
+              background: ThemeProviderAppBackgroundColor,
+              borderTopRightRadius: borderRadiusesForWholeApp,
+              borderTopLeftRadius: borderRadiusesForWholeApp,
+            }}
           >
             <div className={styles.companyProfileImageContainer}>
               <img

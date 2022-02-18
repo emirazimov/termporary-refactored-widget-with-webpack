@@ -112,12 +112,15 @@ const FleetForm = ({
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
+    backAndNextButtonsFontColor,
+    backAndNextButtonsBorderColor,
     innerTextOnHover,
     inputsFontColor,
     borderRadiusesForInnerElements,
     borderRadiusesForWholeApp,
     borderColorForInnerElements,
     borderColorForOuterApp,
+    fleetCarsBackgroundColor,
   } = useContext(ThemeContext)
 
   const ifThereisError = () => {
@@ -187,7 +190,7 @@ const FleetForm = ({
                       ) {
                         setShowSafetySeatIsNotAvailable(true)
                       } else {
-                        handleClick(car?.id)
+                        !showSafetySeatIsNotAvailable && handleClick(car?.id)
                       }
                     }}
                     className={
@@ -197,8 +200,12 @@ const FleetForm = ({
                     }
                     key={`${car?.id}${car?.name}`}
                     style={{
-                      background: `${backAndNextButtonsColor}`,
+                      cursor: showSafetySeatIsNotAvailable
+                        ? "not-allowed"
+                        : "pointer",
+                      background: fleetCarsBackgroundColor,
                       border: `1px solid ${borderColorForInnerElements}`,
+                      borderRadius: borderRadiusesForInnerElements,
                     }}
                   >
                     <div className={styles.carImageBlock}>
@@ -220,8 +227,10 @@ const FleetForm = ({
                               <div
                                 className={styles.orSimiliar}
                                 style={{
-                                  background: backAndNextButtonsColor,
+                                  background: fleetCarsBackgroundColor,
                                   color: fontColor,
+                                  // borderTopLeftRadius:
+                                  //   borderRadiusesForInnerElements,
                                 }}
                               >
                                 or similar
@@ -234,6 +243,9 @@ const FleetForm = ({
                                 onClick={(event) => {
                                   handleClickOpen(car?.id)
                                 }}
+                                style={{
+                                  borderRadius: borderRadiusesForInnerElements,
+                                }}
                               />
                             </span>
                           ))
@@ -242,8 +254,10 @@ const FleetForm = ({
                             <span
                               className={styles.orSimiliar}
                               style={{
-                                background: backAndNextButtonsColor,
+                                background: fleetCarsBackgroundColor,
                                 color: fontColor,
+                                // borderTopLeftRadius:
+                                //   borderRadiusesForInnerElements,
                               }}
                             >
                               or similar
@@ -255,6 +269,9 @@ const FleetForm = ({
                               }
                               className={styles.carImageSelf}
                               alt="car"
+                              style={{
+                                borderRadius: borderRadiusesForInnerElements,
+                              }}
                             />
                           </>
                         )}
@@ -293,7 +310,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                color: fontColor,
+                                borderBottom: `2px dotted ${fontColor}`,
                               }}
                             />
                           </div>
@@ -334,7 +351,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                color: fontColor,
+                                borderBottom: `2px dotted ${fontColor}`,
                               }}
                             />
                           </div>
@@ -375,7 +392,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                color: fontColor,
+                                borderBottom: `2px dotted ${fontColor}`,
                               }}
                             />
                           </div>
@@ -416,7 +433,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                color: fontColor,
+                                borderBottom: `2px dotted ${fontColor}`,
                               }}
                             />
                           </div>
@@ -502,7 +519,9 @@ const FleetForm = ({
                   className={styles.buttonBackSelf}
                   style={{
                     background: backAndNextButtonsColor,
-                    color: fontColor,
+                    color: backAndNextButtonsFontColor,
+                    border: `1px solid ${backAndNextButtonsBorderColor}`,
+                    borderRadius: borderRadiusesForInnerElements,
                   }}
                 >
                   Back
@@ -517,7 +536,9 @@ const FleetForm = ({
                   style={{
                     opacity: carCard ? "1" : "0.5",
                     background: backAndNextButtonsColor,
-                    color: fontColor,
+                    color: backAndNextButtonsFontColor,
+                    border: `1px solid ${backAndNextButtonsBorderColor}`,
+                    borderRadius: borderRadiusesForInnerElements,
                   }}
                 >
                   Next

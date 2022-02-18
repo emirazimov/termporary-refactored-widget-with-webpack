@@ -22,7 +22,7 @@ export const Switch = (props) => {
     bookNowIconBackgroundColor,
   } = useContext(ThemeContext)
   return (
-    <SwitchWrapper borderColorForInnerElements={borderColorForInnerElements}>
+    <SwitchWrapper fontColor={fontColor} inputsFontColor={inputsFontColor}>
       <SwitchInput
         type="checkbox"
         name={`switch${props.numberToIdentify}`}
@@ -52,6 +52,7 @@ const SwitchWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   input {
     &${SwitchInput} {
       opacity: 0; // hides checkbox
@@ -59,16 +60,17 @@ const SwitchWrapper = styled.div`
       // & + label {
       //   background: white;
       // }
+
       & + label {
         position: relative;
         display: inline-block;
         user-select: none;
         transition: 0.4s ease;
-        height: 20px;
-        width: 32px;
-        border: 1px solid ${(props) => props.borderColorForInnerElements};
+        height: 22px;
+        width: 34px;
+        border: 1px solid ${(props) => props.fontColor};
         border-radius: 11px;
-
+        box-sizing: border-box;
         &:hover {
           cursor: pointer;
           // border: 1px solid white;
@@ -84,7 +86,6 @@ const SwitchWrapper = styled.div`
           top: 0;
           left: 0;
           border-radius: 30px;
-          background: grey;
         }
         &:after {
           content: "";
@@ -94,7 +95,7 @@ const SwitchWrapper = styled.div`
             0 4px 0px 0 hsla(0, 0%, 0%, 0.04), 0 4px 9px hsla(0, 0%, 0%, 0.13),
             0 3px 3px hsla(0, 0%, 0%, 0.05);
           transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
-          background: #cfcfcf;
+          background: grey;
           height: 13px;
           width: 13px;
           top: 3px;
@@ -108,7 +109,7 @@ const SwitchWrapper = styled.div`
         &:hover::after {
           // @include inactiveMixin;
           // @include afterAnimation;
-          background: white;
+          background: ${(props) => props.fontColor};
           // height: 15px;
           // width: 15px;
           // top: 1px;
@@ -125,13 +126,13 @@ const SwitchWrapper = styled.div`
         & + label:before {
           width: 100%;
           height: 100%;
-          background: #2ecc71; // Active Color
+          /* background: grey; // Active Color */
           transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
         }
 
         & + label:after {
           left: 51%;
-          background: white;
+          background: ${(props) => props.fontColor};
         }
       }
     }

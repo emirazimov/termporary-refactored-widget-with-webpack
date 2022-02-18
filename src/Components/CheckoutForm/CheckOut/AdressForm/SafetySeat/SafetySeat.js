@@ -29,34 +29,44 @@ export default React.memo(function SafetySeat({
   childSafetySeat,
   isBoosterSeatExistOnBackend,
   isSafetySeatExistOnBackend,
+  showCarsWithSafetySeat,
+  setSafetySeatCount,
+  setBoosterSeatCount,
+  safetySeatCountRedux,
+  boosterSeatCountRedux,
 }) {
   const classes = useStyles()
   const { register } = useFormContext()
 
   const onDecreaseBoosterSeat = () => {
-    if (boosterSeat === 0) {
+    if (boosterSeatCountRedux === 0) {
       return
     }
     setBoosterSeat((boosterSeat) => boosterSeat - 1)
+    setBoosterSeatCount(boosterSeatCountRedux - 1)
   }
   const onIncreaseBoosterSeat = () => {
-    if (boosterSeat === 14) {
+    if (boosterSeatCountRedux === 14) {
       return
     }
     setBoosterSeat((boosterSeat) => boosterSeat + 1)
+    setBoosterSeatCount(boosterSeatCountRedux + 1)
+    console.log(boosterSeatCountRedux)
   }
 
   const onDecreaseChildSafetySeat = () => {
-    if (childSafetySeat === 0) {
+    if (safetySeatCountRedux === 0) {
       return
     }
     setChildSafetySeat((childSafetySeat) => childSafetySeat - 1)
+    setSafetySeatCount(safetySeatCountRedux - 1)
   }
   const onIncreaseChildSafetySeat = () => {
-    if (childSafetySeat === 14) {
+    if (safetySeatCountRedux === 14) {
       return
     }
     setChildSafetySeat((childSafetySeat) => childSafetySeat + 1)
+    setSafetySeatCount(safetySeatCountRedux + 1)
   }
 
   //   React.useEffect(() => {
@@ -84,410 +94,135 @@ export default React.memo(function SafetySeat({
   } = useContext(ThemeContext)
 
   return (
-    <Grid
-      container
-      direction={shouldSafetySeatBeColumnDirection ? "column" : "row"}
-      justify="space-between"
-      alignItems={shouldSafetySeatBeColumnDirection ? "flex-start" : "center"}
-      style={{ paddingLeft: "9px" }}
-    >
+    <div style={{ paddingLeft: "9px" }}>
       {isBoosterSeatExistOnBackend && (
-        // <Grid
-        //   item
-        //   style={{
-        //     width: "100%",
-        //   }}
-        // >
-        //   <Grid
-        //     container
-        //     direction="row"
-        //     justify="space-between"
-        //     alignItems="center"
-        //     style={{
-        //       marginTop: "6px",
-        //       marginBottom: "15px",
-        //       // width: isBoosterSeatExistOnBackend && "100%",
-        //     }}
-        //   >
-        //     <Grid item>
-        //       <Grid container direction="row">
-        //         {/* <NumberOfPassengersIcon
-        //     style={{ paddingLeft: "30px" }}
-        //   ></NumberOfPassengersIcon> */}
-        //         <Typography
-        //           style={{
-        //             color: "white",
-        //             fontSize: "12px",
-        //             wordWrap: "break-word",
-        //             marginBottom: isBoosterSeatExistOnBackend ? "2" : "8px",
-        //             width: isMobile ? "130px" : "none",
-        //           }}
-        //         >
-        //           Youth Booster Seat
-        //         </Typography>
-        //       </Grid>
-        //     </Grid>
-        //     <Grid item>
-        //       <Grid
-        //         container
-        //         direction="row"
-        //         justify="space-around"
-        //         alignItems="center"
-        //         className={classes.mainPlusMinusContainer}
-        //         // style={{
-        //         //   // background: "#282828",
-        //         //   // height: "35px",
-        //         //   // borderRadius: "5px",
-        //         //   height: "34px",
-        //         //   // paddingTop: "-4px",
-        //         // }}
-        //       >
-        //         <Grid item>
-        //           <span
-        //             onClick={onDecreaseBoosterSeat}
-        //             style={
-        //               {
-        //                 // marginRight: "5px",
-        //               }
-        //             }
-        //           >
-        //             <MinusIcon />
-        //           </span>
-        //         </Grid>
-        //         <Grid
-        //           item
-        //           style={{
-        //             textAlign: "center",
-        //             // borderBottom: "2px solid #AC8159",
-        //             // marginTop: "6px",
-        //             // paddingBottom: "2px",
-        //             // borderBottom: "2px solid #AC8159",
-        //             // height: "105%",
-        //           }}
-        //         >
-        //           <input
-        //             ref={register}
-        //             name="Youth Booster Seat"
-        //             onChange={(e) => {
-        //               setBoosterSeat(e.target.value)
-        //             }}
-        //             className="passenger"
-        //             value={boosterSeat}
-        //             size="1"
-        //             style={{
-        //               // pointerEvents: "none",
-        //               minWidth: "34px",
-        //               maxWidth: "34px",
-        //               // marginLeft: "2px",
-        //               // marginRight: "2.5px",
-        //               // marginBottom: "4px",
-        //               backgroundColor: "transparent",
-        //               border: "none",
-        //               color: "white",
-        //               textAlign: "center",
-        //               fontFamily: "Roboto",
-        //               textTransform: "none",
-        //               fontWeight: "400",
-        //               fontSize: "14px",
-        //               height: "100%",
-        //             }}
-        //             type="number"
-        //           />
-        //         </Grid>
-        //         <Grid item>
-        //           <span
-        //             onClick={onIncreaseBoosterSeat}
-        //             // style={{ marginLeft: "4px" }}
-        //           >
-        //             <PlusIcon />
-        //           </span>
-        //         </Grid>
-        //       </Grid>
-        //     </Grid>
-        //   </Grid>
-        // </Grid>
-
-        <div
-          // container
-          // direction="row"
-          // justify="space-between"
-          // alignItems="center"
-          // style={{ marginTop: "13px" }}
-          className={styles.boosterSeatCounterWrapper}
-        >
-          <div
-            // item
-            className={styles.boosterSeatCounterIconAndTitleContainer}
-          >
-            {/* <div container direction="row"> */}
-            {/* <NumberOfboosterSeatsIcon
-          style={{ paddingLeft: "30px" }}
-        ></NumberOfboosterSeatsIcon> */}
-
+        <div className={styles.boosterSeatCounterWrapper}>
+          <div className={styles.boosterSeatCounterIconAndTitleContainer}>
             <span
-              // style={{
-              //   color: "white",
-              //   fontSize: "14px",
-              //   wordWrap: "break-word",
-
-              //   width: isMobile ? "130px" : "none",
-              // }}
               className={styles.boosterSeatCounterTitle}
               style={{ color: fontColor }}
             >
               Youth Booster Seat
             </span>
-            {/* </div> */}
           </div>
-          <div
-            // item
-            className={styles.boosterSeatCounterContainer}
-          >
-            {/* <div
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-          className={classes.mainPlusMinusContainer}
-          // style={{
-          //   // background: "#282828",
-          //   // height: "35px",
-          //   // borderRadius: "5px",
-
-          //   // paddingTop: "-4px",
-          // }}
-        > */}
-            <div
-              // item
-              className={styles.boosterSeatCounterMinusContainer}
-              // style={{
-              //   borderBottom: "2px solid #AC8159",
-              //   "&:hover": { borderBottom: "2px solid white" },
-              // }}
-            >
+          <div className={styles.boosterSeatCounterContainer}>
+            <div className={styles.boosterSeatCounterMinusContainer}>
               <button
                 onClick={onDecreaseBoosterSeat}
-                // style={
-                //   {
-                //     // marginRight: "5px",
-                //   }
-                // }
                 className={styles.boosterSeatCounterMinusSelf}
                 style={{
-                  background: backAndNextButtonsColor,
+                  background: inputsBackground,
                   border: `1px solid ${borderColorForInnerElements}`,
+                  borderTopLeftRadius: borderRadiusesForInnerElements,
+                  borderBottomLeftRadius: borderRadiusesForInnerElements,
                 }}
                 type="button"
               >
                 <MinusIcon color={fontColor} />
               </button>
             </div>
-            <div
-              // style={{
-              //   textAlign: "center",
-              //   // borderBottom: "2px solid #AC8159",
-              //   // height: "100%",
-              // }}
-              className={styles.boosterSeatCounterInputContainer}
-            >
+            <div className={styles.boosterSeatCounterInputContainer}>
               <input
                 ref={register}
                 name="Youth Booster Seat"
                 onChange={(e) => {
                   setBoosterSeat(e.target.value)
+                  setBoosterSeatCount(e.target.value)
                 }}
-                // className="boosterSeat"
-                value={boosterSeat}
+                value={boosterSeatCountRedux}
                 size="1"
-                // style={{
-                //   // pointerEvents: "none",
-                //   minWidth: "34px",
-                //   maxWidth: "34px",
-                //   // marginLeft: "2px",
-                //   // marginRight: "2.5px",
-                //   // marginBottom: "4px",
-                //   backgroundColor: "transparent",
-                //   border: "none",
-                //   color: "white",
-                //   textAlign: "center",
-                //   fontFamily: "Roboto",
-                //   textTransform: "none",
-                //   fontWeight: "400",
-                //   fontSize: "14px",
-                //   height: "100%",
-                // }}
                 type="number"
                 className={styles.boosterSeatCounterInputSelf}
                 style={{
-                  background: backAndNextButtonsColor,
+                  background: inputsBackground,
                   borderTop: `1px solid ${borderColorForInnerElements}`,
                   borderBottom: `1px solid ${borderColorForInnerElements}`,
                   color: inputsFontColor,
                 }}
               />
             </div>
-            <div
-              // item
-              className={styles.boosterSeatCounterPlusContainer}
-            >
+            <div className={styles.boosterSeatCounterPlusContainer}>
               <button
                 onClick={onIncreaseBoosterSeat}
-                // style={{ marginLeft: "4px" }}
                 className={styles.boosterSeatCounterPlusSelf}
                 style={{
-                  background: backAndNextButtonsColor,
+                  background: inputsBackground,
                   border: `1px solid ${borderColorForInnerElements}`,
+                  borderTopRightRadius: borderRadiusesForInnerElements,
+                  borderBottomRightRadius: borderRadiusesForInnerElements,
                 }}
                 type="button"
               >
                 <PlusIcon color={fontColor} />
               </button>
             </div>
-            {/* </div> */}
           </div>
         </div>
       )}
       {isSafetySeatExistOnBackend && (
-        <div
-          // container
-          // direction="row"
-          // justify="space-between"
-          // alignItems="center"
-          // style={{ marginTop: "13px" }}
-          className={styles.safetySeatCounterWrapper}
-        >
-          <div
-            // item
-            className={styles.safetySeatCounterIconAndTitleContainer}
-          >
-            {/* <div container direction="row"> */}
-            {/* <NumberOfsafetySeatsIcon
-          style={{ paddingLeft: "30px" }}
-        ></NumberOfsafetySeatsIcon> */}
-
+        <div className={styles.safetySeatCounterWrapper}>
+          <div className={styles.safetySeatCounterIconAndTitleContainer}>
             <span
-              // style={{
-              //   color: "white",
-              //   fontSize: "14px",
-              //   wordWrap: "break-word",
-
-              //   width: isMobile ? "130px" : "none",
-              // }}
               className={styles.safetySeatCounterTitle}
               style={{ color: fontColor }}
             >
               {"Infant & Child Safety Seat"}
             </span>
-            {/* </div> */}
           </div>
-          <div
-            // item
-            className={styles.safetySeatCounterContainer}
-          >
-            {/* <div
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-          className={classes.mainPlusMinusContainer}
-          // style={{
-          //   // background: "#282828",
-          //   // height: "35px",
-          //   // borderRadius: "5px",
-
-          //   // paddingTop: "-4px",
-          // }}
-        > */}
-            <div
-              // item
-              className={styles.safetySeatCounterMinusContainer}
-              // style={{
-              //   borderBottom: "2px solid #AC8159",
-              //   "&:hover": { borderBottom: "2px solid white" },
-              // }}
-            >
+          <div className={styles.safetySeatCounterContainer}>
+            <div className={styles.safetySeatCounterMinusContainer}>
               <button
                 onClick={onDecreaseChildSafetySeat}
-                // style={
-                //   {
-                //     // marginRight: "5px",
-                //   }
-                // }
                 className={styles.safetySeatCounterMinusSelf}
                 style={{
-                  background: backAndNextButtonsColor,
+                  background: inputsBackground,
                   border: `1px solid ${borderColorForInnerElements}`,
+                  borderTopLeftRadius: borderRadiusesForInnerElements,
+                  borderBottomLeftRadius: borderRadiusesForInnerElements,
                 }}
                 type="button"
               >
                 <MinusIcon color={fontColor} />
               </button>
             </div>
-            <div
-              // style={{
-              //   textAlign: "center",
-              //   // borderBottom: "2px solid #AC8159",
-              //   // height: "100%",
-              // }}
-              className={styles.safetySeatCounterInputContainer}
-            >
+            <div className={styles.safetySeatCounterInputContainer}>
               <input
                 ref={register}
                 name={`Infant & Child Safety Seat`}
                 onChange={(e) => {
                   setChildSafetySeat(e.target.value)
+                  setSafetySeatCount(e.target.value)
                 }}
-                // className="passenger"
-                value={childSafetySeat}
+                value={safetySeatCountRedux}
                 size="1"
-                // style={{
-                //   // pointerEvents: "none",
-                //   minWidth: "34px",
-                //   maxWidth: "34px",
-                //   // marginLeft: "2px",
-                //   // marginRight: "2.5px",
-                //   // marginBottom: "4px",
-                //   backgroundColor: "transparent",
-                //   border: "none",
-                //   color: "white",
-                //   textAlign: "center",
-                //   fontFamily: "Roboto",
-                //   textTransform: "none",
-                //   fontWeight: "400",
-                //   fontSize: "14px",
-                //   height: "100%",
-                // }}
                 type="number"
                 className={styles.safetySeatCounterInputSelf}
                 style={{
-                  background: backAndNextButtonsColor,
+                  background: inputsBackground,
                   borderTop: `1px solid ${borderColorForInnerElements}`,
                   borderBottom: `1px solid ${borderColorForInnerElements}`,
                   color: inputsFontColor,
                 }}
               />
             </div>
-            <div
-              // item
-              className={styles.safetySeatCounterPlusContainer}
-            >
+            <div className={styles.safetySeatCounterPlusContainer}>
               <button
                 onClick={onIncreaseChildSafetySeat}
-                // style={{ marginLeft: "4px" }}
                 className={styles.safetySeatCounterPlusSelf}
                 style={{
-                  background: backAndNextButtonsColor,
+                  background: inputsBackground,
                   border: `1px solid ${borderColorForInnerElements}`,
+                  borderTopRightRadius: borderRadiusesForInnerElements,
+                  borderBottomRightRadius: borderRadiusesForInnerElements,
                 }}
                 type="button"
               >
                 <PlusIcon color={fontColor} />
               </button>
             </div>
-            {/* </div> */}
           </div>
         </div>
       )}
-    </Grid>
+    </div>
   )
 })

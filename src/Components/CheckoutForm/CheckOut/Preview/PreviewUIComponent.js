@@ -117,12 +117,15 @@ const PreviewUIComponent = ({
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
+    backAndNextButtonsFontColor,
+    backAndNextButtonsBorderColor,
     innerTextOnHover,
     inputsFontColor,
     borderRadiusesForInnerElements,
     borderRadiusesForWholeApp,
     borderColorForInnerElements,
     borderColorForOuterApp,
+    fleetCarsBackgroundColor,
   } = useContext(ThemeContext)
 
   return (
@@ -152,8 +155,9 @@ const PreviewUIComponent = ({
         <div
           className={styles.carContainer}
           style={{
-            background: `${backAndNextButtonsColor}`,
+            background: fleetCarsBackgroundColor,
             border: `1px solid ${borderColorForInnerElements}`,
+            borderRadius: borderRadiusesForInnerElements,
           }}
         >
           <div className={styles.carImageBlock}>
@@ -166,48 +170,15 @@ const PreviewUIComponent = ({
                     // color="primary"
                   >
                     <div
-                      // style={{
-                      //   position: "absolute",
-                      //   width: "75px",
-                      //   height: "20px",
-                      //   backgroundColor: "#AC8159",
-                      //   color: "black",
-                      //   fontSize: "13px",
-                      //   paddingLeft: "12px",
-                      //   borderTopLeftRadius: "9px",
-                      //   paddingTop: "2px",
-                      // }}
                       className={styles.orSimiliar}
                       style={{
-                        background: backAndNextButtonsColor,
+                        background: fleetCarsBackgroundColor,
                         color: fontColor,
                       }}
                     >
                       or similar
                     </div>
-                    {/* <AspectRatio
-                      // ratio="560/315"
-                      style={{
-                        display: "block",
-                        width: !isMobile ? "100%" : "100%",
-                        height: !isMobile ? "112px" : "116px",
 
-                        cursor: "zoom-in",
-                      }}
-                    >
-                      <img
-                        src={url.path}
-                        // style={{
-                        //   width: !isMobile ? "100%" : "100%",
-                        //   height: !isMobile ? "118px" : "116px",
-                        //   borderRadius: "9px",
-                        //   cursor: "zoom-in",
-                        // }}
-                        alt="car"
-                        onClick={() => handleClickOpen()}
-                        className={styles.carImageSelf}
-                      />
-                    </AspectRatio> */}
                     <img
                       src={url.path}
                       // style={{
@@ -223,7 +194,7 @@ const PreviewUIComponent = ({
                         // display: "block",
                         width: !isMobile ? "100%" : "100%",
                         height: !isMobile ? "112px" : "116px",
-
+                        borderTopLeftRadius: borderRadiusesForInnerElements,
                         cursor: "zoom-in",
                       }}
                     />
@@ -234,7 +205,7 @@ const PreviewUIComponent = ({
                   <span
                     className={styles.orSimiliar}
                     style={{
-                      background: backAndNextButtonsColor,
+                      background: fleetCarsBackgroundColor,
                       color: fontColor,
                     }}
                   >
@@ -246,7 +217,7 @@ const PreviewUIComponent = ({
                       display: "block",
                       width: !isMobile ? "100%" : "100%",
                       height: !isMobile ? "112px" : "116px",
-
+                      borderTopLeftRadius: borderRadiusesForInnerElements,
                       cursor: "zoom-in",
                     }}
                   >
@@ -949,7 +920,9 @@ const PreviewUIComponent = ({
               className={styles.buttonBackSelf}
               style={{
                 background: backAndNextButtonsColor,
-                color: fontColor,
+                color: backAndNextButtonsFontColor,
+                border: `1px solid ${backAndNextButtonsBorderColor}`,
+                borderRadius: borderRadiusesForInnerElements,
               }}
             >
               Back
@@ -967,7 +940,9 @@ const PreviewUIComponent = ({
               className={styles.buttonNextSelf}
               style={{
                 background: backAndNextButtonsColor,
-                color: fontColor,
+                color: backAndNextButtonsFontColor,
+                border: `1px solid ${backAndNextButtonsBorderColor}`,
+                borderRadius: borderRadiusesForInnerElements,
               }}
             >
               Next

@@ -24,6 +24,10 @@ const Hours = ({
   setHourly,
   hoursAddressForm,
   setHoursAddressForm,
+  hourlyAndSeatsRedux,
+  redBorderOnSubmitForHours,
+  setHoursRedux,
+  hoursCount,
 }) => {
   const classes = useStyles()
 
@@ -32,13 +36,15 @@ const Hours = ({
   //   const [hoursAddressForm, setHoursAddressForm] = useState(0)
 
   const onDecrease = () => {
-    if (hoursAddressForm === 1) {
+    if (hoursCount === 0) {
       return
     }
     setHoursAddressForm((hoursAddressForm) => hoursAddressForm - 1)
+    setHoursRedux(hoursCount - 1)
   }
   const onIncrease = () => {
     setHoursAddressForm((hoursAddressForm) => hoursAddressForm + 1)
+    setHoursRedux(hoursCount + 1)
   }
 
   //   React.useEffect(() => {
@@ -89,7 +95,15 @@ const Hours = ({
         </h3>
         {/* </div> */}
       </div>
-      <div className={styles.hoursCounterPlusMinusContainer}>
+      <div
+        className={styles.hoursCounterPlusMinusContainer}
+        // style={{
+        //   borderRadius: `${borderRadiusesForInnerElements}`,
+        //   border: redBorderOnSubmitForHours
+        //     ? `1px solid red`
+        //     : "1px solid transparent",
+        // }}
+      >
         {/* <div
           // container
           // direction="row"
@@ -110,13 +124,17 @@ const Hours = ({
             onClick={onDecrease}
             className={styles.hoursCounterMinus}
             style={{
-              background: backAndNextButtonsColor,
-              border: `1px solid ${borderColorForInnerElements}`,
+              background: inputsBackground,
+              border: redBorderOnSubmitForHours
+                ? `1px solid red`
+                : `1px solid ${borderColorForInnerElements}`,
+              borderTopLeftRadius: borderRadiusesForInnerElements,
+              borderBottomLeftRadius: borderRadiusesForInnerElements,
             }}
             type="button"
             // style={{ marginRight: "5px" }}
           >
-            <MinusIcon color={fontColor} />
+            <MinusIcon color={inputsFontColor} />
           </button>
         </div>
         <div
@@ -137,8 +155,9 @@ const Hours = ({
             // className="passenger"
             onChange={(e) => {
               setHoursAddressForm(e.target.value)
+              setHoursRedux(e.target.value)
             }}
-            value={hoursAddressForm}
+            value={hoursCount}
             size="1"
             // style={{
             //   // pointerEvents: "none",
@@ -158,9 +177,13 @@ const Hours = ({
             //   height: "100%",
             // }}
             style={{
-              background: backAndNextButtonsColor,
-              borderTop: `1px solid ${borderColorForInnerElements}`,
-              borderBottom: `1px solid ${borderColorForInnerElements}`,
+              background: inputsBackground,
+              borderTop: redBorderOnSubmitForHours
+                ? `1px solid red`
+                : `1px solid ${borderColorForInnerElements}`,
+              borderBottom: redBorderOnSubmitForHours
+                ? `1px solid red`
+                : `1px solid ${borderColorForInnerElements}`,
               color: inputsFontColor,
             }}
             type="number"
@@ -172,13 +195,17 @@ const Hours = ({
             className={styles.hoursCounterPlus}
             onClick={onIncrease}
             style={{
-              background: backAndNextButtonsColor,
-              border: `1px solid ${borderColorForInnerElements}`,
+              background: inputsBackground,
+              border: redBorderOnSubmitForHours
+                ? `1px solid red`
+                : `1px solid ${borderColorForInnerElements}`,
+              borderTopRightRadius: borderRadiusesForInnerElements,
+              borderBottomRightRadius: borderRadiusesForInnerElements,
             }}
             type="button"
             // style={{ marginLeft: "4px" }}
           >
-            <PlusIcon color={fontColor} />
+            <PlusIcon color={inputsFontColor} />
           </button>
           {/* </div> */}
         </div>

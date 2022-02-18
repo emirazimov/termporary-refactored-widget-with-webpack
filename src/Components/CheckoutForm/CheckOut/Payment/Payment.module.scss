@@ -359,6 +359,7 @@ option {
 .cardholderInformationInputSelfFirstName,
 .cardholderInformationInputSelfLastName {
   @include main-inputs-size-and-background-styles-etc;
+  box-sizing: border-box;
   // &::placeholder {
   //   @include payment-inputs-with-left-padding;
   // }
@@ -383,6 +384,7 @@ option {
 .cardholderInformationInputWithFullWidthSelf,
 .cardholderInformationInputWithFullWidthSelfState {
   @include main-inputs-size-and-background-styles-etc;
+  box-sizing: border-box;
   // &::placeholder {
   //   @include payment-inputs-with-left-padding;
   // }

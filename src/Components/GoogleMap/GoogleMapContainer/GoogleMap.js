@@ -173,9 +173,9 @@ const GoogleMap = React.memo(
       }
       const getDestinationsIcons = (id, destinations) => {
         if (id === 0) {
-          return <StartLocationIcon color={fontColor} />
+          return <StartLocationIcon color={inputsFontColor} />
         } else if (id === destinations.length - 1) {
-          return <EndLocationIcon color={fontColor} />
+          return <EndLocationIcon color={inputsFontColor} />
         }
       }
 
@@ -229,9 +229,7 @@ const GoogleMap = React.memo(
                 // }
                 className={styles.mapInputsContainer}
                 style={{
-                  border: flagForGotAddressError
-                    ? "1px solid red"
-                    : "1px solid transparent",
+                  border: flagForGotAddressError ? "1px solid red" : "none",
                 }}
               >
                 <TransitionGroup>
@@ -405,13 +403,15 @@ const GoogleMap = React.memo(
                                     // },
                                     // }}
                                     style={{
-                                      height: "33px",
+                                      // height: "33px",
                                       color: inputsFontColor,
                                       border:
                                         redBorderOnSubmit || redBorderOnSubmit2
                                           ? `1px solid red`
                                           : `1px solid ${borderColorForInnerElements}`,
                                       background: inputsBackground,
+                                      borderRadius:
+                                        borderRadiusesForInnerElements,
                                     }}
                                     placeholder={id === 0 ? "From" : "To"}
                                     className={setDestinationsIcons(
@@ -425,7 +425,7 @@ const GoogleMap = React.memo(
                                       onClick={addEndPoint}
                                       className={styles.addLocationIcon}
                                     >
-                                      <AddLocIcon color={fontColor} />
+                                      <AddLocIcon color={inputsFontColor} />
                                     </span>
                                   )}
                                   {id > 0 && id < destinations.length - 1 && (
@@ -433,7 +433,7 @@ const GoogleMap = React.memo(
                                       onClick={() => removeEndPoint(id)}
                                       className={styles.deleteLocationIcon}
                                     >
-                                      <DeleteLocIcon color={fontColor} />
+                                      <DeleteLocIcon color={inputsFontColor} />
                                     </span>
                                   )}
                                   {/* </div> */}
@@ -478,6 +478,7 @@ const GoogleMap = React.memo(
                                             suggestion
                                           )}
                                           className={styles.itemInsideDropDown}
+                                          // style={{ width: "96%" }}
                                         >
                                           {/* <MenuItem
                                         onMouseEnter={(e) => (

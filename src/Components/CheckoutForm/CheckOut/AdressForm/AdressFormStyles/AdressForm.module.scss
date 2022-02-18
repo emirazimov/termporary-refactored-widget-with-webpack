@@ -44,6 +44,7 @@ $background-position-x-for-date-time-picker: 3%;
   // z-index: 18;
   @include main-inputs-size-and-background-styles-etc;
   @include addressform-inputs-with-icons;
+  box-sizing: border-box;
   padding-right: 8px;
   // text-indent: 38px;
   // padding: 0;
@@ -62,6 +63,7 @@ $background-position-x-for-date-time-picker: 3%;
 
   @include main-inputs-size-and-background-styles-etc;
   @include addressform-inputs-with-icons;
+  box-sizing: border-box;
 }
 .dateTimeBlockContainer {
   width: 100%;
@@ -82,8 +84,12 @@ $background-position-x-for-date-time-picker: 3%;
   // @include date_picker_icon;
 
   @include main-inputs-size-and-background-styles-etc;
+
   // @include addressform-inputs-with-icons;
   // padding-right: 0;
+  box-sizing: border-box;
+  font-size: 13px;
+  padding-top: 8px;
   text-indent: 36px;
   background-position-x: $background-position-x-for-date-time-picker;
   background-position-y: 60%;
@@ -111,6 +117,7 @@ $background-position-x-for-date-time-picker: 3%;
   // @include clock_icon;
   @include main-inputs-size-and-background-styles-etc;
   @include addressform-inputs-with-icons;
+  box-sizing: border-box;
   background-position-x: $background-position-x-for-date-time-picker;
 }
 .timePickerInputWithRedBorder {
