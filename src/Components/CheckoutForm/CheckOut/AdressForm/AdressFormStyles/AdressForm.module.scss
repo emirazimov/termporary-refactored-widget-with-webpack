@@ -1,16 +1,16 @@
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage' as *;
 // @use "../../../../../../../../global" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
 
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
-@use "../../FleetForm/FleetForm.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
+@use '../../FleetForm/FleetForm.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss'
   as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ColorsForCustomize.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_BorderRadiuses.module.scss" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ColorsForCustomize.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_BorderRadiuses.module.scss' as *;
 
 $background-position-x-for-date-time-picker: 3%;
 
@@ -133,8 +133,25 @@ $background-position-x-for-date-time-picker: 3%;
 
   border-radius: 3px;
 }
-.toggleButtonAMNotSelected,
-.toggleButtonPMNotSelected {
+// .toggleButtonAMNotSelected,
+// .toggleButtonPMNotSelected {
+//   width: 30px;
+//   height: 21px;
+//   font-size: 13px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: $whole-app-background;
+//   color: $font-color;
+//   transition: 0.1s;
+//   &:hover {
+//     filter: brightness(85%);
+//     cursor: pointer;
+//     transition: 0.15s;
+//   }
+// }
+.toggleButtonAM,
+.toggleButtonPM {
   width: 30px;
   height: 21px;
   font-size: 13px;
@@ -144,24 +161,8 @@ $background-position-x-for-date-time-picker: 3%;
   background: $whole-app-background;
   color: $font-color;
   transition: 0.1s;
-  &:hover {
-    filter: brightness(85%);
-    cursor: pointer;
-    transition: 0.15s;
-  }
-}
-.toggleButtonAMSelected,
-.toggleButtonPMSelected {
-  width: 30px;
-  height: 21px;
-  font-size: 13px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: $whole-app-background;
-  color: $font-color;
-  transition: 0.1s;
-  filter: brightness(125%);
+  cursor: pointer;
+  // filter: brightness(125%);
   // border: 1px solid green;
 }
 .safetySeatWrapper,

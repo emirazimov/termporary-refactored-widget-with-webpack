@@ -27,56 +27,6 @@ import ThemeContext from "../../context"
 import { CloseWidgetIcon } from "../../assets/icons"
 import { setHourlyRedux } from "../../Redux/hourly-reducer"
 
-// const useStyles = makeStyles((theme) => ({
-//   companyContainer: {
-//     padding: theme.spacing(1.5),
-//     // position: 'fixed',
-//     background: "black",
-//   },
-//   companyLogo: {
-//     borderRadius: "100px",
-//     border: "1px solid white",
-//     width: "55px",
-//     height: "55px",
-//     marginLeft: "5px",
-//     userDrag: "none",
-//     userSelect: "none",
-//     mozUserSelect: "none",
-//     webkitUserDrag: "none",
-//     webkitUserSelect: "none",
-//     msUserSelect: "none",
-//   },
-//   companyName: {
-//     fontFamily: "Roboto",
-//     fontWeight: "700",
-//     color: "white",
-//     fontSize: "17px",
-//     [theme.breakpoints.up(768)]: {
-//       fontSize: "20.5px",
-//     },
-//     textTransform: "none",
-//   },
-//   closeIcon: {
-//     textAlign: "center",
-//     verticalAlign: "sub",
-//     width: "28px",
-//     height: "22px",
-//     paddingTop: "7px",
-//     "&:hover": {
-//       textAlign: "center",
-//       width: "28px",
-//       height: "22px",
-//       paddingTop: "7px",
-//       borderRadius: "20px",
-//       background: "#4F4F4F",
-//       marginRight: "10px",
-//       transition: "0.2s",
-//       "& $path": {
-//         fill: "white",
-//       },
-//     },
-//   },
-// }))
 const CompanyProfile = ({
   initializing,
   profile,

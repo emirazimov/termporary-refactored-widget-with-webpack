@@ -193,16 +193,17 @@ const App = (props) => {
     return <Slide direction="up" ref={ref} {...props} />
   })
 
-  const isMobile = useMediaQuery("(max-width:530px)")
+  // const isMobile = useMediaQuery("(max-width:530px)")
   const isiPad = useMediaQuery("(max-width:1024px)")
-  const forBostonLimousineToDisplayIconOnTheLeft =
-    useMediaQuery("(max-width:500px)")
+  const isMobile = useMediaQuery("(max-width:500px)")
 
   let stylesForBody = `
+  pointer-events: none;
     z-index: 1000000000; 
     position: fixed;
   bottom: 0;
   width: 100%;
+  
   `
   //   bottom: 50px;
   // right: 0;
@@ -249,15 +250,16 @@ const App = (props) => {
     innerTextOnHover,
     inputsFontColor,
     inputsBackground,
-    bookNowIconFontAndCircleBorderColor,
+    bookNowIconCircleBorderColor,
     bookNowIconBackgroundColor,
+    bookNowIconInnerElementsColor,
   } = useContext(ThemeContext)
 
   return (
     <>
       {/* {props.getCompanyToken() && ( */}
       <>
-        {forBostonLimousineToDisplayIconOnTheLeft ? (
+        {isMobile ? (
           <>
             <div
               ref={containerRef}
@@ -275,27 +277,37 @@ const App = (props) => {
                   setBackgroundScrollStop(true)
                   setExpanded(true)
                 }}
-                bookNowIconFontAndCircleBorderColor={
-                  bookNowIconFontAndCircleBorderColor
-                }
+                bookNowIconCircleBorderColor={bookNowIconCircleBorderColor}
                 bookNowIconBackgroundColor={bookNowIconBackgroundColor}
                 disabled={disabled}
                 ref={refOfBookNow}
-                id="booknowIcon"
+                id="booknowIconMobile"
                 style={{
                   left:
                     leftOrRight == "left"
-                      ? `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 30px)`
-                      : `calc(${positioningForWithoutDraggableAppXAndY.current.x}px + 30px)`,
-                  // right: "0",
+                      ? `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 15px)`
+                      : `calc(${positioningForWithoutDraggableAppXAndY.current.x}px + 50px)`,
+                  right: "0",
                   bottom: `calc(${positioningForWithoutDraggableAppXAndY.current.y}px - 30px)`,
                   display: expanded ? "none" : "block",
                 }}
               >
-                <BookNowIconForMobile
-                  color={bookNowIconFontAndCircleBorderColor}
-                />
-                <span className={styles.bookNowMobile}>BOOK NOW!</span>
+                <BookNowIconForMobile color={bookNowIconInnerElementsColor} />
+                <span
+                  className={styles.bookNowMobile}
+                  style={{
+                    color: bookNowIconInnerElementsColor,
+                    fontFamily: "'Vazir', sans-serif",
+                    fontSize: "13px",
+                    position: "absolute",
+                    bottom: "24%",
+                    left: "11%",
+                    whiteSpace: "nowrap",
+                    fontFamily: "Roboto",
+                  }}
+                >
+                  BOOK NOW!
+                </span>
               </BookNowIconBlock>
 
               <div
@@ -353,94 +365,9 @@ const App = (props) => {
           </>
         ) : (
           <>
-            {forBostonLimousineToDisplayIconOnTheLeft && (
-              <div
-                ref={containerRef}
-                className={styles.mainBookNowWrapper}
-                style={{
-                  left: `${positioningForWithoutDraggableAppXAndY.current.x}px`,
-                  bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
-                }}
-              >
-                <BookNowIconBlock
-                  // elevation={0}
-                  // disabled={disabled}
-                  onClick={() => {
-                    handleChange()
-                    setBackgroundScrollStop(true)
-                    setExpanded(true)
-                  }}
-                  bookNowIconFontAndCircleBorderColor={
-                    bookNowIconFontAndCircleBorderColor
-                  }
-                  bookNowIconBackgroundColor={bookNowIconBackgroundColor}
-                  disabled={disabled}
-                  ref={refOfBookNow}
-                  id="booknowIcon"
-                  style={{
-                    marginLeft:
-                      leftOrRight == "left"
-                        ? `${positioningForWithoutDraggableAppXAndY.current.x}px`
-                        : `calc(${positioningForWithoutDraggableAppXAndY.current.x}px - 180px)`,
-                    bottom: `${positioningForWithoutDraggableAppXAndY.current.y}px`,
-                    display: expanded ? "none" : "block",
-                  }}
-                >
-                  <BookNowIcon color={bookNowIconFontAndCircleBorderColor} />
-                  <span className={styles.bookNow}>BOOK NOW!</span>
-                </BookNowIconBlock>
-                {/* {jwtToken && ( */}
-                <div
-                  className={
-                    expanded
-                      ? styles.cardContainerShow
-                      : styles.cardContainerHidden
-                  }
-                >
-                  <div
-                    // position="sticky"
-                    className={styles.divForStickyHeader}
-                  >
-                    <div className="companyProfileClassForDrag">
-                      {/* этот класс c div-oм для реакт драга чтобы можно было перетаскивать по шапке виджета*/}
-                      <div className={styles.companyProfile}>
-                        {/* это для pointer cursora */}
-                        <CompanyProfile
-                          setExpanded={handleClose}
-                          initializing={props.initializing}
-                          expanded={expanded}
-                          setActiveStep={setActiveStep}
-                          setBackgroundScrollStop={setBackgroundScrollStop}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    ref={refOfCard}
-                    // style={{ borderRadius: "10px" }}
-                    className={styles.contentContainer}
-                    style={{ background: ThemeProviderAppBackgroundColor }}
-                  >
-                    {props.initializing ? (
-                      <CheckOut
-                        isFetching={props.isFetching}
-                        setExpanded={handleClose}
-                        activeStep={activeStep}
-                        setActiveStep={setActiveStep}
-                        nextStep={nextStep}
-                        backStep={backStep}
-                        setBackgroundScrollStop={setBackgroundScrollStop}
-                      />
-                    ) : (
-                      <Preloader />
-                    )}
-                  </div>
-                </div>
-                )}
-                {/* {!jwtToken && null} */}
-              </div>
-            )}
+            {/* {forBostonLimousineToDisplayIconOnTheLeft && (
+              
+            )} */}
             {isiPad && (
               <div
                 ref={containerRef}
@@ -461,9 +388,7 @@ const App = (props) => {
                     setBackgroundScrollStop(true)
                     setExpanded(true)
                   }}
-                  bookNowIconFontAndCircleBorderColor={
-                    bookNowIconFontAndCircleBorderColor
-                  }
+                  bookNowIconCircleBorderColor={bookNowIconCircleBorderColor}
                   bookNowIconBackgroundColor={bookNowIconBackgroundColor}
                   disabled={disabled}
                   ref={refOfBookNow}
@@ -474,8 +399,22 @@ const App = (props) => {
                     display: expanded ? "none" : "block",
                   }}
                 >
-                  <BookNowIcon color={bookNowIconFontAndCircleBorderColor} />
-                  <span className={styles.bookNow}>BOOK NOW!</span>
+                  <BookNowIcon color={bookNowIconInnerElementsColor} />
+                  <span
+                    className={styles.bookNow}
+                    style={{
+                      color: bookNowIconInnerElementsColor,
+                      fontFamily: "'Vazir', sans-serif",
+                      fontSize: "15px",
+                      position: "absolute",
+                      bottom: "24%",
+                      left: "11%",
+                      whiteSpace: "nowrap",
+                      fontFamily: "Roboto",
+                    }}
+                  >
+                    BOOK NOW!
+                  </span>
                 </BookNowIconBlock>
                 {/* {jwtToken && ( */}
                 <div
@@ -495,7 +434,13 @@ const App = (props) => {
                   >
                     <div className="companyProfileClassForDrag">
                       {/* этот класс c div-oм для реакт драга чтобы можно было перетаскивать по шапке виджета*/}
-                      <div className={styles.companyProfile}>
+                      <div
+                        className={styles.companyProfile}
+                        style={{
+                          borderTopRightRadius: borderRadiusesForWholeApp,
+                          borderTopLeftRadius: borderRadiusesForWholeApp,
+                        }}
+                      >
                         {/* это для pointer cursora */}
                         <CompanyProfile
                           setExpanded={handleClose}
@@ -513,8 +458,8 @@ const App = (props) => {
                     className={styles.contentContainer}
                     style={{
                       background: ThemeProviderAppBackgroundColor,
-                      borderTopRightRadius: borderRadiusesForWholeApp,
-                      borderTopLeftRadius: borderRadiusesForWholeApp,
+                      borderBottomRightRadius: borderRadiusesForWholeApp,
+                      borderBottomLeftRadius: borderRadiusesForWholeApp,
                     }}
                   >
                     {props.initializing ? (
@@ -563,17 +508,29 @@ const App = (props) => {
                     //     : styles.mainBookNowIconEnabledWhileDragging
                     // }
                     style={{ display: expanded ? "none" : "block" }}
-                    bookNowIconFontAndCircleBorderColor={
-                      bookNowIconFontAndCircleBorderColor
-                    }
+                    bookNowIconCircleBorderColor={bookNowIconCircleBorderColor}
                     bookNowIconBackgroundColor={bookNowIconBackgroundColor}
                     disabled={disabled}
                     ref={refOfBookNow}
                     id="booknowIcon"
                   >
                     {/* <div className={styles.letterB}></div> */}
-                    <BookNowIcon color={bookNowIconFontAndCircleBorderColor} />
-                    <span className={styles.bookNow}>BOOK NOW!</span>
+                    <BookNowIcon color={bookNowIconInnerElementsColor} />
+                    <span
+                      className={styles.bookNow}
+                      style={{
+                        color: bookNowIconInnerElementsColor,
+                        fontFamily: "'Vazir', sans-serif",
+                        fontSize: "15px",
+                        position: "absolute",
+                        bottom: "24%",
+                        left: "11%",
+                        whiteSpace: "nowrap",
+                        fontFamily: "Roboto",
+                      }}
+                    >
+                      BOOK NOW!
+                    </span>
                   </BookNowIconBlock>
                   {/* {jwtToken && ( */}
                   <div
@@ -666,6 +623,8 @@ const BookNowIconBlock = styled.div`
   pointer-events: ${(props) => {
     if (props.disabled) {
       return "none"
+    } else {
+      return "auto"
     }
   }};
   opacity: ${(props) => {
@@ -675,20 +634,15 @@ const BookNowIconBlock = styled.div`
   }};
   @keyframes pulse {
     10% {
-      -moz-box-shadow: 0 0 0 0
-        ${(props) => props.bookNowIconFontAndCircleBorderColor};
-      box-shadow: 0 0 0 0
-        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+      -moz-box-shadow: 0 0 0 0 ${(props) => props.bookNowIconCircleBorderColor};
+      box-shadow: 0 0 0 0 ${(props) => props.bookNowIconCircleBorderColor};
     }
     38% {
-      -moz-box-shadow: 0 0 0 0
-        ${(props) => props.bookNowIconFontAndCircleBorderColor};
-      box-shadow: 0 0 3px 4.5px
-        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+      -moz-box-shadow: 0 0 0 0 ${(props) => props.bookNowIconCircleBorderColor};
+      box-shadow: 0 0 3px 4.5px ${(props) => props.bookNowIconCircleBorderColor};
     }
     100% {
-      -moz-box-shadow: 0 0 0 0
-        ${(props) => props.bookNowIconFontAndCircleBorderColor};
+      -moz-box-shadow: 0 0 0 0 ${(props) => props.bookNowIconCircleBorderColor};
       box-shadow: 0 0 0 0 tranparent;
     }
   }

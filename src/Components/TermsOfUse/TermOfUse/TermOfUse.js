@@ -46,7 +46,10 @@ export default function TermsOfUse() {
           id='scroll-dialog-title'
           style={{ height: '55px', backgroundColor: 'black' }}
         > */}
-        <div style={{ width: "600px", height: "100%" }}>
+        <div
+          // style={{ width: "600px", height: "100%" }}
+          className={styles.termOfUseContainer}
+        >
           <p>Terms Of Use</p>
           {/* </DialogTitle> */}
           {/* <DialogContent style={{ backgroundColor: 'black' }}>

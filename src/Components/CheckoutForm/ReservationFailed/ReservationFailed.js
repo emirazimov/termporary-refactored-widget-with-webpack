@@ -1,12 +1,32 @@
-import React from "react"
+import React, { useContext } from "react"
 // import Grid from "@material-ui/core/Grid"
 // import Typography from "@material-ui/core/Typography"
 // import Button from "@material-ui/core/Button"
 import { connect } from "react-redux"
 import styles from "./ReservationFailed.module.scss"
 import { ErrorIcon } from "../../../assets/icons"
+import ThemeContext from "../../../context"
 
 const ReservationFailed = ({ setActiveStep, failMessage }) => {
+  const {
+    ThemeProviderAppBackgroundColor,
+    fontColor,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
+    carsTypeColor,
+    hoverColor,
+    iconsColor,
+    innerTextOnHover,
+    inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
+    backAndNextButtonsColor,
+    backAndNextButtonsFontColor,
+  } = useContext(ThemeContext)
+
   return (
     <div
       // container
@@ -27,6 +47,7 @@ const ReservationFailed = ({ setActiveStep, failMessage }) => {
           //   color: "white",
           // }}
           className={styles.reservationFailedTextSelf}
+          style={{ color: fontColor }}
         >
           {failMessage}
         </p>
@@ -37,6 +58,10 @@ const ReservationFailed = ({ setActiveStep, failMessage }) => {
           // variant="contained"
           onClick={() => setActiveStep(3)}
           className={styles.reservationFailedButtonSelf}
+          style={{
+            background: backAndNextButtonsColor,
+            color: backAndNextButtonsFontColor,
+          }}
         >
           Back
         </button>

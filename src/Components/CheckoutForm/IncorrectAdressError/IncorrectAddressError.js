@@ -1,5 +1,5 @@
 // import { CircularProgress } from "@material-ui/core"
-import React from "react"
+import React, { useContext } from "react"
 // import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import { ErrorIcon } from "../../../assets/icons"
 // import { Grid, Typography } from "@material-ui/core"
@@ -8,6 +8,7 @@ import { connect } from "react-redux"
 import { setError } from "../../../Redux/car-reducer"
 import { setGotAddressError } from "../../../Redux/company-profile-reducer"
 import styles from "./IncorrectAddressError.module.scss"
+import ThemeContext from "../../../context"
 
 // const theme = createMuiTheme({
 //   palette: {
@@ -16,12 +17,32 @@ import styles from "./IncorrectAddressError.module.scss"
 //     },
 //   },
 // })
+
 const IncorrectAddressError = ({
   error,
   setActiveStep,
   setError,
   setGotAddressError,
 }) => {
+  const {
+    ThemeProviderAppBackgroundColor,
+    fontColor,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
+    carsTypeColor,
+    hoverColor,
+    iconsColor,
+    innerTextOnHover,
+    inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
+    backAndNextButtonsColor,
+    backAndNextButtonsFontColor,
+  } = useContext(ThemeContext)
+
   return (
     <div
       // style={{
@@ -53,12 +74,14 @@ const IncorrectAddressError = ({
           // style={{ fontWeight: "700", fontSize: "19px", marginTop: "15px" }}
 
           className={styles.incorrectAddressErrorTextSelf1}
+          style={{ color: fontColor }}
         >
           Oops!
         </p>
         <p
           // style={{ textAlign: "center", marginTop: "15px", color: "#BCBCBC" }}
           className={styles.incorrectAddressErrorTextSelf2}
+          style={{ color: fontColor }}
         >
           {error}
         </p>
@@ -73,6 +96,10 @@ const IncorrectAddressError = ({
             setGotAddressError(true)
           }}
           className={styles.incorrectAddressErrorButtonSelf}
+          style={{
+            background: backAndNextButtonsColor,
+            color: backAndNextButtonsFontColor,
+          }}
           // style={{ marginTop: "17px", background: "#c9c9c9" }}
         >
           Back

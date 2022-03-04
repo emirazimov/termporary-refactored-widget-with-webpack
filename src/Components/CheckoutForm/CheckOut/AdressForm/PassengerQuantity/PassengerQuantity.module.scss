@@ -1,11 +1,11 @@
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss"
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss'
   as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_AppBackgroundColor.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_AppBackgroundColor.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss'
   as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss' as *;
 
 .passengerQuantityWrapper {
   display: flex;
@@ -34,6 +34,8 @@
 
 .passengerQuantityInputSelf {
   @include counters-input-styles;
+
+  // outline: none;
 }
 
 .passengerQuantityMinusSelf,

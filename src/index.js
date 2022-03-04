@@ -31,6 +31,8 @@ var borderColorForOuterApp = window.borderColorForOuterApp
 
 var carsTypeColor = window.carsTypeColor
 
+var carsTypeBorderColor = window.carsTypeBorderColor
+
 var hoverColor = window.hoverColor
 
 var iconsColor = window.iconsColor
@@ -46,10 +48,12 @@ var fleetCarsBackgroundColor = window.fleetCarsBackgroundColor
 var innerTextOnHover = window.innerTextOnHover
 var inputsBackground = window.inputsBackground
 
-var bookNowIconFontAndCircleBorderColor =
-  window.bookNowIconFontAndCircleBorderColor
+var bookNowIconCircleBorderColor = window.bookNowIconCircleBorderColor
 
 var bookNowIconBackgroundColor = window.bookNowIconBackgroundColor
+var bookNowIconInnerElementsColor = window.bookNowIconInnerElementsColor
+var AMPMHoverBackgroundColor = window.AMPMHoverBackgroundColor
+var AMPMHoverFontColor = window.AMPMHoverFontColor
 // font-color-for-customize
 
 function Main() {
@@ -64,17 +68,21 @@ function Main() {
           borderColorForInnerElements,
           borderColorForOuterApp,
           carsTypeColor,
+          carsTypeBorderColor,
           hoverColor,
           iconsColor,
           backAndNextButtonsColor,
           innerTextOnHover,
           inputsFontColor,
           inputsBackground,
-          bookNowIconFontAndCircleBorderColor,
+          bookNowIconCircleBorderColor,
           bookNowIconBackgroundColor,
+          bookNowIconInnerElementsColor,
           backAndNextButtonsFontColor,
           backAndNextButtonsBorderColor,
           fleetCarsBackgroundColor,
+          AMPMHoverBackgroundColor,
+          AMPMHoverFontColor,
         }}
       >
         <App />

@@ -30,6 +30,7 @@ export const Modal = (props) => {
     <div
       className={props.show ? styles.showModal : styles.hideModal}
       onClick={props.onClose}
+      style={{ pointerEvents: "auto" }}
     >
       <div className={styles.modal}>
         <div

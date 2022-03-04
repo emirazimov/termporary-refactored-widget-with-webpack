@@ -114,6 +114,7 @@ const AdressFormwithoutReactMemo = ({
     fontColor,
     borderRadiuses,
     carsTypeColor,
+    carsTypeBorderColor,
     hoverColor,
     iconsColor,
     backAndNextButtonsColor,
@@ -126,6 +127,8 @@ const AdressFormwithoutReactMemo = ({
     borderRadiusesForWholeApp,
     borderColorForInnerElements,
     borderColorForOuterApp,
+    AMPMHoverBackgroundColor,
+    AMPMHoverFontColor,
   } = useContext(ThemeContext)
 
   const [card, setCard] = useState()
@@ -372,42 +375,43 @@ const AdressFormwithoutReactMemo = ({
                       />
                       <div className={styles.toggleButtonsContainer}>
                         <div
-                          className={
-                            AMPM == "AM"
-                              ? styles.toggleButtonAMSelected
-                              : styles.toggleButtonAMNotSelected
-                          }
+                          className={styles.toggleButtonAM}
                           onClick={(e) => {
                             e.stopPropagation()
                             handleChangeAMPM(e)
                           }}
                           style={{
-                            color: fontColor,
+                            color:
+                              AMPM == "AM"
+                                ? `${AMPMHoverFontColor}`
+                                : inputsFontColor,
                             background:
-                              AMPM == "AM" ? `${hoverColor}` : "transparent",
+                              AMPM == "AM"
+                                ? `${AMPMHoverBackgroundColor}`
+                                : "transparent",
                             opacity: AMPM == "AM" ? "1" : "0.5",
-                            borderRadius: borderRadiusesForInnerElements,
+                            borderRadius: `calc(${borderRadiusesForInnerElements} - 2px)`,
                           }}
                         >
                           AM
                         </div>
                         <div
-                          className={
-                            AMPM == "PM"
-                              ? styles.toggleButtonPMSelected
-                              : styles.toggleButtonPMNotSelected
-                          }
+                          className={styles.toggleButtonPM}
                           onClick={(e) => {
                             e.stopPropagation()
                             handleChangeAMPM(e)
                           }}
                           style={{
-                            color: fontColor,
-                            background: "transparent",
+                            color:
+                              AMPM == "PM"
+                                ? `${AMPMHoverFontColor}`
+                                : inputsFontColor,
                             background:
-                              AMPM == "PM" ? `${hoverColor}` : "transparent",
+                              AMPM == "PM"
+                                ? `${AMPMHoverBackgroundColor}`
+                                : "transparent",
                             opacity: AMPM == "PM" ? "1" : "0.5",
-                            borderRadius: borderRadiusesForInnerElements,
+                            borderRadius: `calc(${borderRadiusesForInnerElements} - 2px)`,
                           }}
                         >
                           PM
@@ -556,6 +560,7 @@ const AdressFormwithoutReactMemo = ({
                           borderRadiusesForInnerElements
                         }
                         carsTypeColor={carsTypeColor}
+                        carsTypeBorderColor={carsTypeBorderColor}
                         carSelected={car.id === carSelectionID}
                         fontColor={fontColor}
                         innerTextOnHover={innerTextOnHover}
@@ -623,11 +628,12 @@ export default AdressFormUIComponent
 
 const CarItemContainer = styled.div`
   width: 60px;
- height: 66px;
+  height: 66px;
   display: flex;
   flex-direction: column;
   align-items: center;
-    border-radius:${(props) => props.borderRadiusesForInnerElements};
+  border-radius:${(props) => props.borderRadiusesForInnerElements};
+  border: 1px solid ${(props) => props.carsTypeBorderColor};
   background: ${(props) => {
     if (!props.carSelected) {
       return props.carsTypeColor
@@ -635,6 +641,7 @@ const CarItemContainer = styled.div`
       return props.hoverColor
     }
   }}} ;
+   outline: none !important;
   span{
     color:
     

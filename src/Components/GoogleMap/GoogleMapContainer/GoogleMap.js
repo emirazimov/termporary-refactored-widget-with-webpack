@@ -228,9 +228,6 @@ const GoogleMap = React.memo(
                 //     : classes.destinationContainer
                 // }
                 className={styles.mapInputsContainer}
-                style={{
-                  border: flagForGotAddressError ? "1px solid red" : "none",
-                }}
               >
                 <TransitionGroup>
                   {destinations.map((destination, id) => {
@@ -406,13 +403,20 @@ const GoogleMap = React.memo(
                                       // height: "33px",
                                       color: inputsFontColor,
                                       border:
-                                        redBorderOnSubmit || redBorderOnSubmit2
+                                        redBorderOnSubmit ||
+                                        redBorderOnSubmit2 ||
+                                        flagForGotAddressError
                                           ? `1px solid red`
                                           : `1px solid ${borderColorForInnerElements}`,
                                       background: inputsBackground,
                                       borderRadius:
                                         borderRadiusesForInnerElements,
                                     }}
+                                    // style={{
+                                    //   border: flagForGotAddressError
+                                    //     ? "1px solid red"
+                                    //     : "none",
+                                    // }}
                                     placeholder={id === 0 ? "From" : "To"}
                                     className={setDestinationsIcons(
                                       id,

@@ -76,8 +76,8 @@ $height-for-counters: 35px;
 }
 
 @mixin counters-input-styles {
-  min-width: 34px;
-  max-width: 34px;
+  width: 34px;
+  width: 34px;
   // marginLeft: "2px",
   // marginRight: "2.5px",
   // marginBottom: "4px",
@@ -88,6 +88,10 @@ $height-for-counters: 35px;
   border-left: none;
   background-color: $whole-app-background;
   box-sizing: border-box;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   // border: none;
   color: $font-color;
   text-align: center;
@@ -96,4 +100,5 @@ $height-for-counters: 35px;
   font-weight: 400;
   font-size: 14px;
   padding: 0;
+  outline: none;
 }

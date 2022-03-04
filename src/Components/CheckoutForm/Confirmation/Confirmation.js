@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import { connect } from "react-redux"
 import { Preloader } from "../../Helpers/Preloader/Preloader"
 // import Grid from "@material-ui/core/Grid"
@@ -14,6 +14,7 @@ import {
 import { setResetWidgetInputs } from "../../../Redux/reset-widget-inputs-reducer"
 import { setGotAddressError } from "../../../Redux/company-profile-reducer"
 import styles from "./Confirmation.module.scss"
+import ThemeContext from "../../../context"
 
 // setResetWidgetInputs,
 // setGotAddressError,
@@ -40,6 +41,25 @@ const Confirmation = ({
   }, [])
   const textColor = "white"
 
+  const {
+    ThemeProviderAppBackgroundColor,
+    fontColor,
+    borderRadiusesForInnerElements,
+    borderRadiusesForWholeApp,
+    borderColorForInnerElements,
+    borderColorForOuterApp,
+    carsTypeColor,
+    hoverColor,
+    iconsColor,
+    innerTextOnHover,
+    inputsFontColor,
+    inputsBackground,
+    bookNowIconFontAndCircleBorderColor,
+    bookNowIconBackgroundColor,
+    backAndNextButtonsColor,
+    backAndNextButtonsFontColor,
+  } = useContext(ThemeContext)
+
   return (
     <>
       {isFetching ? (
@@ -65,6 +85,7 @@ const Confirmation = ({
               // style={{ color: textColor }}
               // align="center"
               className={styles.confirmationTextSelf1}
+              style={{ color: fontColor }}
             >
               Your reservation was successfully submitted. A confirmation email
               was sent to {email && email}.
@@ -73,6 +94,7 @@ const Confirmation = ({
               // variant="body2"
               // style={{ color: textColor }}
               className={styles.confirmationTextSelf2}
+              style={{ color: fontColor }}
             >
               Thanks, {companyName && companyName}
             </p>
@@ -90,6 +112,10 @@ const Confirmation = ({
                 // logOut()
               }}
               className={styles.confirmationButtonSelf}
+              style={{
+                background: backAndNextButtonsColor,
+                color: backAndNextButtonsFontColor,
+              }}
             >
               Done
             </button>
