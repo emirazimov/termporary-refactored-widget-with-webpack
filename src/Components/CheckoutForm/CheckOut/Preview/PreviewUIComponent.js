@@ -659,6 +659,39 @@ const PreviewUIComponent = ({
           </div>
         </div>
 
+        <div className={styles.reservationDetailsItem}>
+          <div className={styles.reservationDetailsItemContainer}>
+            <div className={styles.reservationDetailsItemTitleContainer}>
+              <span
+                className={styles.reservationDetailsItemTitleSelf}
+                style={{
+                  color: fontColor,
+                }}
+              >
+                Transaction Fee
+              </span>
+            </div>
+            <div className={styles.reservationDetailsItemPointedLineContainer}>
+              <div
+                className={styles.reservationDetailsItemPointedLineSelf}
+                style={{
+                  borderBottom: `2px dotted ${fontColor}`,
+                }}
+              />
+            </div>
+            <div className={styles.reservationDetailsItemValueContainer}>
+              <span
+                className={styles.reservationDetailsItemValueSelf}
+                style={{
+                  color: fontColor,
+                }}
+              >
+                {`$${selectedCar.transactionFee}`}
+              </span>
+            </div>
+          </div>
+        </div>
+
         {hourlyAndSeatsRedux && (
           <div className={styles.reservationDetailsItem}>
             <div className={styles.reservationDetailsItemContainer}>
@@ -869,13 +902,18 @@ const PreviewUIComponent = ({
           </>
         )}
 
-        <div className={styles.reservationDetailsItem}>
+        <div
+          className={styles.reservationDetailsItem}
+          style={{ paddingTop: "10px", paddingBottom: "10px" }}
+        >
           <div className={styles.reservationDetailsItemContainer}>
             <div className={styles.reservationDetailsItemTitleContainer}>
               <span
                 className={styles.reservationDetailsItemTitleSelf}
                 style={{
                   color: fontColor,
+                  fontSize: "18px",
+                  fontWeight: "600",
                 }}
               >
                 Total
@@ -896,7 +934,7 @@ const PreviewUIComponent = ({
                   color: fontColor,
                 }}
               >
-                {`$${round(selectedCar.price, 2)}`}
+                {`$${round(selectedCar.price + selectedCar.transactionFee, 2)}`}
               </span>
             </div>
           </div>
