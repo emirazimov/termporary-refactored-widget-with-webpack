@@ -35,6 +35,7 @@
 }
 .companyProfileNameSelf {
   @include global-title-styles;
+  font-size: 19px;
 }
 .companyProfileCloseIconContainer {
   flex-basis: 5%;

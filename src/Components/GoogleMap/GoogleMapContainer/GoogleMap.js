@@ -1,9 +1,3 @@
-// import Grid from "@material-ui/core/Grid"
-// import InputAdornment from "@material-ui/core/InputAdornment"
-// import MenuItem from "@material-ui/core/MenuItem"
-// import { makeStyles } from "@material-ui/core/styles"
-// import { useForm, useFormContext } from "react-hook-form"
-// import TextField from "@material-ui/core/TextField"
 import { GoogleApiWrapper, Map, Marker } from "google-maps-react"
 import React, { forwardRef, useContext, useState } from "react"
 import PlacesAutocomplete, {
@@ -15,22 +9,15 @@ import {
   DeleteLocIcon,
   EndLocationIcon,
   StartLocationIcon,
-  // EndLocationIcon,
-  // StartLocationIcon,
 } from "../../../assets/icons"
-// import rideCheckPointErrors from "../../CheckoutForm/CheckOut/AdressForm/AdressFormUIComponent"
 import MapStyles from "../mapStyles"
 import { connect } from "react-redux"
 import { useStyles } from "./GoogleMapStyles"
 import styles from "./GoogleMap.module.scss"
-import {
-  CSSTransition,
-  // SwitchTransition,
-  // Transition,
-  TransitionGroup,
-} from "react-transition-group"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 import "./animationForGoogleMap.css"
 import ThemeContext from "../../../context"
+import styled from "styled-components"
 
 const GoogleMap = React.memo(
   forwardRef(
@@ -47,8 +34,6 @@ const GoogleMap = React.memo(
       flagForGotAddressError,
       ...props
     }) => {
-      // const classes = useStyles(redBorderOnSubmit)
-
       const [condition, setCondition] = useState([])
 
       const handleChanger = (e) => {
@@ -126,16 +111,10 @@ const GoogleMap = React.memo(
         newArr.splice(index, 1)
         setDestinations(newArr)
       }
-      // const searchOptions = {
-      //   location: new google.maps.LatLng(-34, 151),
-      //   radius: 2000,
-      //   types: ["address"],
-      // }
       var copiedSuggestions = null
       var copiedLoading = null
       React.useEffect(() => {}, [orderAddressDetails])
       React.useEffect(() => {
-        // console.log(destinations[0]?.rideCheckPoint.includes("Airport"))
         if (Boolean(formData.orderAddressDetails[0]?.rideCheckPoint)) {
           setDestinations(formData.orderAddressDetails)
         }
@@ -181,16 +160,8 @@ const GoogleMap = React.memo(
 
       return (
         <>
-          <div
-            // container
-            // direction="column"
-            // className={classes.mapMainContainer}
-            className={styles.mapWithInputsWrapper}
-          >
-            <div
-              // item
-              className={styles.mapContainer}
-            >
+          <div className={styles.mapWithInputsWrapper}>
+            <div className={styles.mapContainer}>
               <div className={styles.mapContainerForHideMapsTagsPositioning}>
                 <Map
                   google={props.google}
@@ -220,15 +191,7 @@ const GoogleMap = React.memo(
               className={styles.mapInputsContainerForHideMapsTagsPositioning}
               style={{ background: ThemeProviderAppBackgroundColor }}
             >
-              <div
-                // item
-                // className={
-                //   flagForGotAddressError
-                //     ? classes.destinationContainerred
-                //     : classes.destinationContainer
-                // }
-                className={styles.mapInputsContainer}
-              >
+              <div className={styles.mapInputsContainer}>
                 <TransitionGroup>
                   {destinations.map((destination, id) => {
                     console.log(destinations)
@@ -244,10 +207,6 @@ const GoogleMap = React.memo(
                           enterActive: "enterActive",
                           exit: "exit",
                           exitActive: "exitActive",
-                          // leave: "leave",
-                          // leaveActive: "leaveActive",
-                          // appear: "appear",
-                          // appearActive: "appearActive",
                         }}
                         timeout={300}
                       >
@@ -263,7 +222,6 @@ const GoogleMap = React.memo(
                             handleSelect(value, id)
                           }}
                           key={`${destination.id}${id}`}
-                          // searchOptions={searchOptions}
                         >
                           {({
                             getInputProps,
@@ -284,34 +242,21 @@ const GoogleMap = React.memo(
                                 <div
                                   className={styles.destinationsInputContainer}
                                 >
-                                  {/* <div
-                                className={
-                                  redBorderOnSubmit || redBorderOnSubmit2
-                                    ? classes.noBorderRed
-                                    : classes.noBorderDefault
-                                }
-                                className={classes.normalInputClass}
-                              > */}
                                   {id > 0 && id < destinations.length - 1 && (
                                     <span
                                       className={
                                         styles.numberOfDestinationPoint
                                       }
-                                      style={{ color: inputsFontColor }}
+                                      style={{
+                                        color: inputsFontColor,
+                                        border: `2px solid ${inputsFontColor}`,
+                                      }}
                                     >
                                       {id}
                                     </span>
                                   )}
                                   {getDestinationsIcons(id, destinations)}
-                                  <input
-                                    // position="start"
-                                    // style={{
-                                    //   height: "40px",
-                                    //   // border: "none",
-                                    //   // marginTop: "-4px",
-                                    //   boxShadow: "4px 5px 30px rgba(0, 0, 0, 0.1)",
-                                    // }}
-                                    // variant="standard"
+                                  <AddressInput
                                     value={
                                       formData.orderAddressDetails[id]
                                         ?.rideCheckPoint && !resetInputs
@@ -323,84 +268,8 @@ const GoogleMap = React.memo(
                                     defaultValue={
                                       destinations[id]?.rideCheckPoint
                                     }
-                                    // fullWidth
-                                    // className={classes.normalInputClass}
                                     inputRef={ref}
-                                    // className={styles.destinationsInputContainer}
-                                    // InputProps={{
-                                    //   startAdornment: (
-                                    //     <InputAdornment
-                                    //       style={{
-                                    //         marginRight: "10px",
-                                    //         marginLeft: "15px",
-                                    //       }}
-                                    //     >
-                                    //       {id === 0 && <StartLocationIcon />}
-                                    //       {id === destinations.length - 1 && (
-                                    //         <EndLocationIcon />
-                                    //       )}
-                                    //       {id > 0 &&
-                                    //         id < destinations.length - 1 && (
-                                    //           <span
-                                    //             style={{
-                                    //               borderRadius: "50%",
-                                    //               width: "24px",
-                                    //               height: "25px",
-                                    //               backgroundColor: "transparent",
-                                    //               border: "2px solid #FFFFFF",
-                                    //               textAlign: "center",
-                                    //               fontFamily: "Roboto",
-                                    //               fontWeight: "700",
-                                    //               fontSize: "0.9rem",
-                                    //               paddingTop: "2px",
-                                    //               marginLeft: "-5px",
-                                    //               marginRight: "-5px",
-                                    //             }}
-                                    //           >
-                                    //             {id}
-                                    //           </span>
-                                    //         )}
-                                    //     </InputAdornment>
-                                    //   ),
-                                    // endAdornment: (
-                                    //   <InputAdornment
-                                    //     style={{
-                                    //       cursor: "pointer",
-                                    //       // marginRight: "10px",
-                                    //     }}
-                                    //     position="end"
-                                    //   >
-                                    //     {id === destinations.length - 1 && (
-                                    //       <span
-                                    //         onClick={addEndPoint}
-                                    //         style={{
-                                    //           marginTop: "5px",
-                                    //         }}
-                                    //       >
-                                    //         <AddLocIcon />
-                                    //       </span>
-                                    //     )}
-                                    //     {id > 0 && id < destinations.length - 1 && (
-                                    //       <span
-                                    //         onClick={() => removeEndPoint(id)}
-                                    //         style={{ marginBottom: "6px" }}
-                                    //       >
-                                    //         <DeleteLocIcon />
-                                    //       </span>
-                                    //     )}
-                                    //   </InputAdornment>
-                                    // ),
-                                    // classes: {
-                                    //   root: classes.inputRoot,
-                                    //   underline:
-                                    //     redBorderOnSubmit || redBorderOnSubmit2
-                                    //       ? classes.noBorderRed
-                                    //       : classes.noBorderDefault,
-                                    //   input: classes.input,
-                                    // },
-                                    // }}
                                     style={{
-                                      // height: "33px",
                                       color: inputsFontColor,
                                       border:
                                         redBorderOnSubmit ||
@@ -412,11 +281,7 @@ const GoogleMap = React.memo(
                                       borderRadius:
                                         borderRadiusesForInnerElements,
                                     }}
-                                    // style={{
-                                    //   border: flagForGotAddressError
-                                    //     ? "1px solid red"
-                                    //     : "none",
-                                    // }}
+                                    inputsFontColor={inputsFontColor}
                                     placeholder={id === 0 ? "From" : "To"}
                                     className={setDestinationsIcons(
                                       id,
@@ -440,41 +305,15 @@ const GoogleMap = React.memo(
                                       <DeleteLocIcon color={inputsFontColor} />
                                     </span>
                                   )}
-                                  {/* </div> */}
                                   <div className={styles.dropDown}>
                                     {loading && (
                                       <div
-                                        // style={{
-                                        //   alignItems: "center",
-                                        //   color: "green",
-                                        // }}
                                         className={styles.dropDownLoadingText}
                                       >
                                         Loading...
                                       </div>
                                     )}
                                     {copiedSuggestions.map((suggestion, id) => {
-                                      // console.log(copiedSuggestions)
-
-                                      // inline style for demonstration purpose
-                                      // const style = suggestion.active
-                                      //   ? {
-                                      //       backgroundColor: "#bababa",
-                                      //       cursor: "pointer",
-                                      //       textTransform: "none",
-                                      //       justifyContent: "center",
-
-                                      //       width: "340px",
-                                      //     }
-                                      //   : {
-                                      //       backgroundColor: "white",
-                                      //       cursor: "pointer",
-                                      //       textTransform: "none",
-                                      //       width: "340px",
-
-                                      //       justifyContent: "center",
-                                      //     }
-
                                       return (
                                         <div
                                           key={`${id}${suggestion.description}`}
@@ -482,28 +321,8 @@ const GoogleMap = React.memo(
                                             suggestion
                                           )}
                                           className={styles.itemInsideDropDown}
-                                          // style={{ width: "96%" }}
                                         >
-                                          {/* <MenuItem
-                                        onMouseEnter={(e) => (
-                                          (e.target.style.backgroundColor =
-                                            "black"),
-                                          (e.target.style.color = "white")
-                                        )}
-                                        onMouseLeave={(e) => (
-                                          (e.target.style.backgroundColor =
-                                            "#ededed"),
-                                          (e.target.style.color = "black")
-                                        )}
-                                        style={{
-                                          backgroundColor: "#ededed",
-                                          whiteSpace: "pre-line",
-                                          fontSize: "14px",
-                                          color: "black",
-                                        }}
-                                      > */}
                                           {suggestion.description}
-                                          {/* </MenuItem> */}
                                         </div>
                                       )
                                     })}
@@ -525,6 +344,36 @@ const GoogleMap = React.memo(
     }
   )
 )
+
+const AddressInput = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 37px;
+  padding-right: 35px;
+  background-position-x: 2%;
+  background-position-y: 60%;
+  font-size: 13.5px;
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: ${(props) => props.inputsFontColor};
+    opacity: 1; /* Firefox */
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: ${(props) => props.inputsFontColor};
+  }
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: ${(props) => props.inputsFontColor};
+  }
+  &:focus {
+    outline: none;
+  }
+`
 
 const mapStateToProps = (state) => {
   return {

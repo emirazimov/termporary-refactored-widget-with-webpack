@@ -121,6 +121,7 @@ const FleetForm = ({
     borderColorForInnerElements,
     borderColorForOuterApp,
     fleetCarsBackgroundColor,
+    dotsLineColor,
   } = useContext(ThemeContext)
 
   const ifThereisError = () => {
@@ -176,7 +177,9 @@ const FleetForm = ({
                 </div>
               )}
               <div className={styles.pageTitleContainer}>
-                <span className={styles.pageTitle}>Select vehicle</span>
+                <span className={styles.pageTitle} style={{ color: fontColor }}>
+                  Select vehicle
+                </span>
               </div>
               <div className={styles.carListContainer}>
                 {console.log(typeof cars)}
@@ -310,7 +313,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                borderBottom: `2px dotted ${fontColor}`,
+                                borderBottom: `2px dotted ${dotsLineColor}`,
                               }}
                             />
                           </div>
@@ -351,7 +354,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                borderBottom: `2px dotted ${fontColor}`,
+                                borderBottom: `2px dotted ${dotsLineColor}`,
                               }}
                             />
                           </div>
@@ -392,7 +395,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                borderBottom: `2px dotted ${fontColor}`,
+                                borderBottom: `2px dotted ${dotsLineColor}`,
                               }}
                             />
                           </div>
@@ -433,7 +436,7 @@ const FleetForm = ({
                                 styles.detailedDescriptionPointedLineSelf
                               }
                               style={{
-                                borderBottom: `2px dotted ${fontColor}`,
+                                borderBottom: `2px dotted ${dotsLineColor}`,
                               }}
                             />
                           </div>

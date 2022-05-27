@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
-import { connect } from "react-redux"
-import { FormProvider, useForm } from "react-hook-form"
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { FormProvider, useForm } from 'react-hook-form'
 // import {
 //   CustomFormInput,
 //   CustomFormInputForPayment,
@@ -8,8 +8,8 @@ import { FormProvider, useForm } from "react-hook-form"
 // } from "../CustomFormInput/CustomFormInput"
 // import { makeStyles } from "@material-ui/core/styles"
 // import { BackArrowIcon } from "../../../../assets/icons"
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 // import Grid from "@material-ui/core/Grid"
 // import Typography from "@material-ui/core/Typography"
 // import Autocomplete from "@material-ui/lab/Autocomplete"
@@ -17,23 +17,25 @@ import * as yup from "yup"
 // import Checkbox from "@material-ui/core/Checkbox"
 // import Switch from "@material-ui/core/Switch"
 // import { Link } from "@material-ui/core"
-import { placesApi } from "../../../../api/api"
+import { placesApi } from '../../../../api/api'
 // import TextField from "@material-ui/core/TextField"
 import {
   // createReservation,
   setPaymentForm,
-} from "../../../../Redux/form-reducer"
+} from '../../../../Redux/form-reducer'
 // import PrivacyPolicy from "../../../TermsOfUse/PrivacyPolicy/PrivacyPolicy"
 // // import TermsOfUse from "../../../TermsOfUse/TermOfUse/TermOfUse"
 // import { withStyles } from "@material-ui/styles"
 // import { Number, Cvc, Expiration } from "react-credit-card-primitives"
 
 // import Cleave from "cleave.js/react"
-import "./PaymentStyles.css"
+import './PaymentStyles.css'
 // import { AntSwitch } from "../AdressForm/AdressFormStyles"
-import PaymentUIComponent from "./PaymentUIComponent"
+import PaymentUIComponent from './PaymentUIComponent'
 
 const PaymentContainerComponent = ({
+  cars,
+  carId,
   next,
   back,
   total,
@@ -48,17 +50,17 @@ const PaymentContainerComponent = ({
     //     email: yup.string().email('invalid email').required('Required'),
     // }),
     client: yup.object().shape({
-      firstName: yup.string().required("Required"),
-      lastName: yup.string().required("Required"),
-      address: yup.string().required("Required"),
-      zip: yup.number().required("Required").typeError("Not a number"),
-      email: yup.string().email("invalid email").required("Required"),
-      phoneNumber: yup.number().required("Required").typeError("Not a number"),
+      firstName: yup.string().required('Required'),
+      lastName: yup.string().required('Required'),
+      address: yup.string().required('Required'),
+      zip: yup.number().required('Required').typeError('Not a number'),
+      email: yup.string().email('invalid email').required('Required'),
+      phoneNumber: yup.number().required('Required').typeError('Not a number'),
     }),
     paymentInfo: yup.object().shape({
       // cardNumber: yup.string().required("Required"),
-      month: yup.string().required("Required"),
-      cvc: yup.number().required("Required").typeError("Not a number"),
+      month: yup.string().required('Required'),
+      cvc: yup.number().required('Required').typeError('Not a number'),
     }),
   })
   const [states, setStates] = useState([])
@@ -107,8 +109,8 @@ const PaymentContainerComponent = ({
   const [riderDetails, setRiderDetails] = React.useState(true)
 
   const inputStyle = {
-    WebkitBoxShadow: "0 0 0 1000px transparent inset",
-    height: "0px",
+    WebkitBoxShadow: '0 0 0 1000px transparent inset',
+    height: '0px',
     // width: "100%",
   }
 
@@ -123,7 +125,7 @@ const PaymentContainerComponent = ({
     console.log(data)
     // event.preventDefault()
 
-    const date = data.paymentInfo.month.split("/")
+    const date = data.paymentInfo.month.split('/')
     if ((statesId, citiesId, cardForPaymentSubmit)) {
       setPaymentForm(
         { ...data },
@@ -154,9 +156,9 @@ const PaymentContainerComponent = ({
 
   // const toggleAmex = () => setRestrictAmex(!restrictAmex)
 
-  const [cardType, setCardType] = useState("")
+  const [cardType, setCardType] = useState('')
 
-  const [creditCardNum, setCreditCardNum] = useState("#### #### #### ####")
+  const [creditCardNum, setCreditCardNum] = useState('#### #### #### ####')
 
   const handleNum = (e) => {
     setCreditCardNum(e.target.rawValue)
@@ -170,8 +172,8 @@ const PaymentContainerComponent = ({
     console.log(type)
   }
 
-  const [stateName, setStateName] = useState("")
-  const [cityName, setCityName] = useState("")
+  const [stateName, setStateName] = useState('')
+  const [cityName, setCityName] = useState('')
 
   const extractStateId = (name) => {
     setStateName(name)
@@ -188,6 +190,13 @@ const PaymentContainerComponent = ({
     })
     res ? setCitiesId(res.id) : setCitiesId(null)
     console.log(res)
+  }
+
+  const selectedCar = cars.find((car) => car.id === carId)
+
+  const round = (n, dp) => {
+    const h = +'1'.padEnd(dp + 1, '0') // 10 or 100 or 1000 or etc
+    return Math.round(n * h) / h
   }
 
   return (
@@ -235,12 +244,16 @@ const PaymentContainerComponent = ({
       extractCityId={extractCityId}
       stateName={stateName}
       cityName={cityName}
+      selectedCar={selectedCar}
+      round={round}
     />
   )
 }
 
 const mapStateToProps = (state) => {
   return {
+    cars: state.cars.cars,
+    carId: state.formData.carInfo.id,
     total: state.formData.orderSum,
     formSummary: state.formData,
   }

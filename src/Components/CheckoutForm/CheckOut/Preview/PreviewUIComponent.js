@@ -126,6 +126,7 @@ const PreviewUIComponent = ({
     borderColorForInnerElements,
     borderColorForOuterApp,
     fleetCarsBackgroundColor,
+    dotsLineColor,
   } = useContext(ThemeContext)
 
   return (
@@ -297,7 +298,7 @@ const PreviewUIComponent = ({
                   <div
                     className={styles.detailedDescriptionPointedLineSelf}
                     style={{
-                      borderBottom: `2px dotted ${fontColor}`,
+                      borderBottom: `2px dotted ${dotsLineColor}`,
                     }}
                   />
                 </div>
@@ -328,7 +329,7 @@ const PreviewUIComponent = ({
                   <div
                     className={styles.detailedDescriptionPointedLineSelf}
                     style={{
-                      borderBottom: `2px dotted ${fontColor}`,
+                      borderBottom: `2px dotted ${dotsLineColor}`,
                     }}
                   />
                 </div>
@@ -359,7 +360,7 @@ const PreviewUIComponent = ({
                   <div
                     className={styles.detailedDescriptionPointedLineSelf}
                     style={{
-                      borderBottom: `2px dotted ${fontColor}`,
+                      borderBottom: `2px dotted ${dotsLineColor}`,
                     }}
                   />
                 </div>
@@ -390,7 +391,7 @@ const PreviewUIComponent = ({
                   <div
                     className={styles.detailedDescriptionPointedLineSelf}
                     style={{
-                      borderBottom: `2px dotted ${fontColor}`,
+                      borderBottom: `2px dotted ${dotsLineColor}`,
                     }}
                   />
                 </div>
@@ -432,7 +433,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -467,7 +468,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -506,7 +507,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -539,7 +540,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -576,7 +577,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -609,7 +610,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -642,7 +643,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -675,7 +676,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>
@@ -711,7 +712,7 @@ const PreviewUIComponent = ({
                 <div
                   className={styles.reservationDetailsItemPointedLineSelf}
                   style={{
-                    borderBottom: `2px dotted ${fontColor}`,
+                    borderBottom: `2px dotted ${dotsLineColor}`,
                   }}
                 />
               </div>
@@ -755,7 +756,7 @@ const PreviewUIComponent = ({
                       <div
                         className={styles.reservationDetailsItemPointedLineSelf}
                         style={{
-                          borderBottom: `2px dotted ${fontColor}`,
+                          borderBottom: `2px dotted ${dotsLineColor}`,
                         }}
                       />
                     </div>
@@ -805,7 +806,7 @@ const PreviewUIComponent = ({
                       <div
                         className={styles.reservationDetailsItemPointedLineSelf}
                         style={{
-                          borderBottom: `2px dotted ${fontColor}`,
+                          borderBottom: `2px dotted ${dotsLineColor}`,
                         }}
                       />
                     </div>
@@ -849,7 +850,7 @@ const PreviewUIComponent = ({
                   <div
                     className={styles.reservationDetailsItemPointedLineSelf}
                     style={{
-                      borderBottom: `2px dotted ${fontColor}`,
+                      borderBottom: `2px dotted ${dotsLineColor}`,
                     }}
                   />
                 </div>
@@ -883,7 +884,7 @@ const PreviewUIComponent = ({
                   <div
                     className={styles.reservationDetailsItemPointedLineSelf}
                     style={{
-                      borderBottom: `2px dotted ${fontColor}`,
+                      borderBottom: `2px dotted ${dotsLineColor}`,
                     }}
                   />
                 </div>
@@ -923,7 +924,7 @@ const PreviewUIComponent = ({
               <div
                 className={styles.reservationDetailsItemPointedLineSelf}
                 style={{
-                  borderBottom: `2px dotted ${fontColor}`,
+                  borderBottom: `2px dotted ${dotsLineColor}`,
                 }}
               />
             </div>

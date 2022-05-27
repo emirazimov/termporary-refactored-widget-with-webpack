@@ -1,16 +1,16 @@
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
 // @use "../../../../../../../../global" as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
 
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
-@use '../../FleetForm/FleetForm.module.scss' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss'
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
+@use "../../FleetForm/FleetForm.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
   as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ColorsForCustomize.module.scss' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_BorderRadiuses.module.scss' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ColorsForCustomize.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_BorderRadiuses.module.scss" as *;
 
 $background-position-x-for-date-time-picker: 3%;
 
@@ -89,7 +89,7 @@ $background-position-x-for-date-time-picker: 3%;
   // padding-right: 0;
   box-sizing: border-box;
   font-size: 13px;
-  padding-top: 8px;
+  padding-top: 10px;
   text-indent: 36px;
   background-position-x: $background-position-x-for-date-time-picker;
   background-position-y: 60%;

@@ -91,6 +91,8 @@ export default React.memo(function SafetySeat({
     inputsBackground,
     bookNowIconFontAndCircleBorderColor,
     bookNowIconBackgroundColor,
+    countersOuterBorderColor,
+    countersInnerDividerBorder,
   } = useContext(ThemeContext)
 
   return (
@@ -112,7 +114,8 @@ export default React.memo(function SafetySeat({
                 className={styles.boosterSeatCounterMinusSelf}
                 style={{
                   background: inputsBackground,
-                  border: `1px solid ${borderColorForInnerElements}`,
+                  border: `1px solid ${countersOuterBorderColor}`,
+                  borderRight: `1px solid ${countersInnerDividerBorder}`,
                   borderTopLeftRadius: borderRadiusesForInnerElements,
                   borderBottomLeftRadius: borderRadiusesForInnerElements,
                 }}
@@ -135,8 +138,8 @@ export default React.memo(function SafetySeat({
                 className={styles.boosterSeatCounterInputSelf}
                 style={{
                   background: inputsBackground,
-                  borderTop: `1px solid ${borderColorForInnerElements}`,
-                  borderBottom: `1px solid ${borderColorForInnerElements}`,
+                  borderTop: `1px solid ${countersOuterBorderColor}`,
+                  borderBottom: `1px solid ${countersOuterBorderColor}`,
                   color: inputsFontColor,
                 }}
               />
@@ -147,7 +150,8 @@ export default React.memo(function SafetySeat({
                 className={styles.boosterSeatCounterPlusSelf}
                 style={{
                   background: inputsBackground,
-                  border: `1px solid ${borderColorForInnerElements}`,
+                  border: `1px solid ${countersOuterBorderColor}`,
+                  borderLeft: `1px solid ${countersInnerDividerBorder}`,
                   borderTopRightRadius: borderRadiusesForInnerElements,
                   borderBottomRightRadius: borderRadiusesForInnerElements,
                 }}
@@ -176,7 +180,8 @@ export default React.memo(function SafetySeat({
                 className={styles.safetySeatCounterMinusSelf}
                 style={{
                   background: inputsBackground,
-                  border: `1px solid ${borderColorForInnerElements}`,
+                  border: `1px solid ${countersOuterBorderColor}`,
+                  borderRight: `1px solid ${countersInnerDividerBorder}`,
                   borderTopLeftRadius: borderRadiusesForInnerElements,
                   borderBottomLeftRadius: borderRadiusesForInnerElements,
                 }}
@@ -199,8 +204,8 @@ export default React.memo(function SafetySeat({
                 className={styles.safetySeatCounterInputSelf}
                 style={{
                   background: inputsBackground,
-                  borderTop: `1px solid ${borderColorForInnerElements}`,
-                  borderBottom: `1px solid ${borderColorForInnerElements}`,
+                  borderTop: `1px solid ${countersOuterBorderColor}`,
+                  borderBottom: `1px solid ${countersOuterBorderColor}`,
                   color: inputsFontColor,
                 }}
               />
@@ -211,7 +216,8 @@ export default React.memo(function SafetySeat({
                 className={styles.safetySeatCounterPlusSelf}
                 style={{
                   background: inputsBackground,
-                  border: `1px solid ${borderColorForInnerElements}`,
+                  border: `1px solid ${countersOuterBorderColor}`,
+                  borderLeft: `1px solid ${countersInnerDividerBorder}`,
                   borderTopRightRadius: borderRadiusesForInnerElements,
                   borderBottomRightRadius: borderRadiusesForInnerElements,
                 }}

@@ -75,37 +75,14 @@ const CompanyProfile = ({
     inputsBackground,
     bookNowIconFontAndCircleBorderColor,
     bookNowIconBackgroundColor,
+    headerFontColor,
   } = useContext(ThemeContext)
 
   return (
     <>
-      {/* {isMobile ? <> <Grid container direction="row"
-                justify="space-between"
-                alignItems="center"
-                className={classes.companyContainer}>
-                <Grid item>
-                    <img src={profile.companyLogoPath} className={classes.companyLogo} alt='companyLogo' />
-                </Grid>
-                <Grid item xs={5}>
-                    <Typography className={classes.companyName}>{profile.companyName}</Typography>
-                </Grid>
-                <Grid item>
-                    <span style={{ cursor: 'pointer' }} onClick={() => { handleCloseDialog(false); setActiveStep(0) }}>
-                        <CloseWidgetIcon />
-                    </span>
-                </Grid>
-            </Grid>
-                <Divider orientation='horizontal' variant='fullWidth' />
-            </> : */}
       {initializing ? (
         <>
           <div
-            // container
-            // direction="row"
-            // justify="space-between"
-            // alignItems="center"
-            // wrap="nowrap"
-            // className={classes.companyContainer}
             className={styles.companyProfileWrapper}
             style={{
               background: ThemeProviderAppBackgroundColor,
@@ -116,30 +93,20 @@ const CompanyProfile = ({
             <div className={styles.companyProfileImageContainer}>
               <img
                 src={profile.companyLogoPath}
-                // className={classes.companyLogo}
                 alt="companyLogo"
                 className={styles.companyProfileImageSelf}
               />
             </div>
-            <div
-              // item
-              // xs={7}
-              // md={7}
-              // lg={8}
-              // xl={8}
-              className={styles.companyProfileNameContainer}
-            >
+            <div className={styles.companyProfileNameContainer}>
               <span
                 className={styles.companyProfileNameSelf}
-                style={{ color: fontColor }}
+                style={{ color: headerFontColor }}
               >
                 {profile.companyName}
               </span>
             </div>
-            {/* {smallDevices && ( */}
             <div className={styles.companyProfileCloseIconContainer}>
               <div
-                // style={{ cursor: "pointer", marginRight: "6px" }}
                 className={styles.companyProfileCloseIconSelf}
                 onClick={() => {
                   setExpanded()
@@ -154,14 +121,9 @@ const CompanyProfile = ({
                   setHourlyRedux(false)
                 }}
               >
-                {/* <span
-                  className={styles.companyProfileCloseIconSelfCustomCreation}
-                ></span> */}
                 <CloseWidgetIcon color={fontColor} />
-                {/* <CloseWidgetIcon /> */}
               </div>
             </div>
-            {/* )} */}
           </div>
         </>
       ) : null}

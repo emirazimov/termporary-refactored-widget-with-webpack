@@ -11,7 +11,7 @@ const accessKeyFromWinow = window.accessKeyForBookinglane
 const axiosInstance = axios.create({
   baseURL: `https://api.bookinglane.com/api/`,
   headers: {
-    "App-Version": "1.2.18",
+    "App-Version": "1.2.36",
   },
 })
 
@@ -34,7 +34,7 @@ export const authApi = {
     // const jwtToken = localStorage.getItem("Authorization")
 
     const headers = {
-      "App-Version": "1.2.18",
+      "App-Version": "1.2.36",
     }
 
     return axiosInstance
@@ -70,7 +70,7 @@ export const fleetApi = {
         { ...dataForm },
         {
           headers: {
-            "App-Version": "1.2.18",
+            "App-Version": "1.2.36",
             captcha: `${recaptchaToken}`,
           },
         }
@@ -116,7 +116,7 @@ export const formApi = {
         { ...form },
         {
           headers: {
-            "App-Version": "1.2.18",
+            "App-Version": "1.2.36",
           },
         }
       )

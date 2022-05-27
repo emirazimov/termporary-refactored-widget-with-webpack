@@ -73,105 +73,45 @@ export default React.memo(function PassengerQuantity({
     inputsBackground,
     bookNowIconFontAndCircleBorderColor,
     bookNowIconBackgroundColor,
+    countersOuterBorderColor,
+    countersInnerDividerBorder,
   } = useContext(ThemeContext)
 
   return (
-    <div
-      // container
-      // direction="row"
-      // justify="space-between"
-      // alignItems="center"
-      // style={{ marginTop: "13px" }}
-      className={styles.passengerQuantityWrapper}
-    >
-      <div
-        // item
-        className={styles.passengerQuantityIconAndTitleContainer}
-      >
-        {/* <div container direction="row"> */}
-        {/* <NumberOfPassengersIcon
-          style={{ paddingLeft: "30px" }}
-        ></NumberOfPassengersIcon> */}
+    <div className={styles.passengerQuantityWrapper}>
+      <div className={styles.passengerQuantityIconAndTitleContainer}>
         <NumberOfPassengersIcon color={fontColor} />
-        {/* <span className={styles.passengerQuantityIcon}></span> */}
-        <span
-          // style={{
-          //   color: "white",
-          //   fontSize: "14px",
-          //   wordWrap: "break-word",
 
-          //   width: isMobile ? "130px" : "none",
-          // }}
+        <span
           className={styles.passengerCounterTitle}
           style={{ color: fontColor }}
         >
           Number of passengers
         </span>
-        {/* </div> */}
       </div>
-      <div
-        // item
-        className={styles.passengerQuantityCounterContainer}
-        // style={{
-        //   borderRadius: `${borderRadiusesForInnerElements}`,
-        //   border: redBorderOnSubmitForPassengers
-        //     ? "1px solid red"
-        //     : "1px solid transparent",
-        // }}
-      >
-        {/* <div
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-          className={classes.mainPlusMinusContainer}
-          // style={{
-          //   // background: "#282828",
-          //   // height: "35px",
-          //   // borderRadius: "5px",
-
-          //   // paddingTop: "-4px",
-          // }}
-        > */}
-        <div
-          // item
-          className={styles.passengerQuantityMinusContainer}
-          // style={{
-          //   borderBottom: "2px solid #AC8159",
-          //   "&:hover": { borderBottom: "2px solid white" },
-          // }}
-        >
+      <div className={styles.passengerQuantityCounterContainer}>
+        <div className={styles.passengerQuantityMinusContainer}>
           <button
             onClick={onDecrease}
-            // style={
-            //   {
-            //     // marginRight: "5px",
-            //   }
-            // }
             type="button"
             className={styles.passengerQuantityMinusSelf}
             style={{
               background: inputsBackground,
               border: redBorderOnSubmitForPassengers
                 ? "1px solid red"
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
+
+              borderRight: redBorderOnSubmitForPassengers
+                ? `1px solid red`
+                : `1px solid ${countersInnerDividerBorder}`,
               borderTopLeftRadius: borderRadiusesForInnerElements,
               borderBottomLeftRadius: borderRadiusesForInnerElements,
             }}
           >
-            {/* - */}
             <MinusIcon color={fontColor} />
           </button>
         </div>
-        <div
-          // style={{
-          //   textAlign: "center",
-          //   // borderBottom: "2px solid #AC8159",
-          //   // height: "100%",
-          // }}
-          className={styles.passengerQuantityInputContainer}
-          // style={{ border: `1px solid ${borderColorForInnerElements}` }}
-        >
+        <div className={styles.passengerQuantityInputContainer}>
           <input
             ref={register}
             name="passengersQuantity"
@@ -179,57 +119,38 @@ export default React.memo(function PassengerQuantity({
               setPassengers(e.target.value)
               setPassengersQuantityForBackStep(e.target.value)
             }}
-            className="passenger"
             value={passengersQuantityForBackStep}
             size="1"
-            // style={{
-            //   // pointerEvents: "none",
-            //   minWidth: "34px",
-            //   maxWidth: "34px",
-            //   // marginLeft: "2px",
-            //   // marginRight: "2.5px",
-            //   // marginBottom: "4px",
-            //   backgroundColor: "transparent",
-            //   border: "none",
-            //   color: "white",
-            //   textAlign: "center",
-            //   fontFamily: "Roboto",
-            //   textTransform: "none",
-            //   fontWeight: "400",
-            //   fontSize: "14px",
-            //   // height: "100%",
-            //   // borderBottom: "2px solid #AC8159",
-            // }}
             type="number"
             className={styles.passengerQuantityInputSelf}
             style={{
               background: inputsBackground,
               borderTop: redBorderOnSubmitForPassengers
                 ? "1px solid red"
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
               borderBottom: redBorderOnSubmitForPassengers
                 ? "1px solid red"
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
               color: inputsFontColor,
             }}
           />
         </div>
-        <div
-          // item
-          className={styles.passengerQuantityPlusContainer}
-        >
+        <div className={styles.passengerQuantityPlusContainer}>
           <button
             onClick={(event) => {
               onIncrease()
               event.stopPropagation()
             }}
-            // style={{ marginLeft: "4px" }}
             className={styles.passengerQuantityPlusSelf}
             style={{
               background: inputsBackground,
               border: redBorderOnSubmitForPassengers
                 ? "1px solid red"
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
+
+              borderLeft: redBorderOnSubmitForPassengers
+                ? `1px solid red`
+                : `1px solid ${countersInnerDividerBorder}`,
               borderTopRightRadius: borderRadiusesForInnerElements,
               borderBottomRightRadius: borderRadiusesForInnerElements,
             }}
@@ -238,7 +159,6 @@ export default React.memo(function PassengerQuantity({
             <PlusIcon color={fontColor} />
           </button>
         </div>
-        {/* </div> */}
       </div>
     </div>
   )

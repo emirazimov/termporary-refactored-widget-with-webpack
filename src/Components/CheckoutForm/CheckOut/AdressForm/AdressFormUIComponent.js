@@ -293,7 +293,7 @@ const AdressFormwithoutReactMemo = ({
                           ? styles.datePickerOpenButtonWithRedBorder
                           : styles.datePickerOpenButton
                       }
-                      placeholder="Pick up Date"
+                      // placeholder="Pick up Date"
                       value={
                         formData.dateForDefaultValue && !resetInputs
                           ? formData.dateForDefaultValue
@@ -312,8 +312,15 @@ const AdressFormwithoutReactMemo = ({
                         ? formData.dateForDefaultValue
                         : date?.toLocaleDateString("en-US")}
 
-                      {!formData.dateForDefaultValue ? (
-                        <span style={{ color: "grey" }}>Pick up Date</span>
+                      {!formData.dateForDefaultValue || resetInputs ? (
+                        <span
+                          style={{
+                            color: inputsFontColor,
+                            fontSize: "13.5px",
+                          }}
+                        >
+                          Pick up Date
+                        </span>
                       ) : null}
                     </div>
 
@@ -340,7 +347,7 @@ const AdressFormwithoutReactMemo = ({
                   <div className={styles.timePicker}>
                     <div className={styles.timePickerContainer}>
                       <ClockIcon color={inputsFontColor} />
-                      <input
+                      <TimeInput
                         name="orderStartTime"
                         placeholder="hh:mm"
                         autoComplete="off"
@@ -369,6 +376,7 @@ const AdressFormwithoutReactMemo = ({
                           paddingRight: "78px",
                           borderRadius: borderRadiusesForInnerElements,
                         }}
+                        inputsFontColor={inputsFontColor}
                         value={
                           !resetInputs ? formData.timeForDefaultValue : null
                         }
@@ -480,7 +488,6 @@ const AdressFormwithoutReactMemo = ({
                       childSafetySeat={childSafetySeat}
                       isBoosterSeatExistOnBackend={isBoosterSeatExistOnBackend}
                       isSafetySeatExistOnBackend={isSafetySeatExistOnBackend}
-                      showCarsWithSafetySeat={formData.showCarsWithSafetySeat}
                       setSafetySeatCount={setSafetySeatCount}
                       setBoosterSeatCount={setBoosterSeatCount}
                       safetySeatCountRedux={formData.safetySeatCount}
@@ -521,7 +528,6 @@ const AdressFormwithoutReactMemo = ({
                     hoursState={formData.hours}
                     hourly={hourly}
                     hoursAddressForm={hoursAddressForm}
-                    setHoursAddressForm={setHoursAddressForm}
                     setHoursAddressForm={setHoursAddressForm}
                     redBorderOnSubmitForHours={redBorderOnSubmitForHours}
                     setHoursRedux={setHoursRedux}
@@ -576,12 +582,6 @@ const AdressFormwithoutReactMemo = ({
                           <img
                             alt="carImage"
                             src={car.imageUrl}
-                            className={
-                              indexOfEachCar == 2
-                                ? styles.carImageStylesForBiggerTypeOfImage
-                                : styles.carImage
-                            }
-                            item
                             className={styles.carImage}
                           />
                           {console.log(indexOfEachCar == 2)}
@@ -663,5 +663,38 @@ const CarItemContainer = styled.div`
     span{
     color:${(props) => props.innerTextOnHover} ;
   }
+  }
+`
+
+const TimeInput = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  /* position: relative; */
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 37px;
+  padding-right: 35px;
+  background-position-x: 2%;
+  background-position-y: 60%;
+  font-size: 13.5px;
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+    opacity: 1; /* Firefox */
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+  }
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+  }
+  &:focus {
+    outline: none;
   }
 `

@@ -56,6 +56,8 @@ const PaymentUIComponent = ({
   extractCityId,
   stateName,
   cityName,
+  selectedCar,
+  round,
 }) => {
   const inputStyle = {
     WebkitBoxShadow: "0 0 0 1000px transparent inset",
@@ -139,7 +141,7 @@ const PaymentUIComponent = ({
                     // }
                     inputsFontColor={inputsFontColor}
                   >
-                    <input
+                    <InputFirstAndLastName
                       name="greetClientInfo.firstName"
                       autoComplete="off"
                       placeholder="First Name"
@@ -155,12 +157,13 @@ const PaymentUIComponent = ({
                         borderBottomLeftRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
+                      inputsFontColor={inputsFontColor}
                     />
                   </CardholderInformationInputSelfContainerJustForFirstAndLastName>
                   <div
                     className={styles.cardholderInformationInputSelfContainer2}
                   >
-                    <input
+                    <InputFirstAndLastName
                       name="greetClientInfo.lastName"
                       autoComplete="off"
                       defaultValue={formSummary.greetClientInfo.lastName}
@@ -176,6 +179,7 @@ const PaymentUIComponent = ({
                         borderBottomRightRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
+                      inputsFontColor={inputsFontColor}
                     />
                   </div>
                 </div>
@@ -183,7 +187,7 @@ const PaymentUIComponent = ({
                   <div
                     className={styles.cardholderInformationInputSelfContainer1}
                   >
-                    <input
+                    <InputsDivided
                       name="greetClientInfo.email"
                       autoComplete="off"
                       placeholder="Email"
@@ -197,12 +201,13 @@ const PaymentUIComponent = ({
                         borderRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
+                      inputsFontColor={inputsFontColor}
                     />
                   </div>
                   <div
                     className={styles.cardholderInformationInputSelfContainer2}
                   >
-                    <input
+                    <InputsDivided
                       name="greetClientInfo.phoneNumber"
                       autoComplete="off"
                       defaultValue={formSummary.greetClientInfo.phoneNumber}
@@ -216,6 +221,7 @@ const PaymentUIComponent = ({
                         borderRadius: borderRadiusesForInnerElements,
                       }}
                       ref={register}
+                      inputsFontColor={inputsFontColor}
                     />
                   </div>
                 </div>
@@ -242,7 +248,7 @@ const PaymentUIComponent = ({
                     inputsFontColor={inputsFontColor}
                     style={{ width: "100%" }}
                   >
-                    <input
+                    <InputFirstAndLastName
                       name="client.firstName"
                       autoComplete="off"
                       defaultValue={formSummary.client.firstName}
@@ -260,6 +266,7 @@ const PaymentUIComponent = ({
                         borderTopLeftRadius: borderRadiusesForInnerElements,
                         borderBottomLeftRadius: borderRadiusesForInnerElements,
                       }}
+                      inputsFontColor={inputsFontColor}
                     />
                   </CardholderInformationInputSelfContainerJustForFirstAndLastName>
                   {errors.client?.firstName && (
@@ -272,7 +279,7 @@ const PaymentUIComponent = ({
                   className={styles.cardholderInformationInputSelfContainer}
                   style={{ width: "50%" }}
                 >
-                  <input
+                  <InputFirstAndLastName
                     name="client.lastName"
                     autoComplete="off"
                     placeholder="Last Name"
@@ -290,6 +297,7 @@ const PaymentUIComponent = ({
                       borderTopRightRadius: borderRadiusesForInnerElements,
                       borderBottomRightRadius: borderRadiusesForInnerElements,
                     }}
+                    inputsFontColor={inputsFontColor}
                   />
                   {errors.client?.lastName && (
                     <p className={styles.errorInputs}>
@@ -303,7 +311,7 @@ const PaymentUIComponent = ({
                 <div
                   className={styles.cardholderInformationInputSelfContainer1}
                 >
-                  <input
+                  <InputsDivided
                     name="client.email"
                     autoComplete="off"
                     placeholder="Email"
@@ -317,6 +325,7 @@ const PaymentUIComponent = ({
                       borderRadius: borderRadiusesForInnerElements,
                     }}
                     ref={register}
+                    inputsFontColor={inputsFontColor}
                   />
                   {errors.client?.email && (
                     <p className={styles.errorInputs}>
@@ -327,7 +336,7 @@ const PaymentUIComponent = ({
                 <div
                   className={styles.cardholderInformationInputSelfContainer2}
                 >
-                  <input
+                  <InputsDivided
                     name="client.phoneNumber"
                     autoComplete="off"
                     defaultValue={formSummary.client.phoneNumber}
@@ -341,6 +350,7 @@ const PaymentUIComponent = ({
                       borderRadius: borderRadiusesForInnerElements,
                     }}
                     ref={register}
+                    inputsFontColor={inputsFontColor}
                   />
                   {errors.client?.phoneNumber && (
                     <p className={styles.errorInputs}>
@@ -355,7 +365,7 @@ const PaymentUIComponent = ({
                     styles.cardholderInformationInputsContainerForPositionErrorMessage
                   }
                 >
-                  <input
+                  <InputFullWidth
                     name="client.address"
                     autoComplete="off"
                     placeholder="Address"
@@ -373,6 +383,7 @@ const PaymentUIComponent = ({
                       background: inputsBackground,
                       borderRadius: borderRadiusesForInnerElements,
                     }}
+                    inputsFontColor={inputsFontColor}
                   />
                   {errors.client?.address && (
                     <p className={styles.errorInputs}>
@@ -398,7 +409,7 @@ const PaymentUIComponent = ({
                     options={states.map((state) => state.name)}
                     renderInput={(params) => (
                       <div ref={params.InputProps.ref}>
-                        <input
+                        <InputFullWidth
                           type="text"
                           {...params.inputProps}
                           placeholder="State"
@@ -413,6 +424,7 @@ const PaymentUIComponent = ({
                             background: inputsBackground,
                             borderRadius: borderRadiusesForInnerElements,
                           }}
+                          inputsFontColor={inputsFontColor}
                         />
                       </div>
                     )}
@@ -439,7 +451,7 @@ const PaymentUIComponent = ({
                     options={cities.map((city) => city.name)}
                     renderInput={(params) => (
                       <div ref={params.InputProps.ref}>
-                        <input
+                        <InputsDivided
                           type="text"
                           {...params.inputProps}
                           className={styles.cardholderInformationInputSelf}
@@ -453,6 +465,7 @@ const PaymentUIComponent = ({
                             background: inputsBackground,
                             borderRadius: borderRadiusesForInnerElements,
                           }}
+                          inputsFontColor={inputsFontColor}
                         />
                       </div>
                     )}
@@ -465,7 +478,7 @@ const PaymentUIComponent = ({
                 <div
                   className={styles.cardholderInformationInputSelfContainer2}
                 >
-                  <input
+                  <InputsDivided
                     name="client.zip"
                     autoComplete="off"
                     placeholder="ZIP"
@@ -479,6 +492,7 @@ const PaymentUIComponent = ({
                       background: inputsBackground,
                       borderRadius: borderRadiusesForInnerElements,
                     }}
+                    inputsFontColor={inputsFontColor}
                   />
                   {errors.client?.zip && (
                     <p className={styles.errorInputs}>
@@ -513,7 +527,6 @@ const PaymentUIComponent = ({
                     error={errors.paymentInfo?.cardNumber ? true : false}
                     onChange={handleNum}
                     placeholder="Card number"
-                    className="credit-card-input-by-bookinglane"
                     className={
                       styles.cardholderInformationInputWithFullWidthSelf
                     }
@@ -573,7 +586,7 @@ const PaymentUIComponent = ({
                     defaultValue={formSummary.paymentInfo.cvc}
                   >
                     {() => (
-                      <input
+                      <InputsDivided
                         placeholder="CVV/CVC"
                         autoComplete="off"
                         error={errors.paymentInfo?.cvc ? true : false}
@@ -584,6 +597,7 @@ const PaymentUIComponent = ({
                           background: inputsBackground,
                           borderRadius: borderRadiusesForInnerElements,
                         }}
+                        inputsFontColor={inputsFontColor}
                       />
                     )}
                   </CustomMaskInput>
@@ -635,7 +649,7 @@ const PaymentUIComponent = ({
                     borderRadius: borderRadiusesForInnerElements,
                   }}
                 >
-                  Pay ${total}
+                  Pay ${round(total + selectedCar.transactionFee, 2)}
                 </button>
               </div>
             </div>
@@ -734,5 +748,88 @@ const CheckboxInput = styled.input`
   }
   &:checked + ${CheckboxSpan} {
     background-color: transparent;
+  }
+`
+
+const InputFirstAndLastName = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  padding: 0;
+  text-indent: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 13.5px;
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+    opacity: 1; /* Firefox */
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+  }
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+  }
+  &:focus {
+    outline: none;
+  }
+`
+const InputsDivided = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  padding: 0;
+  text-indent: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 13.5px;
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+    opacity: 1; /* Firefox */
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+  }
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-size: 13.5px;
+    color: ${(props) => props.inputsFontColor};
+  }
+  &:focus {
+    outline: none;
+  }
+`
+
+const InputFullWidth = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  padding: 0;
+  text-indent: 20px;
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: ${(props) => props.inputsFontColor};
+    opacity: 1; /* Firefox */
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: ${(props) => props.inputsFontColor};
+  }
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: ${(props) => props.inputsFontColor};
+  }
+  &:focus {
+    outline: none;
   }
 `

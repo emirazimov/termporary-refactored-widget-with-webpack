@@ -54,6 +54,20 @@ var bookNowIconBackgroundColor = window.bookNowIconBackgroundColor
 var bookNowIconInnerElementsColor = window.bookNowIconInnerElementsColor
 var AMPMHoverBackgroundColor = window.AMPMHoverBackgroundColor
 var AMPMHoverFontColor = window.AMPMHoverFontColor
+
+var countersOuterBorderColor = window.countersOuterBorderColor
+var countersInnerDividerBorder = window.countersInnerDividerBorder
+
+var switchesBorderColor = window.switchesBorderColor
+var switchesCircleColor = window.switchesCircleColor
+var switchesBackgroundColor = window.switchesBackgroundColor
+var switchesBorderColorEnabled = window.switchesBorderColorEnabled
+var switchesCircleColorEnabled = window.switchesCircleColorEnabled
+var switchesBackgroundColorEnabled = window.switchesBackgroundColorEnabled
+
+var dotsLineColor = window.dotsLineColor
+
+var headerFontColor = window.headerFontColor
 // font-color-for-customize
 
 function Main() {
@@ -83,6 +97,16 @@ function Main() {
           fleetCarsBackgroundColor,
           AMPMHoverBackgroundColor,
           AMPMHoverFontColor,
+          countersOuterBorderColor,
+          countersInnerDividerBorder,
+          switchesBorderColor,
+          switchesCircleColor,
+          switchesBackgroundColor,
+          switchesBorderColorEnabled,
+          switchesCircleColorEnabled,
+          switchesBackgroundColorEnabled,
+          dotsLineColor,
+          headerFontColor,
         }}
       >
         <App />

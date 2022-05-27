@@ -70,55 +70,19 @@ const Hours = ({
     inputsBackground,
     bookNowIconFontAndCircleBorderColor,
     bookNowIconBackgroundColor,
+    countersOuterBorderColor,
+    countersInnerDividerBorder,
   } = useContext(ThemeContext)
 
   return (
-    <div
-      // container
-      // direction="row"
-      // justify="space-between"
-      // alignItems="center"
-      // style={{ marginTop: "-4px" }}
-      className={styles.hoursCounterWrapper}
-    >
+    <div className={styles.hoursCounterWrapper}>
       <div className={styles.hoursCounterIconAndTitleContainer}>
-        {/* <div container direction="row" alignItems="center"> */}
         <HourlyIcon color={fontColor} />
-
-        {/* <span className={styles.hoursCounterIcon}></span> */}
-        <h3
-          // style={{ color: "white", fontSize: "14px", marginTop: "4px" }}
-          className={styles.hoursCounterTitle}
-          style={{ color: fontColor }}
-        >
+        <h3 className={styles.hoursCounterTitle} style={{ color: fontColor }}>
           Hours
         </h3>
-        {/* </div> */}
       </div>
-      <div
-        className={styles.hoursCounterPlusMinusContainer}
-        // style={{
-        //   borderRadius: `${borderRadiusesForInnerElements}`,
-        //   border: redBorderOnSubmitForHours
-        //     ? `1px solid red`
-        //     : "1px solid transparent",
-        // }}
-      >
-        {/* <div
-          // container
-          // direction="row"
-          // justify="space-around"
-          // alignItems="center"
-          // className={classes.mainPlusMinusContainer}
-          className={styles.hoursCounterPlusMinus}
-          // style={{
-          //   // background: "#282828",
-          //   // height: "35px",
-          //   // borderRadius: "5px",
-          //   height: "34px",
-          //   // paddingTop: "-4px",
-          // }}
-        > */}
+      <div className={styles.hoursCounterPlusMinusContainer}>
         <div className={styles.hoursCounterMinusContainer}>
           <button
             onClick={onDecrease}
@@ -127,63 +91,38 @@ const Hours = ({
               background: inputsBackground,
               border: redBorderOnSubmitForHours
                 ? `1px solid red`
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
+
+              borderRight: redBorderOnSubmitForHours
+                ? `1px solid red`
+                : `1px solid ${countersInnerDividerBorder}`,
+
               borderTopLeftRadius: borderRadiusesForInnerElements,
               borderBottomLeftRadius: borderRadiusesForInnerElements,
             }}
             type="button"
-            // style={{ marginRight: "5px" }}
           >
             <MinusIcon color={inputsFontColor} />
           </button>
         </div>
-        <div
-          // item
-          // style={{
-          //   textAlign: "center",
-          //   // borderBottom: "2px solid #AC8159",
-          //   // marginTop: "6px",
-          //   // paddingBottom: "2px",
-          //   // borderBottom: "2px solid #AC8159",
-          //   // height: "105%",
-          // }}
-          className={styles.hoursCounterInputContainer}
-        >
+        <div className={styles.hoursCounterInputContainer}>
           <input
             ref={register}
             name="hours"
-            // className="passenger"
             onChange={(e) => {
               setHoursAddressForm(e.target.value)
               setHoursRedux(e.target.value)
             }}
             value={hoursCount}
             size="1"
-            // style={{
-            //   // pointerEvents: "none",
-            //   minWidth: "34px",
-            //   maxWidth: "34px",
-            //   // marginLeft: "2px",
-            //   // marginRight: "2.5px",
-            //   // marginBottom: "4px",
-            //   backgroundColor: "transparent",
-            //   border: "none",
-            //   color: "white",
-            //   textAlign: "center",
-            //   fontFamily: "Roboto",
-            //   textTransform: "none",
-            //   fontWeight: "400",
-            //   fontSize: "14px",
-            //   height: "100%",
-            // }}
             style={{
               background: inputsBackground,
               borderTop: redBorderOnSubmitForHours
                 ? `1px solid red`
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
               borderBottom: redBorderOnSubmitForHours
                 ? `1px solid red`
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
               color: inputsFontColor,
             }}
             type="number"
@@ -198,16 +137,17 @@ const Hours = ({
               background: inputsBackground,
               border: redBorderOnSubmitForHours
                 ? `1px solid red`
-                : `1px solid ${borderColorForInnerElements}`,
+                : `1px solid ${countersOuterBorderColor}`,
+              borderLeft: redBorderOnSubmitForHours
+                ? `1px solid red`
+                : `1px solid ${countersInnerDividerBorder}`,
               borderTopRightRadius: borderRadiusesForInnerElements,
               borderBottomRightRadius: borderRadiusesForInnerElements,
             }}
             type="button"
-            // style={{ marginLeft: "4px" }}
           >
             <PlusIcon color={inputsFontColor} />
           </button>
-          {/* </div> */}
         </div>
       </div>
     </div>

@@ -20,9 +20,22 @@ export const Switch = (props) => {
     inputsBackground,
     bookNowIconFontAndCircleBorderColor,
     bookNowIconBackgroundColor,
+    switchesBorderColor,
+    switchesCircleColor,
+    switchesBackgroundColor,
+    switchesBorderColorEnabled,
+    switchesCircleColorEnabled,
+    switchesBackgroundColorEnabled,
   } = useContext(ThemeContext)
   return (
-    <SwitchWrapper fontColor={fontColor} inputsFontColor={inputsFontColor}>
+    <SwitchWrapper
+      switchesBorderColor={switchesBorderColor}
+      switchesCircleColor={switchesCircleColor}
+      switchesBackgroundColor={switchesBackgroundColor}
+      switchesBorderColorEnabled={switchesBorderColorEnabled}
+      switchesCircleColorEnabled={switchesCircleColorEnabled}
+      switchesBackgroundColorEnabled={switchesBackgroundColorEnabled}
+    >
       <SwitchInput
         type="checkbox"
         name={`switch${props.numberToIdentify}`}
@@ -68,7 +81,8 @@ const SwitchWrapper = styled.div`
         transition: 0.4s ease;
         height: 22px;
         width: 34px;
-        border: 1px solid ${(props) => props.fontColor};
+        border: 1px solid ${(props) => props.switchesBorderColor};
+        background: ${(props) => props.switchesBackgroundColor};
         border-radius: 11px;
         box-sizing: border-box;
         &:hover {
@@ -95,7 +109,7 @@ const SwitchWrapper = styled.div`
             0 4px 0px 0 hsla(0, 0%, 0%, 0.04), 0 4px 9px hsla(0, 0%, 0%, 0.13),
             0 3px 3px hsla(0, 0%, 0%, 0.05);
           transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
-          background: grey;
+          background: ${(props) => props.switchesCircleColor};
           height: 13px;
           width: 13px;
           top: 3px;
@@ -109,7 +123,7 @@ const SwitchWrapper = styled.div`
         &:hover::after {
           // @include inactiveMixin;
           // @include afterAnimation;
-          background: ${(props) => props.fontColor};
+          background: ${(props) => props.switchesCircleColorEnabled};
           // height: 15px;
           // width: 15px;
           // top: 1px;
@@ -123,16 +137,15 @@ const SwitchWrapper = styled.div`
       }
       // When Active
       &:checked {
-        & + label:before {
-          width: 100%;
-          height: 100%;
-          /* background: grey; // Active Color */
-          transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+        & + label {
+          border: 1px solid ${(props) => props.switchesBorderColorEnabled};
+          background: ${(props) => props.switchesBackgroundColorEnabled};
         }
 
         & + label:after {
           left: 51%;
-          background: ${(props) => props.fontColor};
+
+          background: ${(props) => props.switchesBorderColorEnabled};
         }
       }
     }

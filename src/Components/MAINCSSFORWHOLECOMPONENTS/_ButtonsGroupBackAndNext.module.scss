@@ -1,7 +1,7 @@
-@use './_AppBackgroundColor.module.scss' as *;
-@use './_FontColor.module.scss' as *;
-@use './_ColorsForCustomize.module.scss' as *;
-@use './_BorderRadiuses.module.scss' as *;
+@use "./_AppBackgroundColor.module.scss" as *;
+@use "./_FontColor.module.scss" as *;
+@use "./_ColorsForCustomize.module.scss" as *;
+@use "./_BorderRadiuses.module.scss" as *;
 
 $buttons-margin-bottom: 15px;
 
@@ -34,6 +34,7 @@ $buttons-margin-bottom: 15px;
   background: $back-and-next-buttons-color;
   border-radius: $inner-elements-border-radius;
   transition: 0.2s;
+  font-size: 13.5px;
   &:hover {
     background: $hover-color;
     transition: 0.2s;
